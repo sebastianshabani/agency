@@ -4,13 +4,63 @@ import Navigation from "@/components/global/Navigation.astro";
 import Footer from "@/components/global/Footer.astro";
 ---
 
-<html lang="en" class="selection:bg-orange  selection:text-white">
+<html lang="en" class="selection:bg-orange selection:text-white">
   <head>
+    <!-- Charset Declaration -->
+    <meta charset="UTF-8" />
+
+    <!-- Viewport Meta Tag -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Title Tag -->
+    <title>HYPER - We Create Ads That Drive Sales | Creative Agency</title>
+
+    <!-- Meta Description -->
+    <meta
+      name="description"
+      content="HYPER is a creative agency that creates ads that drive sales. Specializing in high-conversion strategies, innovative design, and measurable results. Part of SOP Group LTD."
+    />
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://www.yourwebsite.com/" />
+
+    <!-- Open Graph Tags (for Social Media) -->
+    <meta property="og:title" content="HYPER - We Create Ads That Drive Sales | Creative Agency" />
+    <meta
+      property="og:description"
+      content="HYPER is a creative agency that creates ads that drive sales. Specializing in high-conversion strategies, innovative design, and measurable results. Part of SOP Group LTD."
+    />
+    <meta property="og:image" content="https://www.yourwebsite.com/images/og-image.jpg" />
+    <meta property="og:url" content="https://www.yourwebsite.com/" />
+    <meta property="og:type" content="website" />
+
+    <!-- Twitter Card Tags (optional) -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="HYPER - We Create Ads That Drive Sales | Creative Agency" />
+    <meta
+      name="twitter:description"
+      content="HYPER is a creative agency that creates ads that drive sales. Specializing in high-conversion strategies, innovative design, and measurable results. Part of SOP Group LTD."
+    />
+    <meta name="twitter:image" content="https://www.yourwebsite.com/images/og-image.jpg" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="alternate icon" type="image/png" href="/favicon.png" />
+
+    <!-- Robots Meta Tag -->
+    <meta name="robots" content="index, follow" />
+
+    <!-- BaseHead Component (if it includes additional styles or scripts) -->
     <BaseHead />
   </head>
   <body class="mx-auto bg-black 2xl:max-w-7xl">
+    <!-- Navigation Component -->
     <Navigation />
+
+    <!-- Main Content Slot -->
     <slot />
+
+    <!-- Footer Component -->
     <Footer />
   </body>
 </html>
