@@ -10,9 +10,19 @@
         <span class="hidden lg:inline">✺</span>
         Only 2 spots open for february
         <span class="hidden lg:inline">✺</span>
-        Book a call now
+        <a
+          href="#"
+          onclick="Calendly.initPopupWidget({url: 'https://calendly.com/hyper-creative/30min?hide_event_type_details=1&hide_gdpr_banner=1'}); return false;"
+          class="text-white hover:text-orange duration-200"
+        >
+          Book a call now
+        </a>
         <span class="inline lg:inline">✺</span>
       </div>
     </div>
   </div>
 </section>
+
+<!-- Calendly link widget -->
+<link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+<script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
