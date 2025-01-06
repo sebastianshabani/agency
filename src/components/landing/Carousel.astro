@@ -37,17 +37,44 @@
 <script>
   document.addEventListener("DOMContentLoaded", function () {
     const marqueeContainer = document.querySelector(".marquee-container");
+    const marqueeAnimation = document.querySelector(".image-marquee-animation");
 
-    if (marqueeContainer) {
-      // Debugging: Log the container's scroll width
-      console.log("Scroll Width:", marqueeContainer.scrollWidth);
+    if (marqueeContainer && marqueeAnimation) {
+      let isDragging = false;
 
-      // Force horizontal scrolling
+      // Pause animation on mouse down or touch start
+      marqueeContainer.addEventListener("mousedown", function (e) {
+        isDragging = true;
+        marqueeAnimation.style.animationPlayState = "paused";
+      });
+
+      marqueeContainer.addEventListener("touchstart", function (e) {
+        isDragging = true;
+        marqueeAnimation.style.animationPlayState = "paused";
+      });
+
+      // Resume animation on mouse up or touch end
+      document.addEventListener("mouseup", function () {
+        if (isDragging) {
+          isDragging = false;
+          marqueeAnimation.style.animationPlayState = "running";
+        }
+      });
+
+      document.addEventListener("touchend", function () {
+        if (isDragging) {
+          isDragging = false;
+          marqueeAnimation.style.animationPlayState = "running";
+        }
+      });
+
+      // Enable click-and-drag scrolling
       marqueeContainer.addEventListener("mousedown", function (e) {
         let startX = e.pageX;
         let scrollLeft = marqueeContainer.scrollLeft;
 
         function onMouseMove(e) {
+          if (!isDragging) return;
           let x = e.pageX - startX;
           marqueeContainer.scrollLeft = scrollLeft - x;
         }
@@ -59,6 +86,26 @@
 
         document.addEventListener("mousemove", onMouseMove);
         document.addEventListener("mouseup", onMouseUp);
+      });
+
+      // Enable touch scrolling
+      marqueeContainer.addEventListener("touchstart", function (e) {
+        let startX = e.touches[0].pageX;
+        let scrollLeft = marqueeContainer.scrollLeft;
+
+        function onTouchMove(e) {
+          if (!isDragging) return;
+          let x = e.touches[0].pageX - startX;
+          marqueeContainer.scrollLeft = scrollLeft - x;
+        }
+
+        function onTouchEnd() {
+          document.removeEventListener("touchmove", onTouchMove);
+          document.removeEventListener("touchend", onTouchEnd);
+        }
+
+        document.addEventListener("touchmove", onTouchMove);
+        document.addEventListener("touchend", onTouchEnd);
       });
     }
   });
