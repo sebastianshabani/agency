@@ -1,20 +1,25 @@
+/* TailwindCSS and general styles */
 @import "tailwindcss";
-@theme  {
+
+@theme {
   --color-black: #1e1e1e;
   --color-white: #e7e7d8;
   --color-eagle: #afac95;
   --color-orange: #ea4125;
 }
+
 .font-display {
   font-family: Basement, sans-serif;
   font-weight: 700;
 }
+
 @supports (font-variation-settings: normal) {
   /* Use variable font if supported */
   :root {
     font-family: InterVariable, sans-serif;
   }
 }
+
 @font-face {
   font-family: "Basement";
   src: url("../fonts/BSBlack.eot");
@@ -25,6 +30,8 @@
   font-style: normal;
   descent-override: 0%;
 }
+
+/* Keyframes and animations */
 @keyframes marquee {
   0% {
     transform: translateX(0%);
@@ -33,9 +40,12 @@
     transform: translateX(-100%);
   }
 }
+
 .animate-marquee {
   animation: marquee 15s linear infinite;
 }
+
+/* Gradient grid */
 .gradient-grid {
   background-image: radial-gradient(
       circle at center center,
@@ -58,6 +68,25 @@
     ),
     linear-gradient(90deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0));
 }
-/* .splide__pagination {
-  visibility: hidden;
-} */
+
+/* Sticky navigation (only for the first section) */
+.sticky-section {
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 50;
+  background-color: black;
+  transition: transform 0.3s ease-in-out; /* Smooth transition */
+}
+
+.hidden {
+  transform: translateY(-100%); /* Hide the sticky section when necessary */
+}
+
+/* Regular section (ensures the second section is not sticky) */
+.trigger-section {
+  position: static; /* Default positioning */
+  top: auto; /* Reset any top offset */
+  z-index: auto; /* Prevent it from overlapping */
+}
