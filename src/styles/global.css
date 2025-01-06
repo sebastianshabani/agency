@@ -1,6 +1,7 @@
-/* TailwindCSS and general styles */
+/* Import TailwindCSS for utility classes */
 @import "tailwindcss";
 
+/* Theme Variables */
 @theme {
   --color-black: #1e1e1e;
   --color-white: #e7e7d8;
@@ -8,15 +9,15 @@
   --color-orange: #ea4125;
 }
 
+/* Font Definitions */
 .font-display {
   font-family: Basement, sans-serif;
   font-weight: 700;
 }
 
 @supports (font-variation-settings: normal) {
-  /* Use variable font if supported */
   :root {
-    font-family: InterVariable, sans-serif;
+    font-family: InterVariable, sans-serif; /* Use variable font if supported */
   }
 }
 
@@ -31,7 +32,7 @@
   descent-override: 0%;
 }
 
-/* Keyframes and animations */
+/* Keyframes and Animations */
 @keyframes marquee {
   0% {
     transform: translateX(0%);
@@ -45,7 +46,7 @@
   animation: marquee 15s linear infinite;
 }
 
-/* Gradient grid */
+/* Gradient Grid */
 .gradient-grid {
   background-image: radial-gradient(
       circle at center center,
@@ -69,7 +70,7 @@
     linear-gradient(90deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0));
 }
 
-/* Sticky navigation (only for the first section) */
+/* Sticky Navigation (For Intro Section) */
 .sticky-section {
   position: sticky;
   top: 0;
@@ -77,16 +78,34 @@
   width: 100%;
   z-index: 50;
   background-color: black;
-  transition: transform 0.3s ease-in-out; /* Smooth transition */
+  transition: transform 0.3s ease-in-out; /* Smooth slide effect */
 }
 
 .hidden {
-  transform: translateY(-100%); /* Hide the sticky section when necessary */
+  transform: translateY(-100%); /* Hide sticky navigation */
 }
 
-/* Regular section (ensures the second section is not sticky) */
-.trigger-section {
-  position: static; /* Default positioning */
-  top: auto; /* Reset any top offset */
-  z-index: auto; /* Prevent it from overlapping */
+/* Non-Sticky CTA Section */
+.non-sticky-section {
+  position: static; /* Ensure default positioning */
+  top: auto;
+  z-index: auto;
+  background-color: transparent; /* No background for differentiation */
+}
+
+/* Utility Classes for Visual Tweaks */
+.bg-orange {
+  background-color: var(--color-orange);
+}
+
+.text-white {
+  color: var(--color-white);
+}
+
+.text-black {
+  color: var(--color-black);
+}
+
+.hover\:bg-black:hover {
+  background-color: var(--color-black);
 }
