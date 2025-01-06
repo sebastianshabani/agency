@@ -1,77 +1,45 @@
 <section class="border-b border-white/20 bg-accent-500">
-  <div
-    class="mx-auto max-w-7xl border-white/20 border-x"
-    x-data="{ init() {
-            new Splide(this.$refs.splide, {
-                perPage: 3.5, // Show 3 full slides and 1 half slide
-                perMove: 1, // Move one slide at a time
-                gap: '0rem', // No gap between slides
-                focus: 'center', // Center the active slide
-                breakpoints: {
-                    640: {
-                        perPage: 1, // Show 1 slide on mobile
-                    },
-                },
-            }).mount();
+  <div class="mx-auto max-w-7xl border-white/20 border-x" x-data="{ 
+    init() {
+      new Splide(this.$refs.splide, {
+        perPage: 3.5,
+        perMove: 1,
+        gap: '0rem',
+        focus: 'center',
+        breakpoints: {
+          640: {
+            perPage: 1,
+          },
         },
-    }"
-  >
-    <section
-      class="splide is-initialized splide--slide splide--ltr splide--draggable is-active"
-      aria-label="Splide/Alpine.js"
-      x-ref="splide"
-      id="splide01"
-      aria-roledescription="carousel"
-    >
+      }).mount();
+    }
+  }">
+    <section class="splide is-initialized splide--slide splide--ltr splide--draggable is-active" aria-label="Splide/Alpine.js" x-ref="splide" id="splide01" aria-roledescription="carousel">
       <div class="splide__arrows splide__arrows--ltr items-center">
-        <button
-          class="splide__arrow splide__arrow--prev"
-          type="button"
-          aria-label="Previous slide"
-          aria-controls="splide01-track"
-        >
+        <button class="splide__arrow splide__arrow--prev" type="button" aria-label="Previous slide" aria-controls="splide01-track">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" width="40" height="40" focusable="false">
             <path d="m15.5 0.932-4.3 4.38 14.5 14.6-14.5 14.5 4.3 4.4 14.6-14.6 4.4-4.3-4.4-4.4-14.6-14.6z" />
           </svg>
         </button>
-        <button
-          class="splide__arrow splide__arrow--next"
-          type="button"
-          aria-label="Next slide"
-          aria-controls="splide01-track"
-        >
+        <button class="splide__arrow splide__arrow--next" type="button" aria-label="Next slide" aria-controls="splide01-track">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" width="40" height="40" focusable="false">
             <path d="m15.5 0.932-4.3 4.38 14.5 14.6-14.5 14.5 4.3 4.4 14.6-14.6 4.4-4.3-4.4-4.4-14.6-14.6z" />
           </svg>
         </button>
       </div>
-      <div
-        class="h-full splide__track splide__track--slide splide__track--ltr splide__track--draggable"
-        id="splide01-track"
-        aria-live="polite"
-        aria-atomic="true"
-        aria-busy="false"
-      >
+      <div class="h-full splide__track splide__track--slide splide__track--ltr splide__track--draggable" id="splide01-track" aria-live="polite" aria-atomic="true">
         <ul class="splide__list" id="splide01-list" role="presentation">
           <!-- Slide 1 -->
           <li class="splide__slide">
             <div class="max-w-md overflow-hidden group flex flex-col h-[400px]">
-              <!-- Image Section -->
               <div class="flex-1 transition-all duration-300 group-hover:flex-[0.7]">
-                <img
-                  src="/work/1.png"
-                  alt="Social Media Ads"
-                  class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-90"
-                />
+                <img src="/work/1.png" alt="Social Media Ads" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-90"/>
               </div>
-              <!-- Text Section -->
-              <div class="max-h-0 group-hover:max-h-[160px] transition-all duration-300 bg-black/80 overflow-hidden">
-                <div class="p-6">
-                  <h2 class="text-2xl font-display text-white">Social Media Ads</h2>
-                  <div class="mt-2 text-gray-300">
-                    <p>
-                      Create and manage high-performing social media ad campaigns across platforms like Facebook, Instagram, and LinkedIn.
-                    </p>
+              <div class="bg-black/80">
+                <h2 class="text-2xl font-display text-white p-4">Social Media Ads</h2>
+                <div class="max-h-0 group-hover:max-h-[160px] transition-all duration-300 overflow-hidden">
+                  <div class="px-4 pb-4 text-gray-300">
+                    <p>Create and manage high-performing social media ad campaigns across platforms like Facebook, Instagram, and LinkedIn.</p>
                   </div>
                 </div>
               </div>
@@ -81,22 +49,14 @@
           <!-- Slide 2 -->
           <li class="splide__slide">
             <div class="max-w-md overflow-hidden group flex flex-col h-[400px]">
-              <!-- Image Section -->
               <div class="flex-1 transition-all duration-300 group-hover:flex-[0.7]">
-                <img
-                  src="/work/2.png"
-                  alt="Landing Pages"
-                  class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-90"
-                />
+                <img src="/work/2.png" alt="Landing Pages" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-90"/>
               </div>
-              <!-- Text Section -->
-              <div class="max-h-0 group-hover:max-h-[160px] transition-all duration-300 bg-black/80 overflow-hidden">
-                <div class="p-6">
-                  <h2 class="text-2xl font-display text-white">Landing Pages</h2>
-                  <div class="mt-2 text-gray-300">
-                    <p>
-                      Design and optimize landing pages to maximize conversions and improve user engagement.
-                    </p>
+              <div class="bg-black/80">
+                <h2 class="text-2xl font-display text-white p-4">Landing Pages</h2>
+                <div class="max-h-0 group-hover:max-h-[160px] transition-all duration-300 overflow-hidden">
+                  <div class="px-4 pb-4 text-gray-300">
+                    <p>Design and optimize landing pages to maximize conversions and improve user engagement.</p>
                   </div>
                 </div>
               </div>
@@ -106,22 +66,14 @@
           <!-- Slide 3 -->
           <li class="splide__slide">
             <div class="max-w-md overflow-hidden group flex flex-col h-[400px]">
-              <!-- Image Section -->
               <div class="flex-1 transition-all duration-300 group-hover:flex-[0.7]">
-                <img
-                  src="/work/3.png"
-                  alt="Tiktok Ads"
-                  class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-90"
-                />
+                <img src="/work/3.png" alt="Tiktok Ads" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-90"/>
               </div>
-              <!-- Text Section -->
-              <div class="max-h-0 group-hover:max-h-[160px] transition-all duration-300 bg-black/80 overflow-hidden">
-                <div class="p-6">
-                  <h2 class="text-2xl font-display text-white">Tiktok Ads</h2>
-                  <div class="mt-2 text-gray-300">
-                    <p>
-                      Leverage TikTok's platform to create engaging and viral ad campaigns for your brand.
-                    </p>
+              <div class="bg-black/80">
+                <h2 class="text-2xl font-display text-white p-4">Tiktok Ads</h2>
+                <div class="max-h-0 group-hover:max-h-[160px] transition-all duration-300 overflow-hidden">
+                  <div class="px-4 pb-4 text-gray-300">
+                    <p>Leverage TikTok's platform to create engaging and viral ad campaigns for your brand.</p>
                   </div>
                 </div>
               </div>
@@ -131,22 +83,14 @@
           <!-- Slide 4 -->
           <li class="splide__slide">
             <div class="max-w-md overflow-hidden group flex flex-col h-[400px]">
-              <!-- Image Section -->
               <div class="flex-1 transition-all duration-300 group-hover:flex-[0.7]">
-                <img
-                  src="/work/4.png"
-                  alt="Mobile Gaming Ads"
-                  class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-90"
-                />
+                <img src="/work/4.png" alt="Mobile Gaming Ads" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-90"/>
               </div>
-              <!-- Text Section -->
-              <div class="max-h-0 group-hover:max-h-[160px] transition-all duration-300 bg-black/80 overflow-hidden">
-                <div class="p-6">
-                  <h2 class="text-2xl font-display text-white">Mobile Gaming Ads</h2>
-                  <div class="mt-2 text-gray-300">
-                    <p>
-                      Develop and scale interactive ad creatives for mobile gaming platforms to drive user acquisition.
-                    </p>
+              <div class="bg-black/80">
+                <h2 class="text-2xl font-display text-white p-4">Mobile Gaming Ads</h2>
+                <div class="max-h-0 group-hover:max-h-[160px] transition-all duration-300 overflow-hidden">
+                  <div class="px-4 pb-4 text-gray-300">
+                    <p>Develop and scale interactive ad creatives for mobile gaming platforms to drive user acquisition.</p>
                   </div>
                 </div>
               </div>
@@ -156,22 +100,14 @@
           <!-- Slide 5 -->
           <li class="splide__slide">
             <div class="max-w-md overflow-hidden group flex flex-col h-[400px]">
-              <!-- Image Section -->
               <div class="flex-1 transition-all duration-300 group-hover:flex-[0.7]">
-                <img
-                  src="/work/5.png"
-                  alt="Native Ads"
-                  class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-90"
-                />
+                <img src="/work/5.png" alt="Native Ads" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-90"/>
               </div>
-              <!-- Text Section -->
-              <div class="max-h-0 group-hover:max-h-[160px] transition-all duration-300 bg-black/80 overflow-hidden">
-                <div class="p-6">
-                  <h2 class="text-2xl font-display text-white">Native Ads</h2>
-                  <div class="mt-2 text-gray-300">
-                    <p>
-                      Create seamless native ad experiences that blend naturally with content to boost engagement.
-                    </p>
+              <div class="bg-black/80">
+                <h2 class="text-2xl font-display text-white p-4">Native Ads</h2>
+                <div class="max-h-0 group-hover:max-h-[160px] transition-all duration-300 overflow-hidden">
+                  <div class="px-4 pb-4 text-gray-300">
+                    <p>Create seamless native ad experiences that blend naturally with content to boost engagement.</p>
                   </div>
                 </div>
               </div>
@@ -181,22 +117,14 @@
           <!-- Slide 6 -->
           <li class="splide__slide">
             <div class="max-w-md overflow-hidden group flex flex-col h-[400px]">
-              <!-- Image Section -->
               <div class="flex-1 transition-all duration-300 group-hover:flex-[0.7]">
-                <img
-                  src="/work/6.png"
-                  alt="Mobile App"
-                  class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-90"
-                />
+                <img src="/work/6.png" alt="Mobile App" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-90"/>
               </div>
-              <!-- Text Section -->
-              <div class="max-h-0 group-hover:max-h-[160px] transition-all duration-300 bg-black/80 overflow-hidden">
-                <div class="p-6">
-                  <h2 class="text-2xl font-display text-white">Mobile App</h2>
-                  <div class="mt-2 text-gray-300">
-                    <p>
-                      Build and promote mobile apps with engaging ad creatives and user-friendly designs.
-                    </p>
+              <div class="bg-black/80">
+                <h2 class="text-2xl font-display text-white p-4">Mobile App</h2>
+                <div class="max-h-0 group-hover:max-h-[160px] transition-all duration-300 overflow-hidden">
+                  <div class="px-4 pb-4 text-gray-300">
+                    <p>Build and promote mobile apps with engaging ad creatives and user-friendly designs.</p>
                   </div>
                 </div>
               </div>
@@ -206,22 +134,14 @@
           <!-- Slide 7 -->
           <li class="splide__slide">
             <div class="max-w-md overflow-hidden group flex flex-col h-[400px]">
-              <!-- Image Section -->
               <div class="flex-1 transition-all duration-300 group-hover:flex-[0.7]">
-                <img
-                  src="/work/7.png"
-                  alt="Electronics"
-                  class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-90"
-                />
+                <img src="/work/7.png" alt="Electronics" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-90"/>
               </div>
-              <!-- Text Section -->
-              <div class="max-h-0 group-hover:max-h-[160px] transition-all duration-300 bg-black/80 overflow-hidden">
-                <div class="p-6">
-                  <h2 class="text-2xl font-display text-white">Electronics</h2>
-                  <div class="mt-2 text-gray-300">
-                    <p>
-                      Showcase cutting-edge electronics with visually stunning ad campaigns.
-                    </p>
+              <div class="bg-black/80">
+                <h2 class="text-2xl font-display text-white p-4">Electronics</h2>
+                <div class="max-h-0 group-hover:max-h-[160px] transition-all duration-300 overflow-hidden">
+                  <div class="px-4 pb-4 text-gray-300">
+                    <p>Showcase cutting-edge electronics with visually stunning ad campaigns.</p>
                   </div>
                 </div>
               </div>
@@ -233,18 +153,15 @@
   </div>
 </section>
 
-<!-- Add JavaScript for Mobile Tap Interaction -->
 <script>
   document.addEventListener("DOMContentLoaded", () => {
     const cards = document.querySelectorAll(".group");
-
+    
     cards.forEach((card) => {
-      // Toggle hover state on mobile
       card.addEventListener("click", () => {
         card.classList.toggle("active");
       });
 
-      // Close hover state when tapping outside the card
       document.addEventListener("click", (e) => {
         if (!card.contains(e.target)) {
           card.classList.remove("active");
@@ -253,3 +170,15 @@
     });
   });
 </script>
+
+<style>
+  @media (hover: none) {
+    .group.active .max-h-0 {
+      max-height: 160px;
+    }
+    
+    .group.active .flex-1 {
+      flex: 0.7;
+    }
+  }
+</style>
