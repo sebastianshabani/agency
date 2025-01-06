@@ -33,3 +33,33 @@
     </div>
   </div>
 </section>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const marqueeContainer = document.querySelector(".marquee-container");
+
+    if (marqueeContainer) {
+      // Debugging: Log the container's scroll width
+      console.log("Scroll Width:", marqueeContainer.scrollWidth);
+
+      // Force horizontal scrolling
+      marqueeContainer.addEventListener("mousedown", function (e) {
+        let startX = e.pageX;
+        let scrollLeft = marqueeContainer.scrollLeft;
+
+        function onMouseMove(e) {
+          let x = e.pageX - startX;
+          marqueeContainer.scrollLeft = scrollLeft - x;
+        }
+
+        function onMouseUp() {
+          document.removeEventListener("mousemove", onMouseMove);
+          document.removeEventListener("mouseup", onMouseUp);
+        }
+
+        document.addEventListener("mousemove", onMouseMove);
+        document.addEventListener("mouseup", onMouseUp);
+      });
+    }
+  });
+</script>

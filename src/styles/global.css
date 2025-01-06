@@ -58,6 +58,7 @@
     ),
     linear-gradient(90deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0));
 }
+/* Marquee Animation */
 @keyframes image-marquee-slow {
   0% {
     transform: translateX(0%);
@@ -73,12 +74,13 @@
   width: max-content; /* Ensure the container is wide enough to hold all images */
 }
 
-/* Enable horizontal scrolling */
+/* Marquee Container */
 .image-carousel .marquee-container {
-  overflow-x: auto; /* Allow horizontal scrolling */
+  overflow-x: auto; /* Enable horizontal scrolling */
   scrollbar-width: none; /* Hide scrollbar for Firefox */
   -ms-overflow-style: none; /* Hide scrollbar for IE/Edge */
   scroll-snap-type: x mandatory; /* Enable scroll snapping */
+  touch-action: pan-x; /* Enable horizontal touch scrolling */
 }
 
 /* Hide scrollbar for WebKit browsers (Chrome, Safari) */
@@ -89,6 +91,9 @@
 /* Snap images to the start of the container */
 .image-carousel .image-marquee-animation img {
   scroll-snap-align: start; /* Snap images to the start of the container */
+  width: 232px; /* Ensure images have a fixed width */
+  height: 72px; /* Ensure images have a fixed height */
+  flex-shrink: 0; /* Prevent images from shrinking */
 }
 
 /* Pause animation on hover or touch */
