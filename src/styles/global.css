@@ -70,29 +70,6 @@
     linear-gradient(90deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0));
 }
 
-/* Sticky Navigation (For Intro Section) */
-.sticky-section {
-  position: sticky;
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: 50;
-  background-color: black;
-  transition: transform 0.3s ease-in-out; /* Smooth slide effect */
-}
-
-.hidden {
-  transform: translateY(-100%); /* Hide sticky navigation */
-}
-
-/* Non-Sticky CTA Section */
-.non-sticky-section {
-  position: static; /* Ensure default positioning */
-  top: auto;
-  z-index: auto;
-  background-color: transparent; /* No background for differentiation */
-}
-
 /* Utility Classes for Visual Tweaks */
 .bg-orange {
   background-color: var(--color-orange);
