@@ -218,7 +218,7 @@
 /* Move Splide pagination lower and add space for it */
 .splide__pagination {
   position: absolute;
-  bottom: -10px; /* Adjust this value to move it lower */
+  bottom: -1px; /* Adjust this value to move it lower */
   left: 50%;
   transform: translateX(-50%);
 }
