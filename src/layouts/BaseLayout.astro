@@ -1,48 +1,26 @@
 ---
-import SpeedInsights from "@vercel/speed-insights";
+import BaseHead from "@/components/BaseHead.astro"; // Import BaseHead
+import Navigation from "@/components/Navigation.astro"; // Import Navigation
+import Footer from "@/components/Footer.astro"; // Import Footer
+
 // Define props
-const { title = "HYPER - We Create Ads That Drive Sales | Creative Agency", description = "HYPER is a creative agency that creates ads that drive sales. Specializing in high-conversion strategies, innovative design, and measurable results. Part of SOP Group LTD." } = Astro.props;
+const { 
+  title = "HYPER - We Create Ads That Drive Sales | Creative Agency", 
+  description = "HYPER is a creative agency that creates ads that drive sales. Specializing in high-conversion strategies, innovative design, and measurable results. Part of SOP Group LTD.",
+  canonicalUrl = "https://www.yourwebsite.com/",
+  ogImage = "https://www.yourwebsite.com/images/og-image.jpg"
+} = Astro.props;
 ---
 
 <html lang="en" class="selection:bg-orange selection:text-white">
   <head>
-    <!-- Charset Declaration -->
-    <meta charset="UTF-8" />
-
-    <!-- Viewport Meta Tag -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <!-- Dynamic Title Tag -->
-    <title>{title}</title>
-
-    <!-- Dynamic Meta Description -->
-    <meta name="description" content={description} />
-
-    <!-- Canonical URL -->
-    <link rel="canonical" href="https://www.yourwebsite.com/" />
-
-    <!-- Open Graph Tags (for Social Media) -->
-    <meta property="og:title" content={title} />
-    <meta property="og:description" content={description} />
-    <meta property="og:image" content="https://www.yourwebsite.com/images/og-image.jpg" />
-    <meta property="og:url" content="https://www.yourwebsite.com/" />
-    <meta property="og:type" content="website" />
-
-    <!-- Twitter Card Tags (optional) -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content={title} />
-    <meta name="twitter:description" content={description} />
-    <meta name="twitter:image" content="https://www.yourwebsite.com/images/og-image.jpg" />
-
-    <!-- Favicon -->
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="alternate icon" type="image/png" href="/favicon.png" />
-
-    <!-- Robots Meta Tag -->
-    <meta name="robots" content="index, follow" />
-
-    <!-- BaseHead Component (if it includes additional styles or scripts) -->
-    <BaseHead />
+    <!-- Use BaseHead Component -->
+    <BaseHead 
+      title={title} 
+      description={description} 
+      canonicalUrl={canonicalUrl} 
+      ogImage={ogImage} 
+    />
   </head>
   <body class="mx-auto bg-black 2xl:max-w-7xl">
     <!-- Navigation Component -->
@@ -53,5 +31,8 @@ const { title = "HYPER - We Create Ads That Drive Sales | Creative Agency", desc
 
     <!-- Footer Component -->
     <Footer />
+
+    <!-- Vercel Speed Insights -->
+    <SpeedInsights />
   </body>
 </html>
