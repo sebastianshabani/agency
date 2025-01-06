@@ -7,14 +7,14 @@
         class="text-white text-center items-center w-full flex flex-col justify-between md:px-0 sm:flex-row sm:px-8">
         <!-- Logo Section -->
         <a href="/" class="block">
-          <div class="text-white text-lg font-display inline-flex items-center md:px-8 md:text-center py-4 uppercase">
+          <div class="text-white text-xl font-display inline-flex items-center md:px-8 md:text-center py-4 uppercase">
             <span>HYPER</span>
           </div>
         </a>
         <!-- Book a Call Button -->
         <a
           href="#"
-          onclick="Calendly.initPopupWidget({url: 'https://calendly.com/hyper-creative/30min?hide_event_type_details=1&hide_gdpr_banner=1'}); return false;"
+          id="book-call-button"
           class="w-full bg-orange duration-200 font-display hover:bg-black text-white lg:w-auto px-6 py-4 sm:rounded-full text-black hover:text-white text-center text-xs uppercase"
           >Book a call</a>
       </div>
@@ -22,6 +22,39 @@
   </div>
 </section>
 
+<!-- Calendly Inline Widget -->
+<div id="calendly-overlay" class="hidden fixed inset-0 bg-black/50 z-50"></div>
+<div id="calendly-inline-widget" class="hidden fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50 w-full max-w-4xl h-[80vh] bg-white rounded-lg shadow-lg overflow-hidden"></div>
+
 <!-- Calendly link widget -->
 <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
 <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const bookCallButton = document.getElementById("book-call-button");
+    const calendlyOverlay = document.getElementById("calendly-overlay");
+    const calendlyWidget = document.getElementById("calendly-inline-widget");
+
+    // Initialize Calendly inline widget
+    Calendly.initInlineWidget({
+      url: "https://calendly.com/hyper-creative/30min?hide_event_type_details=1&hide_gdpr_banner=1",
+      parentElement: calendlyWidget,
+      prefill: {},
+      utm: {},
+    });
+
+    // Open Calendly widget and overlay
+    bookCallButton.addEventListener("click", function (e) {
+      e.preventDefault();
+      calendlyOverlay.classList.remove("hidden");
+      calendlyWidget.classList.remove("hidden");
+    });
+
+    // Close Calendly widget and overlay when clicking outside
+    calendlyOverlay.addEventListener("click", function () {
+      calendlyOverlay.classList.add("hidden");
+      calendlyWidget.classList.add("hidden");
+    });
+  });
+</script>
