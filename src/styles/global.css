@@ -29,6 +29,7 @@
   descent-override: 0%;
 }
 
+/* Animation for marquee effect */
 @keyframes marquee {
   0% {
     transform: translateX(0%);
@@ -47,12 +48,11 @@
   }
 }
 
-/* General Animations */
+/* General Styles */
 .animate-marquee {
   animation: marquee 15s linear infinite;
 }
 
-/* Gradient Background */
 .gradient-grid {
   background-image: radial-gradient(
       circle at center center,
@@ -114,11 +114,11 @@
   transform: scale(1.1);
 }
 
-/* Splide slide styles */
+/* Splide styles */
 .splide__slide {
   position: relative;
   overflow: hidden;
-  width: calc(100% / 3.5);
+  width: calc(100% / 5); /* Adjust for your carousel layout */
   flex: 0 0 auto;
   transition: transform 0.3s ease, opacity 0.3s ease;
 }
@@ -172,12 +172,13 @@
   -ms-overflow-style: none;
 }
 
-/* Pause marquee animation on hover */
+/* Hover and Focus */
 .image-carousel:hover .image-marquee-animation {
   animation-play-state: paused;
 }
 
-/* Ensure marquee images aren't impacted by splide transitions */
-.image-carousel .splide__slide img {
-  transition: none;
+/* Button arrow hover */
+.splide__arrows button:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
 }
