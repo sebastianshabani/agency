@@ -215,3 +215,10 @@
 .card.active .card-expanded {
   opacity: 1; /* Show the expanded text overlay */
 }
+/* Move Splide pagination lower */
+.splide__pagination {
+  position: absolute;
+  bottom: -40px; /* Adjust this value to move it lower */
+  left: 50%;
+  transform: translateX(-50%);
+}
