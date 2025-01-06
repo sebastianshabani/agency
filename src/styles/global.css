@@ -129,14 +129,8 @@
   scrollbar-width: none;
   -ms-overflow-style: none;
 }
-/* Interactive Image Card Styles */
-.offerings-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 2rem;
-}
 
+/* Interactive Image Card Styles */
 .card {
   position: relative;
   width: 300px; /* Adjust width as needed */
@@ -168,42 +162,56 @@
   border-radius: 6px;
   font-size: 14px;
   font-weight: bold;
+  transition: opacity 0.3s ease;
+  opacity: 1; /* Visible by default */
 }
 
 .card-expanded {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.5s ease, opacity 0.3s ease;
-  opacity: 0;
-}
-
-.expanded-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.7); /* Semi-transparent overlay */
+  color: white;
+  opacity: 0; /* Hidden by default */
+  transition: opacity 0.3s ease;
   padding: 16px;
-  background: white;
+  box-sizing: border-box;
 }
 
 .description {
   font-size: 14px;
-  color: #333;
+  color: white;
+  text-align: center;
   margin: 0;
 }
 
 /* Hover State (Desktop) */
 .card:hover .card-image {
-  transform: scale(0.9);
+  transform: scale(0.9); /* Shrink the image */
+}
+
+.card:hover .text-overlay {
+  opacity: 0; /* Hide the default text overlay */
 }
 
 .card:hover .card-expanded {
-  max-height: 200px; /* Adjust based on content */
-  opacity: 1;
+  opacity: 1; /* Show the expanded text overlay */
 }
 
 /* Tap State (Mobile) */
 .card.active .card-image {
-  transform: scale(0.9);
+  transform: scale(0.9); /* Shrink the image */
+}
+
+.card.active .text-overlay {
+  opacity: 0; /* Hide the default text overlay */
 }
 
 .card.active .card-expanded {
-  max-height: 200px; /* Adjust based on content */
-  opacity: 1;
+  opacity: 1; /* Show the expanded text overlay */
 }
