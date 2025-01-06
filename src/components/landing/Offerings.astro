@@ -65,34 +65,88 @@
           class="splide__list"
           id="splide01-list"
           role="presentation">
+          <!-- Slide 1 -->
           <li class="splide__slide">
-            <img src="/work/1.png" alt="Social Media Ads" />
-            <div class="overlay">
-              <span>Social Media Ads</span>
+            <div class="card">
+              <div class="card-default">
+                <img src="/work/1.png" alt="Social Media Ads" class="card-image" />
+                <div class="text-overlay">Social Media Ads</div>
+              </div>
+              <div class="card-expanded">
+                <div class="expanded-content">
+                  <p class="description">
+                    Create and manage high-performing social media ad campaigns across platforms like Facebook, Instagram, and LinkedIn.
+                  </p>
+                </div>
+              </div>
             </div>
           </li>
+
+          <!-- Slide 2 -->
           <li class="splide__slide">
-            <img src="/work/2.png" alt="Landing Pages" />
-            <div class="overlay">
-              <span>Landing Pages</span>
+            <div class="card">
+              <div class="card-default">
+                <img src="/work/2.png" alt="Landing Pages" class="card-image" />
+                <div class="text-overlay">Landing Pages</div>
+              </div>
+              <div class="card-expanded">
+                <div class="expanded-content">
+                  <p class="description">
+                    Design and optimize landing pages to maximize conversions and improve user engagement.
+                  </p>
+                </div>
+              </div>
             </div>
           </li>
+
+          <!-- Slide 3 -->
           <li class="splide__slide">
-            <img src="/work/3.png" alt="Tiktok Ads" />
-            <div class="overlay">
-              <span>Tiktok Ads</span>
+            <div class="card">
+              <div class="card-default">
+                <img src="/work/3.png" alt="Tiktok Ads" class="card-image" />
+                <div class="text-overlay">Tiktok Ads</div>
+              </div>
+              <div class="card-expanded">
+                <div class="expanded-content">
+                  <p class="description">
+                    Leverage TikTok's platform to create engaging and viral ad campaigns for your brand.
+                  </p>
+                </div>
+              </div>
             </div>
           </li>
+
+          <!-- Slide 4 -->
           <li class="splide__slide">
-            <img src="/work/4.png" alt="Mobile Gaming Ads" />
-            <div class="overlay">
-              <span>Mobile Gaming Ads</span>
+            <div class="card">
+              <div class="card-default">
+                <img src="/work/4.png" alt="Mobile Gaming Ads" class="card-image" />
+                <div class="text-overlay">Mobile Gaming Ads</div>
+              </div>
+              <div class="card-expanded">
+                <div class="expanded-content">
+                  <p class="description">
+                    Develop and scale interactive ad creatives for mobile gaming platforms to drive user acquisition.
+                  </p>
+                </div>
+              </div>
             </div>
           </li>
+
+          <!-- Slide 5 -->
           <li class="splide__slide">
-            <img src="/work/5.png" alt="Native Ads" />
-            <div class="overlay">
-              <span>Native Ads</span>
+            <div class="card">
+              <div class="card-default">
+                <img src="/work/5.png" alt="Native Ads" class="card-image" />
+                <div class="text-overlay">Native Ads</div>
+              </div>
+              <div class="card-expanded">
+                <div class="expanded-content">
+                  <p class="description">
+                    Create seamless native ad experiences that blend naturally with content to boost engagement.
+                  </p>
+                </div>
+              </div>
             </div>
           </li>
         </ul>
@@ -100,3 +154,24 @@
     </section>
   </div>
 </section>
+
+<!-- Add JavaScript for Mobile Tap Interaction -->
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const cards = document.querySelectorAll(".card");
+
+    cards.forEach((card) => {
+      // Toggle expanded state on mobile
+      card.addEventListener("click", () => {
+        card.classList.toggle("active");
+      });
+
+      // Close expanded state when tapping outside the card
+      document.addEventListener("click", (e) => {
+        if (!card.contains(e.target)) {
+          card.classList.remove("active");
+        }
+      });
+    });
+  });
+</script>

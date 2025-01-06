@@ -129,3 +129,81 @@
   scrollbar-width: none;
   -ms-overflow-style: none;
 }
+/* Interactive Image Card Styles */
+.offerings-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+}
+
+.card {
+  position: relative;
+  width: 300px; /* Adjust width as needed */
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.card-default {
+  position: relative;
+  cursor: pointer;
+}
+
+.card-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.text-overlay {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  background: rgba(0, 0, 0, 0.7);
+  color: white;
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.card-expanded {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s ease, opacity 0.3s ease;
+  opacity: 0;
+}
+
+.expanded-content {
+  padding: 16px;
+  background: white;
+}
+
+.description {
+  font-size: 14px;
+  color: #333;
+  margin: 0;
+}
+
+/* Hover State (Desktop) */
+.card:hover .card-image {
+  transform: scale(0.9);
+}
+
+.card:hover .card-expanded {
+  max-height: 200px; /* Adjust based on content */
+  opacity: 1;
+}
+
+/* Tap State (Mobile) */
+.card.active .card-image {
+  transform: scale(0.9);
+}
+
+.card.active .card-expanded {
+  max-height: 200px; /* Adjust based on content */
+  opacity: 1;
+}
