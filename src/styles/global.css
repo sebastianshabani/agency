@@ -58,7 +58,6 @@
     ),
     linear-gradient(90deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0));
 }
-/* Marquee Animation */
 @keyframes image-marquee-slow {
   0% {
     transform: translateX(0%);
@@ -100,4 +99,25 @@
 .image-carousel:hover .image-marquee-animation,
 .image-carousel:active .image-marquee-animation {
   animation-play-state: paused;
+}
+/* Splide slide styling */
+.splide__slide {
+  width: calc(100% / 3.5); /* Each slide takes 1/3.5 of the container width */
+  flex: 0 0 auto; /* Prevent slides from shrinking or growing */
+}
+
+/* Ensure the container doesn't overflow */
+.splide__track {
+  overflow: visible; /* Allow partial visibility of slides */
+}
+
+/* Hide scrollbar for WebKit browsers (Chrome, Safari) */
+.splide__track::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for Firefox and IE/Edge */
+.splide__track {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
