@@ -63,10 +63,12 @@
     transform: translateX(0%);
   }
   100% {
-    transform: translateX(-100%);
+    transform: translateX(-50%); /* Translate by 50% of the container width */
   }
 }
 
 .image-carousel .image-marquee-animation {
   animation: image-marquee-slow 30s linear infinite;
+  display: flex;
+  width: max-content; /* Ensure the container is wide enough to hold all images */
 }
