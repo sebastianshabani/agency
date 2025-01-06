@@ -38,10 +38,21 @@
   }
 }
 
+@keyframes image-marquee-slow {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* General Animations */
 .animate-marquee {
   animation: marquee 15s linear infinite;
 }
 
+/* Gradient Background */
 .gradient-grid {
   background-image: radial-gradient(
       circle at center center,
@@ -65,38 +76,25 @@
     linear-gradient(90deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0));
 }
 
-@keyframes image-marquee-slow {
-  0% {
-    transform: translateX(0%);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
-}
-
-.image-carousel .image-marquee-animation {
-  animation: image-marquee-slow 30s linear infinite;
-  display: flex;
-  width: max-content;
-}
-
+/* Marquee-specific styles */
 .image-carousel .marquee-container {
   overflow-x: auto;
   scrollbar-width: none;
   -ms-overflow-style: none;
   scroll-snap-type: x mandatory;
   touch-action: pan-x;
+  white-space: nowrap;
+}
+
+.image-carousel .image-marquee-animation {
+  animation: image-marquee-slow 30s linear infinite;
+  display: inline-flex;
+  width: max-content;
+  gap: 1rem;
 }
 
 .image-carousel .marquee-container::-webkit-scrollbar {
   display: none;
-}
-
-.image-carousel .image-marquee-animation img {
-  scroll-snap-align: start;
-  width: 232px;
-  height: 72px;
-  flex-shrink: 0;
 }
 
 .image-carousel:hover .image-marquee-animation,
@@ -104,6 +102,19 @@
   animation-play-state: paused;
 }
 
+.image-carousel .image-marquee-animation img {
+  scroll-snap-align: start;
+  width: 232px;
+  height: 72px;
+  border-radius: 50%;
+  transition: transform 0.3s ease;
+}
+
+.image-carousel .image-marquee-animation img:hover {
+  transform: scale(1.1);
+}
+
+/* Splide slide styles */
 .splide__slide {
   position: relative;
   overflow: hidden;
@@ -159,4 +170,14 @@
 .splide__track {
   scrollbar-width: none;
   -ms-overflow-style: none;
+}
+
+/* Pause marquee animation on hover */
+.image-carousel:hover .image-marquee-animation {
+  animation-play-state: paused;
+}
+
+/* Ensure marquee images aren't impacted by splide transitions */
+.image-carousel .splide__slide img {
+  transition: none;
 }
