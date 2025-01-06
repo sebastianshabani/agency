@@ -225,5 +225,5 @@
 
 /* Add padding to the carousel container to prevent overlap */
 .splide {
-  padding-bottom: 5rem; /* Adjust this value to create space for the pagination */
+  padding-bottom: 1rem; /* Adjust this value to create space for the pagination */
 }
