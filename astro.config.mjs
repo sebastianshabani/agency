@@ -1,12 +1,12 @@
 import { defineConfig } from 'astro/config';
-import tailwindcss from '@tailwindcss/vite';
+import tailwind from '@astrojs/tailwind';
 import sitemap from "@astrojs/sitemap";
+
 export default defineConfig({
-   vite: {
-    plugins: [tailwindcss()],
-  },
-  // add yur domain name here
   site: 'https://sopgroup.co',
   compressHTML: true,
-  integrations: [sitemap()]
+  integrations: [
+    tailwind(),
+    sitemap()
+  ]
 });
