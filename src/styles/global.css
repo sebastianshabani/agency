@@ -1,5 +1,5 @@
 @import "tailwindcss";
-@theme  {
+@theme{
   --color-black: #1e1e1e;
   --color-white: #e7e7d8;
   --color-eagle: #afac95;
@@ -58,6 +58,15 @@
     ),
     linear-gradient(90deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0));
 }
-/* .splide__pagination {
-  visibility: hidden;
-} */
+@keyframes image-marquee-slow {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+.image-carousel .image-marquee-animation {
+  animation: image-marquee-slow 30s linear infinite;
+}
