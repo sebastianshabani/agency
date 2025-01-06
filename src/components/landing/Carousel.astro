@@ -41,72 +41,40 @@
 
     if (marqueeContainer && marqueeAnimation) {
       let isDragging = false;
+      let startX, scrollLeft;
 
-      // Pause animation on mouse down or touch start
-      marqueeContainer.addEventListener("mousedown", function (e) {
+      // Pause animation and start dragging on mouse down or touch start
+      const startDrag = (e) => {
         isDragging = true;
         marqueeAnimation.style.animationPlayState = "paused";
-      });
+        startX = e.pageX || e.touches[0].pageX;
+        scrollLeft = marqueeContainer.scrollLeft;
+      };
 
-      marqueeContainer.addEventListener("touchstart", function (e) {
-        isDragging = true;
-        marqueeAnimation.style.animationPlayState = "paused";
-      });
+      // Handle dragging
+      const onDrag = (e) => {
+        if (!isDragging) return;
+        const x = (e.pageX || e.touches[0].pageX) - startX;
+        marqueeContainer.scrollLeft = scrollLeft - x;
+      };
 
-      // Resume animation on mouse up or touch end
-      document.addEventListener("mouseup", function () {
+      // Stop dragging and resume animation
+      const stopDrag = () => {
         if (isDragging) {
           isDragging = false;
           marqueeAnimation.style.animationPlayState = "running";
         }
-      });
+      };
 
-      document.addEventListener("touchend", function () {
-        if (isDragging) {
-          isDragging = false;
-          marqueeAnimation.style.animationPlayState = "running";
-        }
-      });
+      // Mouse events
+      marqueeContainer.addEventListener("mousedown", startDrag);
+      document.addEventListener("mousemove", onDrag);
+      document.addEventListener("mouseup", stopDrag);
 
-      // Enable click-and-drag scrolling
-      marqueeContainer.addEventListener("mousedown", function (e) {
-        let startX = e.pageX;
-        let scrollLeft = marqueeContainer.scrollLeft;
-
-        function onMouseMove(e) {
-          if (!isDragging) return;
-          let x = e.pageX - startX;
-          marqueeContainer.scrollLeft = scrollLeft - x;
-        }
-
-        function onMouseUp() {
-          document.removeEventListener("mousemove", onMouseMove);
-          document.removeEventListener("mouseup", onMouseUp);
-        }
-
-        document.addEventListener("mousemove", onMouseMove);
-        document.addEventListener("mouseup", onMouseUp);
-      });
-
-      // Enable touch scrolling
-      marqueeContainer.addEventListener("touchstart", function (e) {
-        let startX = e.touches[0].pageX;
-        let scrollLeft = marqueeContainer.scrollLeft;
-
-        function onTouchMove(e) {
-          if (!isDragging) return;
-          let x = e.touches[0].pageX - startX;
-          marqueeContainer.scrollLeft = scrollLeft - x;
-        }
-
-        function onTouchEnd() {
-          document.removeEventListener("touchmove", onTouchMove);
-          document.removeEventListener("touchend", onTouchEnd);
-        }
-
-        document.addEventListener("touchmove", onTouchMove);
-        document.addEventListener("touchend", onTouchEnd);
-      });
+      // Touch events
+      marqueeContainer.addEventListener("touchstart", startDrag);
+      document.addEventListener("touchmove", onDrag);
+      document.addEventListener("touchend", stopDrag);
     }
   });
 </script>
