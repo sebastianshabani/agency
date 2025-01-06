@@ -14,87 +14,67 @@
                 },
             }).mount();
         },
-    }">
+    }"
+  >
     <section
       class="splide is-initialized splide--slide splide--ltr splide--draggable is-active"
       aria-label="Splide/Alpine.js"
       x-ref="splide"
       id="splide01"
-      aria-roledescription="carousel">
+      aria-roledescription="carousel"
+    >
       <div class="splide__arrows splide__arrows--ltr items-center">
         <button
           class="splide__arrow splide__arrow--prev"
           type="button"
           aria-label="Previous slide"
           aria-controls="splide01-track"
-          ><svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 40 40"
-            width="40"
-            height="40"
-            focusable="false"
-            ><path
-              d="m15.5 0.932-4.3 4.38 14.5 14.6-14.5 14.5 4.3 4.4 14.6-14.6 4.4-4.3-4.4-4.4-14.6-14.6z"
-            ></path></svg
-          ></button
         >
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" width="40" height="40" focusable="false">
+            <path d="m15.5 0.932-4.3 4.38 14.5 14.6-14.5 14.5 4.3 4.4 14.6-14.6 4.4-4.3-4.4-4.4-14.6-14.6z" />
+          </svg>
+        </button>
         <button
           class="splide__arrow splide__arrow--next"
           type="button"
           aria-label="Next slide"
           aria-controls="splide01-track"
-          ><svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 40 40"
-            width="40"
-            height="40"
-            focusable="false"
-            ><path
-              d="m15.5 0.932-4.3 4.38 14.5 14.6-14.5 14.5 4.3 4.4 14.6-14.6 4.4-4.3-4.4-4.4-14.6-14.6z"
-            ></path></svg
-          ></button
         >
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" width="40" height="40" focusable="false">
+            <path d="m15.5 0.932-4.3 4.38 14.5 14.6-14.5 14.5 4.3 4.4 14.6-14.6 4.4-4.3-4.4-4.4-14.6-14.6z" />
+          </svg>
+        </button>
       </div>
       <div
         class="h-full splide__track splide__track--slide splide__track--ltr splide__track--draggable"
         id="splide01-track"
         aria-live="polite"
         aria-atomic="true"
-        aria-busy="false">
-        <ul
-          class="splide__list"
-          id="splide01-list"
-          role="presentation">
+        aria-busy="false"
+      >
+        <ul class="splide__list" id="splide01-list" role="presentation">
           <!-- Slide 1 -->
           <li class="splide__slide">
-            <div class="max-w-md overflow-hidden group">
-              <div class="relative">
-                <!-- Image Section -->
-                <div class="transition-all duration-300 h-[400px] group-hover:h-[280px] flex items-center justify-center">
-                  <img 
-                    src="/work/1.png" 
-                    alt="Social Media Ads" 
-                    class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-90"
-                  />
+            <div class="max-w-md overflow-hidden group relative h-[400px]">
+              <!-- Image Section -->
+              <div class="h-full w-full transition-transform duration-300 group-hover:scale-90">
+                <img
+                  src="/work/1.png"
+                  alt="Social Media Ads"
+                  class="w-full h-full object-cover"
+                />
+              </div>
+              <!-- Text Section -->
+              <div class="absolute inset-0 bg-black/80 transition-opacity duration-300 opacity-0 group-hover:opacity-100">
+                <!-- Always Visible Title -->
+                <div class="p-6 text-center">
+                  <h2 class="text-2xl font-display text-white">Social Media Ads</h2>
                 </div>
-                <!-- Text Section -->
-                <div 
-                  class="transition-all duration-300 bg-black/80"
-                >
-                  <!-- Always Visible Title -->
-                  <div class="p-6 text-center">
-                    <h2 class="text-2xl font-display text-white">Social Media Ads</h2>
-                  </div>
-                  <!-- Hidden Description -->
-                  <div 
-                    class="transition-all duration-300 h-0 overflow-hidden group-hover:h-[160px]"
-                  >
-                    <div class="p-6">
-                      <p class="text-gray-300">
-                        Create and manage high-performing social media ad campaigns across platforms like Facebook, Instagram, and LinkedIn.
-                      </p>
-                    </div>
-                  </div>
+                <!-- Hidden Description -->
+                <div class="p-6 mt-4">
+                  <p class="text-gray-300">
+                    Create and manage high-performing social media ad campaigns across platforms like Facebook, Instagram, and LinkedIn.
+                  </p>
                 </div>
               </div>
             </div>
@@ -102,143 +82,32 @@
 
           <!-- Slide 2 -->
           <li class="splide__slide">
-            <div class="max-w-md overflow-hidden group">
-              <div class="relative">
-                <!-- Image Section -->
-                <div class="transition-all duration-300 h-[400px] group-hover:h-[280px] flex items-center justify-center">
-                  <img 
-                    src="/work/2.png" 
-                    alt="Landing Pages" 
-                    class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-90"
-                  />
+            <div class="max-w-md overflow-hidden group relative h-[400px]">
+              <!-- Image Section -->
+              <div class="h-full w-full transition-transform duration-300 group-hover:scale-90">
+                <img
+                  src="/work/2.png"
+                  alt="Landing Pages"
+                  class="w-full h-full object-cover"
+                />
+              </div>
+              <!-- Text Section -->
+              <div class="absolute inset-0 bg-black/80 transition-opacity duration-300 opacity-0 group-hover:opacity-100">
+                <!-- Always Visible Title -->
+                <div class="p-6 text-center">
+                  <h2 class="text-2xl font-display text-white">Landing Pages</h2>
                 </div>
-                <!-- Text Section -->
-                <div 
-                  class="transition-all duration-300 bg-black/80"
-                >
-                  <!-- Always Visible Title -->
-                  <div class="p-6 text-center">
-                    <h2 class="text-2xl font-display text-white">Landing Pages</h2>
-                  </div>
-                  <!-- Hidden Description -->
-                  <div 
-                    class="transition-all duration-300 h-0 overflow-hidden group-hover:h-[160px]"
-                  >
-                    <div class="p-6">
-                      <p class="text-gray-300">
-                        Design and optimize landing pages to maximize conversions and improve user engagement.
-                      </p>
-                    </div>
-                  </div>
+                <!-- Hidden Description -->
+                <div class="p-6 mt-4">
+                  <p class="text-gray-300">
+                    Design and optimize landing pages to maximize conversions and improve user engagement.
+                  </p>
                 </div>
               </div>
             </div>
           </li>
 
-          <!-- Slide 3 -->
-          <li class="splide__slide">
-            <div class="max-w-md overflow-hidden group">
-              <div class="relative">
-                <!-- Image Section -->
-                <div class="transition-all duration-300 h-[400px] group-hover:h-[280px] flex items-center justify-center">
-                  <img 
-                    src="/work/3.png" 
-                    alt="Tiktok Ads" 
-                    class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-90"
-                  />
-                </div>
-                <!-- Text Section -->
-                <div 
-                  class="transition-all duration-300 bg-black/80"
-                >
-                  <!-- Always Visible Title -->
-                  <div class="p-6 text-center">
-                    <h2 class="text-2xl font-display text-white">Tiktok Ads</h2>
-                  </div>
-                  <!-- Hidden Description -->
-                  <div 
-                    class="transition-all duration-300 h-0 overflow-hidden group-hover:h-[160px]"
-                  >
-                    <div class="p-6">
-                      <p class="text-gray-300">
-                        Leverage TikTok's platform to create engaging and viral ad campaigns for your brand.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </li>
-
-          <!-- Slide 4 -->
-          <li class="splide__slide">
-            <div class="max-w-md overflow-hidden group">
-              <div class="relative">
-                <!-- Image Section -->
-                <div class="transition-all duration-300 h-[400px] group-hover:h-[280px] flex items-center justify-center">
-                  <img 
-                    src="/work/4.png" 
-                    alt="Mobile Gaming Ads" 
-                    class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-90"
-                  />
-                </div>
-                <!-- Text Section -->
-                <div 
-                  class="transition-all duration-300 bg-black/80"
-                >
-                  <!-- Always Visible Title -->
-                  <div class="p-6 text-center">
-                    <h2 class="text-2xl font-display text-white">Mobile Gaming Ads</h2>
-                  </div>
-                  <!-- Hidden Description -->
-                  <div 
-                    class="transition-all duration-300 h-0 overflow-hidden group-hover:h-[160px]"
-                  >
-                    <div class="p-6">
-                      <p class="text-gray-300">
-                        Develop and scale interactive ad creatives for mobile gaming platforms to drive user acquisition.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </li>
-
-          <!-- Slide 5 -->
-          <li class="splide__slide">
-            <div class="max-w-md overflow-hidden group">
-              <div class="relative">
-                <!-- Image Section -->
-                <div class="transition-all duration-300 h-[400px] group-hover:h-[280px] flex items-center justify-center">
-                  <img 
-                    src="/work/5.png" 
-                    alt="Native Ads" 
-                    class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-90"
-                  />
-                </div>
-                <!-- Text Section -->
-                <div 
-                  class="transition-all duration-300 bg-black/80"
-                >
-                  <!-- Always Visible Title -->
-                  <div class="p-6 text-center">
-                    <h2 class="text-2xl font-display text-white">Native Ads</h2>
-                  </div>
-                  <!-- Hidden Description -->
-                  <div 
-                    class="transition-all duration-300 h-0 overflow-hidden group-hover:h-[160px]"
-                  >
-                    <div class="p-6">
-                      <p class="text-gray-300">
-                        Create seamless native ad experiences that blend naturally with content to boost engagement.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </li>
+          <!-- Add more slides here -->
         </ul>
       </div>
     </section>
