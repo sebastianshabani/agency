@@ -1,26 +1,20 @@
-/* Import TailwindCSS for utility classes */
 @import "tailwindcss";
-
-/* Theme Variables */
-@theme {
+@theme  {
   --color-black: #1e1e1e;
   --color-white: #e7e7d8;
   --color-eagle: #afac95;
   --color-orange: #ea4125;
 }
-
-/* Font Definitions */
 .font-display {
   font-family: Basement, sans-serif;
   font-weight: 700;
 }
-
 @supports (font-variation-settings: normal) {
+  /* Use variable font if supported */
   :root {
-    font-family: InterVariable, sans-serif; /* Use variable font if supported */
+    font-family: InterVariable, sans-serif;
   }
 }
-
 @font-face {
   font-family: "Basement";
   src: url("../fonts/BSBlack.eot");
@@ -31,8 +25,6 @@
   font-style: normal;
   descent-override: 0%;
 }
-
-/* Keyframes and Animations */
 @keyframes marquee {
   0% {
     transform: translateX(0%);
@@ -41,12 +33,9 @@
     transform: translateX(-100%);
   }
 }
-
 .animate-marquee {
   animation: marquee 15s linear infinite;
 }
-
-/* Gradient Grid */
 .gradient-grid {
   background-image: radial-gradient(
       circle at center center,
@@ -69,20 +58,6 @@
     ),
     linear-gradient(90deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0));
 }
-
-/* Utility Classes for Visual Tweaks */
-.bg-orange {
-  background-color: var(--color-orange);
-}
-
-.text-white {
-  color: var(--color-white);
-}
-
-.text-black {
-  color: var(--color-black);
-}
-
-.hover\:bg-black:hover {
-  background-color: var(--color-black);
-}
+/* .splide__pagination {
+  visibility: hidden;
+} */
