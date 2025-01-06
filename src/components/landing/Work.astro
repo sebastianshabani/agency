@@ -1,5 +1,16 @@
 <section class="border-b border-white/20  bg-accent-500">
-  <div class="mx-auto max-w-7xl border-white/20 border-x overflow-hidden">
+  <div
+  class="mx-auto max-w-7xl border-white/20 border-x overflow-hidden"
+  x-data="{ init() {
+    new Splide(this.$refs.splide, {
+      perPage: 5,
+      gap: '0rem',
+      breakpoints: {
+        640: { perPage: 1 },
+      },
+    }).mount();
+  }}"
+>
     <div class="mx-auto">
       <h3 class="text-3xl font-display text-white uppercase">
         THE BRANDS YOU LOVE - THE ADS THEY LOVE     </h3>
@@ -65,12 +76,13 @@
         >
       </div>
       <div
-          class="h-full splide__track splide__track--slide splide__track--ltr splide__track--draggable overflow-hidden"
+          class="h-full splide__track splide__track--slide splide__track--ltr splide__track--draggable"
           id="splide01-track"
           style="padding-left: 0px; padding-right: 0px;"
           aria-live="polite"
           aria-atomic="true"
-          aria-busy="false">
+          aria-busy="false"
+>
         <ul
           class="splide__list"
           id="splide01-list"
