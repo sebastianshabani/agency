@@ -1,5 +1,5 @@
 <section class="border-b border-white/20 bg-accent-500">
-  <div class="mx-auto max-w-7xl border-white/20 border-x" x-data="{ 
+  <div class="mx-auto max-w-7xl border-white/20 border-x overflow-hidden" x-data="{ 
     init() {
       new Splide(this.$refs.splide, {
         perPage: 3.5,
@@ -14,26 +14,25 @@
       }).mount();
     }
   }">
-    <section class="splide is-initialized splide--slide splide--ltr splide--draggable is-active" aria-label="Splide/Alpine.js" x-ref="splide" id="splide01" aria-roledescription="carousel">
-      <div class="splide__arrows splide__arrows--ltr items-center">
-        <button class="splide__arrow splide__arrow--prev" type="button" aria-label="Previous slide" aria-controls="splide01-track">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" width="40" height="40" focusable="false">
-            <path d="m15.5 0.932-4.3 4.38 14.5 14.6-14.5 14.5 4.3 4.4 14.6-14.6 4.4-4.3-4.4-4.4-14.6-14.6z" />
-          </svg>
-        </button>
-        <button class="splide__arrow splide__arrow--next" type="button" aria-label="Next slide" aria-controls="splide01-track">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" width="40" height="40" focusable="false">
-            <path d="m15.5 0.932-4.3 4.38 14.5 14.6-14.5 14.5 4.3 4.4 14.6-14.6 4.4-4.3-4.4-4.4-14.6-14.6z" />
-          </svg>
-        </button>
-      </div>
-      <div class="h-full splide__track splide__track--slide splide__track--ltr splide__track--draggable" id="splide01-track" aria-live="polite" aria-atomic="true">
+    <section 
+      class="splide is-initialized splide--slide splide--ltr splide--draggable is-active" 
+      aria-label="Splide/Alpine.js" 
+      x-ref="splide" 
+      id="splide01" 
+      aria-roledescription="carousel"
+    >
+      <div 
+        class="h-full splide__track splide__track--slide splide__track--ltr splide__track--draggable overflow-hidden" 
+        id="splide01-track" 
+        aria-live="polite" 
+        aria-atomic="true"
+      >
         <ul class="splide__list" id="splide01-list" role="presentation">
           <!-- Slide 1 -->
           <li class="splide__slide">
             <div class="max-w-md overflow-hidden group flex flex-col h-[400px]">
               <div class="flex-1 transition-all duration-300 group-hover:flex-[0.7]">
-                <img src="/work/1.png" alt="Social Media Ads" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-90"/>
+                <img src="/work/1.png" alt="Social Media Ads" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-90" />
               </div>
               <div class="bg-black/80">
                 <h2 class="text-2xl font-display text-white p-4">Social Media Ads</h2>
@@ -50,7 +49,7 @@
           <li class="splide__slide">
             <div class="max-w-md overflow-hidden group flex flex-col h-[400px]">
               <div class="flex-1 transition-all duration-300 group-hover:flex-[0.7]">
-                <img src="/work/2.png" alt="Landing Pages" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-90"/>
+                <img src="/work/2.png" alt="Landing Pages" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-90" />
               </div>
               <div class="bg-black/80">
                 <h2 class="text-2xl font-display text-white p-4">Landing Pages</h2>
@@ -67,7 +66,7 @@
           <li class="splide__slide">
             <div class="max-w-md overflow-hidden group flex flex-col h-[400px]">
               <div class="flex-1 transition-all duration-300 group-hover:flex-[0.7]">
-                <img src="/work/3.png" alt="Tiktok Ads" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-90"/>
+                <img src="/work/3.png" alt="Tiktok Ads" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-90" />
               </div>
               <div class="bg-black/80">
                 <h2 class="text-2xl font-display text-white p-4">Tiktok Ads</h2>
@@ -84,7 +83,7 @@
           <li class="splide__slide">
             <div class="max-w-md overflow-hidden group flex flex-col h-[400px]">
               <div class="flex-1 transition-all duration-300 group-hover:flex-[0.7]">
-                <img src="/work/4.png" alt="Mobile Gaming Ads" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-90"/>
+                <img src="/work/4.png" alt="Mobile Gaming Ads" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-90" />
               </div>
               <div class="bg-black/80">
                 <h2 class="text-2xl font-display text-white p-4">Mobile Gaming Ads</h2>
@@ -101,7 +100,7 @@
           <li class="splide__slide">
             <div class="max-w-md overflow-hidden group flex flex-col h-[400px]">
               <div class="flex-1 transition-all duration-300 group-hover:flex-[0.7]">
-                <img src="/work/5.png" alt="Native Ads" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-90"/>
+                <img src="/work/5.png" alt="Native Ads" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-90" />
               </div>
               <div class="bg-black/80">
                 <h2 class="text-2xl font-display text-white p-4">Native Ads</h2>
@@ -118,7 +117,7 @@
           <li class="splide__slide">
             <div class="max-w-md overflow-hidden group flex flex-col h-[400px]">
               <div class="flex-1 transition-all duration-300 group-hover:flex-[0.7]">
-                <img src="/work/6.png" alt="Mobile App" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-90"/>
+                <img src="/work/6.png" alt="Mobile App" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-90" />
               </div>
               <div class="bg-black/80">
                 <h2 class="text-2xl font-display text-white p-4">Mobile App</h2>
@@ -135,7 +134,7 @@
           <li class="splide__slide">
             <div class="max-w-md overflow-hidden group flex flex-col h-[400px]">
               <div class="flex-1 transition-all duration-300 group-hover:flex-[0.7]">
-                <img src="/work/7.png" alt="Electronics" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-90"/>
+                <img src="/work/7.png" alt="Electronics" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-90" />
               </div>
               <div class="bg-black/80">
                 <h2 class="text-2xl font-display text-white p-4">Electronics</h2>
@@ -152,33 +151,3 @@
     </section>
   </div>
 </section>
-
-<script>
-  document.addEventListener("DOMContentLoaded", () => {
-    const cards = document.querySelectorAll(".group");
-    
-    cards.forEach((card) => {
-      card.addEventListener("click", () => {
-        card.classList.toggle("active");
-      });
-
-      document.addEventListener("click", (e) => {
-        if (!card.contains(e.target)) {
-          card.classList.remove("active");
-        }
-      });
-    });
-  });
-</script>
-
-<style>
-  @media (hover: none) {
-    .group.active .max-h-0 {
-      max-height: 160px;
-    }
-    
-    .group.active .flex-1 {
-      flex: 0.7;
-    }
-  }
-</style>
