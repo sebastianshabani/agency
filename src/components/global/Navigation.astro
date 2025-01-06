@@ -36,26 +36,3 @@
 <!-- Calendly link widget -->
 <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
 <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
-
-<script>
-  document.addEventListener('DOMContentLoaded', function () {
-    const stickySection = document.querySelector('.sticky-section');
-    const triggerSection = document.querySelector('.trigger-section');
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          stickySection.classList.add('hidden'); // Hide sticky when trigger section appears
-        } else {
-          stickySection.classList.remove('hidden'); // Show sticky when scrolling back
-        }
-      },
-      {
-        root: null, // Viewport
-        threshold: 0, // Trigger as soon as any part of the trigger section is visible
-      }
-    );
-
-    observer.observe(triggerSection);
-  });
-</script>
