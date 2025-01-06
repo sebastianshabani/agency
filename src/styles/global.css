@@ -72,3 +72,27 @@
   display: flex;
   width: max-content; /* Ensure the container is wide enough to hold all images */
 }
+
+/* Enable horizontal scrolling */
+.image-carousel .marquee-container {
+  overflow-x: auto; /* Allow horizontal scrolling */
+  scrollbar-width: none; /* Hide scrollbar for Firefox */
+  -ms-overflow-style: none; /* Hide scrollbar for IE/Edge */
+  scroll-snap-type: x mandatory; /* Enable scroll snapping */
+}
+
+/* Hide scrollbar for WebKit browsers (Chrome, Safari) */
+.image-carousel .marquee-container::-webkit-scrollbar {
+  display: none;
+}
+
+/* Snap images to the start of the container */
+.image-carousel .image-marquee-animation img {
+  scroll-snap-align: start; /* Snap images to the start of the container */
+}
+
+/* Pause animation on hover or touch */
+.image-carousel:hover .image-marquee-animation,
+.image-carousel:active .image-marquee-animation {
+  animation-play-state: paused;
+}
