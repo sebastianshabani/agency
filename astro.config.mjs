@@ -8,5 +8,12 @@ export default defineConfig({
   integrations: [
     tailwind(),
     sitemap()
-  ]
+  ],
+  vite: {
+    resolve: {
+      alias: {
+        '@': '/src'
+      }
+    }
+  }
 });
