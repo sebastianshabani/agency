@@ -6,19 +6,18 @@ import Intro from "@/components/landing/Intro.astro";
 import Services from "@/components/landing/Services.astro";
 import Cta from "@/components/landing/Cta.astro";
 import Testimonials from "@/components/landing/Testimonials.astro";
-import Banner from "@/components/landing/Banner.astro";
+import Nav from "@/components/landing/Nav.astro";
 import Carousel from "@/components/landing/Carousel.astro";
 import Offerings from "@/components/landing/Offerings.astro";
 import Results from "@/components/landing/Results.astro";
-import AboutUs from "@/components/landing/AboutUs.astro";
+import AboutUsHomePage from "@/components/landing/AboutUsHomePage.astro";
 ---
 
 <BaseLayout
   title="HYPER - We Create Ads That Drive Sales | Creative Agency"
   description="HYPER is a creative agency that creates ads that drive sales. Specializing in high-conversion strategies, innovative design, and measurable results. Part of SOP Group LTD."
-  canonicalUrl="https://www.yourwebsite.com/"
->
-  <Banner />
+  canonicalUrl="https://www.yourwebsite.com/">
+  <Nav />
   <Hero />
   <Carousel />
   <Services /> 
@@ -26,5 +25,5 @@ import AboutUs from "@/components/landing/AboutUs.astro";
   <Results />
   <Offerings />
   <Testimonials />
-  <AboutUs />
+  <AboutUsHomePage />
   </BaseLayout>
