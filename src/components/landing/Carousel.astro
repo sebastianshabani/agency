@@ -1,43 +1,34 @@
 ---
-// Carousel.astro
+// ServiceCarousel.astro
+interface Props {
+  // Add any props if needed
+}
 ---
 
-<section class="image-carousel relative w-full overflow-hidden">
-  <div class="mx-auto max-w-[100vw]"> <!-- Added max-width constraint -->
-    <div class="relative py-2">
+<section class="service-carousel relative w-full overflow-hidden py-4">
+  <div class="mx-auto max-w-[100vw]">
+    <div class="relative">
       <!-- Gradient Overlays -->
       <div class="pointer-events-none absolute inset-0 z-10 flex w-full justify-between">
-        <div class="w-44 bg-gradient-to-r from-black via-transparent to-transparent"></div>
-        <div class="w-44 bg-gradient-to-l from-black via-transparent to-transparent"></div>
+        <div class="w-44 bg-gradient-to-r from-[#1e1e1e] via-transparent to-transparent"></div>
+        <div class="w-44 bg-gradient-to-l from-[#1e1e1e] via-transparent to-transparent"></div>
       </div>
 
       <!-- Marquee Container -->
       <div class="marquee-container overflow-x-auto scrollbar-hide">
         <div class="flex items-center image-marquee-animation gap-4 whitespace-nowrap">
-          {/* Original Images */}
-          {[1, 2, 3, 4, 5].map((num) => (
-            <img
-              src={`/images/image${num}.jpg`}
-              alt={`Image ${num}`}
-              class="h-[72px] w-[232px] rounded-full"
-            />
-          ))}
-          {/* First Duplicate Set */}
-          {[1, 2, 3, 4, 5].map((num) => (
-            <img
-              src={`/images/image${num}.jpg`}
-              alt={`Image ${num}`}
-              class="h-[72px] w-[232px] rounded-full"
-            />
-          ))}
-          {/* Second Duplicate Set */}
-          {[1, 2, 3, 4, 5].map((num) => (
-            <img
-              src={`/images/image${num}.jpg`}
-              alt={`Image ${num}`}
-              class="h-[72px] w-[232px] rounded-full"
-            />
-          ))}
+          <!-- Original Images -->
+          <img src="/images/image1.jpg" alt="Tiktok Ads" class="w-[232px] h-[72px] rounded-full" />
+          <img src="/images/image2.jpg" alt="Gaming Ads" class="w-[232px] h-[72px] rounded-full" />
+          <img src="/images/image3.jpg" alt="Native Ads" class="w-[232px] h-[72px] rounded-full" />
+          <img src="/images/image4.jpg" alt="Social Media Ads" class="w-[232px] h-[72px] rounded-full" />
+          <img src="/images/image5.jpg" alt="Landing Pages" class="w-[232px] h-[72px] rounded-full" />
+          <!-- Duplicated Images for continuous scroll -->
+          <img src="/images/image1.jpg" alt="Tiktok Ads" class="w-[232px] h-[72px] rounded-full" />
+          <img src="/images/image2.jpg" alt="Gaming Ads" class="w-[232px] h-[72px] rounded-full" />
+          <img src="/images/image3.jpg" alt="Native Ads" class="w-[232px] h-[72px] rounded-full" />
+          <img src="/images/image4.jpg" alt="Social Media Ads" class="w-[232px] h-[72px] rounded-full" />
+          <img src="/images/image5.jpg" alt="Landing Pages" class="w-[232px] h-[72px] rounded-full" />
         </div>
       </div>
     </div>
@@ -67,51 +58,96 @@
 
   .image-marquee-animation {
     animation: marquee 30s linear infinite;
+    width: max-content;
   }
 
+  /* Pause on hover */
   .marquee-container:hover .image-marquee-animation {
     animation-play-state: paused;
+  }
+
+  /* Snap scrolling */
+  .marquee-container {
+    scroll-snap-type: x mandatory;
+    touch-action: pan-x;
+  }
+
+  .marquee-container > * {
+    scroll-snap-align: start;
   }
 </style>
 
 <script>
-  document.addEventListener('DOMContentLoaded', function() {
-    const marqueeContainer = document.querySelector('.marquee-container');
-    const marqueeAnimation = document.querySelector('.image-marquee-animation');
+  interface DragEvent {
+    pageX: number;
+    touches?: { 0: { pageX: number } };
+  }
 
-    if (marqueeContainer && marqueeAnimation) {
-      let isDragging = false;
-      let startX: number, scrollLeft: number;
+  function handleDrag() {
+    const marqueeContainer = document.querySelector('.marquee-container') as HTMLElement;
+    const marqueeAnimation = document.querySelector('.image-marquee-animation') as HTMLElement;
 
-      const startDrag = (e: MouseEvent | TouchEvent) => {
-        isDragging = true;
-        marqueeAnimation.style.animationPlayState = 'paused';
-        startX = e instanceof MouseEvent ? e.pageX : e.touches[0].pageX;
-        scrollLeft = marqueeContainer.scrollLeft;
-      };
+    if (!marqueeContainer || !marqueeAnimation) return;
 
-      const onDrag = (e: MouseEvent | TouchEvent) => {
-        if (!isDragging) return;
-        const x = (e instanceof MouseEvent ? e.pageX : e.touches[0].pageX) - startX;
-        marqueeContainer.scrollLeft = scrollLeft - x;
-      };
+    let isDragging = false;
+    let startX = 0;
+    let scrollLeft = 0;
 
-      const stopDrag = () => {
-        if (isDragging) {
-          isDragging = false;
-          marqueeAnimation.style.animationPlayState = 'running';
-        }
-      };
+    const startDrag = (e: MouseEvent | TouchEvent) => {
+      isDragging = true;
+      marqueeAnimation.style.animationPlayState = 'paused';
+      
+      if (e instanceof MouseEvent) {
+        startX = e.pageX;
+      } else if (e instanceof TouchEvent && e.touches[0]) {
+        startX = e.touches[0].pageX;
+      }
+      
+      scrollLeft = marqueeContainer.scrollLeft;
+    };
 
-      // Mouse events
-      marqueeContainer.addEventListener('mousedown', startDrag);
-      document.addEventListener('mousemove', onDrag);
-      document.addEventListener('mouseup', stopDrag);
+    const onDrag = (e: MouseEvent | TouchEvent) => {
+      if (!isDragging) return;
 
-      // Touch events
-      marqueeContainer.addEventListener('touchstart', startDrag);
-      document.addEventListener('touchmove', onDrag);
-      document.addEventListener('touchend', stopDrag);
-    }
-  });
+      let currentX = 0;
+      if (e instanceof MouseEvent) {
+        currentX = e.pageX;
+      } else if (e instanceof TouchEvent && e.touches[0]) {
+        currentX = e.touches[0].pageX;
+      }
+
+      const x = currentX - startX;
+      marqueeContainer.scrollLeft = scrollLeft - x;
+    };
+
+    const stopDrag = () => {
+      if (isDragging) {
+        isDragging = false;
+        marqueeAnimation.style.animationPlayState = 'running';
+      }
+    };
+
+    // Mouse events
+    marqueeContainer.addEventListener('mousedown', startDrag);
+    document.addEventListener('mousemove', onDrag);
+    document.addEventListener('mouseup', stopDrag);
+
+    // Touch events
+    marqueeContainer.addEventListener('touchstart', startDrag);
+    document.addEventListener('touchmove', onDrag);
+    document.addEventListener('touchend', stopDrag);
+
+    // Cleanup function
+    return () => {
+      marqueeContainer.removeEventListener('mousedown', startDrag);
+      document.removeEventListener('mousemove', onDrag);
+      document.removeEventListener('mouseup', stopDrag);
+      marqueeContainer.removeEventListener('touchstart', startDrag);
+      document.removeEventListener('touchmove', onDrag);
+      document.removeEventListener('touchend', stopDrag);
+    };
+  }
+
+  // Initialize drag functionality
+  document.addEventListener('DOMContentLoaded', handleDrag);
 </script>
