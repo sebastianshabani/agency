@@ -2,98 +2,53 @@
 interface Props {
   title: string;
   details: string;
+  id: string; // Unique ID for each FAQ item
 }
 
-const { title, details } = Astro.props as Props;
+const { title, details, id } = Astro.props;
 ---
 
-<div class="accordion group relative rounded-md border border-purple-900 mb-4">
-  <button
-    class="accordion__button flex w-full flex-1 items-center justify-between gap-2 p-3 text-left font-medium transition hover:text-purple-500 sm:px-4"
-    type="button"
-    id={`${title} accordion menu button`}
-    aria-expanded="false"
-    aria-controls={`${title} accordion menu content`}
-  >
+<div class="accordion">
+  <input type="checkbox" id={`faq-${id}`} class="accordion-toggle" />
+  <label for={`faq-${id}`} class="accordion-button flex items-center justify-between p-4 cursor-pointer">
     {title}
-
-    <!-- Inline SVG for Chevron Icon -->
-    <svg
-      class="accordion__chevron h-7 w-7 shrink-0 transition-transform"
-      fill="none"
-      stroke="currentColor"
-      viewBox="0 0 24 24"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <path
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        stroke-width="2"
-        d="M19 9l-7 7-7-7"
-      />
+    <svg class="accordion-chevron h-6 w-6 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
     </svg>
-  </button>
-
-  <div
-    id={`${title} accordion menu content`}
-    aria-labelledby={`${title} accordion menu button`}
-    class="accordion__content hidden max-h-0 overflow-hidden px-3 transition-all duration-300 ease-in-out sm:px-4"
-  >
-    <p class="prose mb-4 mt-1 max-w-full transition-[height]">
+  </label>
+  <div class="accordion-content overflow-hidden transition-all duration-300 max-h-0">
+    <p class="p-4">
       {details}
     </p>
   </div>
 </div>
 
-<script is:inline>
-    document.addEventListener("DOMContentLoaded", () => {
-      setTimeout(() => {
-        function accordionSetup() {
-          const accordionMenus = document.querySelectorAll(".accordion");
-          accordionMenus.forEach((accordionMenu) => {
-            const accordionButton = accordionMenu.querySelector(".accordion__button");
-            const accordionChevron = accordionMenu.querySelector(".accordion__chevron");
-            const accordionContent = accordionMenu.querySelector(".accordion__content");
-  
-            if (accordionButton && accordionContent && accordionChevron) {
-              accordionButton.addEventListener("click", (event) => {
-                if (!accordionMenu.classList.contains("active")) {
-                  // if accordion is currently closed, so open it
-                  accordionMenu.classList.add("active");
-                  accordionButton.setAttribute("aria-expanded", "true");
-  
-                  // set max-height to the height of the accordion content
-                  // this makes it animate properly
-                  accordionContent.classList.remove("hidden");
-                  accordionContent.style.maxHeight =
-                    accordionContent.scrollHeight + "px";
-                  accordionChevron.classList.add("rotate-180");
-                } else {
-                  // accordion is currently open, so close it
-                  accordionMenu.classList.remove("active");
-                  accordionButton.setAttribute("aria-expanded", "false");
-  
-                  // set max-height to the height of the accordion content
-                  // this makes it animate properly
-                  accordionContent.style.maxHeight = "0px";
-                  accordionChevron.classList.remove("rotate-180");
-                  // delay to allow close animation
-                  setTimeout(() => {
-                    accordionContent.classList.add("hidden");
-                  }, 300);
-                }
-                event.preventDefault();
-                return false;
-              });
-            }
-          });
-        }
-  
-        // runs on initial page load
-        accordionSetup();
-  
-        // runs on view transitions navigation
-        document.addEventListener("astro:after-swap", accordionSetup);
-      }, 100); // 100ms delay
-    });
-  </script>
+<style>
+  .accordion-toggle {
+    display: none; /* Hide the checkbox */
+  }
+
+  .accordion-button {
+    background-color: transparent;
+    color: white;
+    font-weight: bold;
+  }
+
+  .accordion-button:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+
+  .accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+  }
+
+  .accordion-toggle:checked ~ .accordion-content {
+    max-height: 200px; /* Adjust based on your content */
+  }
+
+  .accordion-toggle:checked ~ .accordion-button .accordion-chevron {
+    transform: rotate(180deg); /* Rotate the chevron when open */
+  }
+</style>

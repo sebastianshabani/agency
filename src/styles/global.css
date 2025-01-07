@@ -227,38 +227,24 @@
 .splide {
   padding-bottom: 1rem; /* Adjust this value to create space for the pagination */
 }
-.faq-container {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 20px;
+.accordion-toggle {
+  display: none; /* Hide the checkbox */
 }
 
-.faq-item {
-  border-bottom: 1px solid #ddd;
-  margin-bottom: 10px;
-}
-
-.faq-question {
-  padding: 15px;
-  font-size: 18px;
+.accordion-button {
+  background-color: transparent;
+  color: white;
   font-weight: bold;
-  cursor: pointer;
-  background-color: #f9f9f9;
-  color: #333;
+} .accordion-button:hover {
+  background-color: rgba(255, 255, 255, 0.1);
 }
 
-.faq-question:hover {
-  background-color: #f1f1f1;
-}
-
-.faq-answer {
+.accordion-content {
   max-height: 0;
   overflow: hidden;
   transition: max-height 0.3s ease-out;
-  padding: 0 15px;
-  background-color: #fff;
-}
-
-.faq-answer.open {
+}.accordion-toggle:checked ~ .accordion-content {
   max-height: 200px; /* Adjust based on your content */
+}.accordion-toggle:checked ~ .accordion-button .accordion-chevron {
+  transform: rotate(180deg); /* Rotate the chevron when open */
 }
