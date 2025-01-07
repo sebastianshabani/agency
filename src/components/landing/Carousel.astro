@@ -1,14 +1,14 @@
 <section class="image-carousel border-white/20 border-y">
   <div class="text-white mx-auto">
-    <div class="mx-auto overflow-hidden overflow-x-hidden py-2 relative">
+    <div class="mx-auto overflow-hidden py-2 relative">
       <!-- Gradient Overlays -->
       <div class="w-full justify-between grid">
         <div class="absolute from-black inset-0 left-0 via-transparent w-44 z-10 bg-gradient-to-r"></div>
-        <div class="absolute from-black inset-0 left-0 via-transparent w-44 z-10 bg-gradient-to-l ml-auto"></div>
+        <div class="absolute from-black inset-0 right-0 via-transparent w-44 z-10 bg-gradient-to-l"></div>
       </div>
 
       <!-- Marquee Container with Horizontal Scrolling -->
-      <div class="marquee-container">
+      <div class="marquee-container overflow-x-auto scrollbar-hide"> <!-- Added scrollbar-hide -->
         <div class="flex items-center image-marquee-animation font-black font-display gap-4 relative tracking-widest uppercase whitespace-nowrap">
           <!-- Original Images -->
           <img src="/images/image1.jpg" alt="Image 1" class="w-[232px] h-[72px] rounded-full" />
@@ -33,6 +33,36 @@
     </div>
   </div>
 </section>
+
+<style>
+  /* Hide scrollbar for WebKit browsers (Chrome, Safari) */
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Hide scrollbar for Firefox */
+  .scrollbar-hide {
+    scrollbar-width: none;
+  }
+
+  /* Marquee Animation */
+  @keyframes marquee {
+    0% {
+      transform: translateX(0%);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+
+  .image-marquee-animation {
+    animation: marquee 30s linear infinite;
+  }
+
+  .marquee-container:hover .image-marquee-animation {
+    animation-play-state: paused;
+  }
+</style>
 
 <script>
   document.addEventListener("DOMContentLoaded", function () {
