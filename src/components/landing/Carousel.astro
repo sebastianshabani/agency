@@ -1,33 +1,43 @@
-<section class="image-carousel border-white/20 border-y">
-  <div class="text-white mx-auto">
-    <div class="mx-auto overflow-hidden py-2 relative">
+---
+// Carousel.astro
+---
+
+<section class="image-carousel relative w-full overflow-hidden">
+  <div class="mx-auto max-w-[100vw]"> <!-- Added max-width constraint -->
+    <div class="relative py-2">
       <!-- Gradient Overlays -->
-      <div class="w-full justify-between grid">
-        <div class="absolute from-black inset-0 left-0 via-transparent w-44 z-10 bg-gradient-to-r"></div>
-        <div class="absolute from-black inset-0 right-0 via-transparent w-44 z-10 bg-gradient-to-l"></div>
+      <div class="pointer-events-none absolute inset-0 z-10 flex w-full justify-between">
+        <div class="w-44 bg-gradient-to-r from-black via-transparent to-transparent"></div>
+        <div class="w-44 bg-gradient-to-l from-black via-transparent to-transparent"></div>
       </div>
 
-      <!-- Marquee Container with Horizontal Scrolling -->
-      <div class="marquee-container overflow-x-auto scrollbar-hide"> <!-- Added scrollbar-hide -->
-        <div class="flex items-center image-marquee-animation font-black font-display gap-4 relative tracking-widest uppercase whitespace-nowrap">
-          <!-- Original Images -->
-          <img src="/images/image1.jpg" alt="Image 1" class="w-[232px] h-[72px] rounded-full" />
-          <img src="/images/image2.jpg" alt="Image 2" class="w-[232px] h-[72px] rounded-full" />
-          <img src="/images/image3.jpg" alt="Image 3" class="w-[232px] h-[72px] rounded-full" />
-          <img src="/images/image4.jpg" alt="Image 4" class="w-[232px] h-[72px] rounded-full" />
-          <img src="/images/image5.jpg" alt="Image 5" class="w-[232px] h-[72px] rounded-full" />
-          <!-- Duplicated Images (First Set) -->
-          <img src="/images/image1.jpg" alt="Image 1" class="w-[232px] h-[72px] rounded-full" />
-          <img src="/images/image2.jpg" alt="Image 2" class="w-[232px] h-[72px] rounded-full" />
-          <img src="/images/image3.jpg" alt="Image 3" class="w-[232px] h-[72px] rounded-full" />
-          <img src="/images/image4.jpg" alt="Image 4" class="w-[232px] h-[72px] rounded-full" />
-          <img src="/images/image5.jpg" alt="Image 5" class="w-[232px] h-[72px] rounded-full" />
-          <!-- Duplicated Images (Second Set) -->
-          <img src="/images/image1.jpg" alt="Image 1" class="w-[232px] h-[72px] rounded-full" />
-          <img src="/images/image2.jpg" alt="Image 2" class="w-[232px] h-[72px] rounded-full" />
-          <img src="/images/image3.jpg" alt="Image 3" class="w-[232px] h-[72px] rounded-full" />
-          <img src="/images/image4.jpg" alt="Image 4" class="w-[232px] h-[72px] rounded-full" />
-          <img src="/images/image5.jpg" alt="Image 5" class="w-[232px] h-[72px] rounded-full" />
+      <!-- Marquee Container -->
+      <div class="marquee-container overflow-x-auto scrollbar-hide">
+        <div class="flex items-center image-marquee-animation gap-4 whitespace-nowrap">
+          {/* Original Images */}
+          {[1, 2, 3, 4, 5].map((num) => (
+            <img
+              src={`/images/image${num}.jpg`}
+              alt={`Image ${num}`}
+              class="h-[72px] w-[232px] rounded-full"
+            />
+          ))}
+          {/* First Duplicate Set */}
+          {[1, 2, 3, 4, 5].map((num) => (
+            <img
+              src={`/images/image${num}.jpg`}
+              alt={`Image ${num}`}
+              class="h-[72px] w-[232px] rounded-full"
+            />
+          ))}
+          {/* Second Duplicate Set */}
+          {[1, 2, 3, 4, 5].map((num) => (
+            <img
+              src={`/images/image${num}.jpg`}
+              alt={`Image ${num}`}
+              class="h-[72px] w-[232px] rounded-full"
+            />
+          ))}
         </div>
       </div>
     </div>
@@ -35,13 +45,13 @@
 </section>
 
 <style>
-  /* Hide scrollbar for WebKit browsers (Chrome, Safari) */
+  /* Hide scrollbar */
   .scrollbar-hide::-webkit-scrollbar {
     display: none;
   }
-
-  /* Hide scrollbar for Firefox */
+  
   .scrollbar-hide {
+    -ms-overflow-style: none;
     scrollbar-width: none;
   }
 
@@ -65,46 +75,43 @@
 </style>
 
 <script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const marqueeContainer = document.querySelector(".marquee-container");
-    const marqueeAnimation = document.querySelector(".image-marquee-animation");
+  document.addEventListener('DOMContentLoaded', function() {
+    const marqueeContainer = document.querySelector('.marquee-container');
+    const marqueeAnimation = document.querySelector('.image-marquee-animation');
 
     if (marqueeContainer && marqueeAnimation) {
       let isDragging = false;
-      let startX, scrollLeft;
+      let startX: number, scrollLeft: number;
 
-      // Pause animation and start dragging on mouse down or touch start
-      const startDrag = (e) => {
+      const startDrag = (e: MouseEvent | TouchEvent) => {
         isDragging = true;
-        marqueeAnimation.style.animationPlayState = "paused";
-        startX = e.pageX || e.touches[0].pageX;
+        marqueeAnimation.style.animationPlayState = 'paused';
+        startX = e instanceof MouseEvent ? e.pageX : e.touches[0].pageX;
         scrollLeft = marqueeContainer.scrollLeft;
       };
 
-      // Handle dragging
-      const onDrag = (e) => {
+      const onDrag = (e: MouseEvent | TouchEvent) => {
         if (!isDragging) return;
-        const x = (e.pageX || e.touches[0].pageX) - startX;
+        const x = (e instanceof MouseEvent ? e.pageX : e.touches[0].pageX) - startX;
         marqueeContainer.scrollLeft = scrollLeft - x;
       };
 
-      // Stop dragging and resume animation
       const stopDrag = () => {
         if (isDragging) {
           isDragging = false;
-          marqueeAnimation.style.animationPlayState = "running";
+          marqueeAnimation.style.animationPlayState = 'running';
         }
       };
 
       // Mouse events
-      marqueeContainer.addEventListener("mousedown", startDrag);
-      document.addEventListener("mousemove", onDrag);
-      document.addEventListener("mouseup", stopDrag);
+      marqueeContainer.addEventListener('mousedown', startDrag);
+      document.addEventListener('mousemove', onDrag);
+      document.addEventListener('mouseup', stopDrag);
 
       // Touch events
-      marqueeContainer.addEventListener("touchstart", startDrag);
-      document.addEventListener("touchmove", onDrag);
-      document.addEventListener("touchend", stopDrag);
+      marqueeContainer.addEventListener('touchstart', startDrag);
+      document.addEventListener('touchmove', onDrag);
+      document.addEventListener('touchend', stopDrag);
     }
   });
 </script>
