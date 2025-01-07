@@ -2,7 +2,7 @@
 ---
 
 
-<!-- First section (heading) -->
+<!-- Heading Section -->
 <section class="border-b border-white/20 bg-accent-500">
   <div class="mx-auto max-w-7xl border-white/20 border-x px-8 py-8 gradient-grid overflow-hidden">
     <div class="mx-auto text-center">
@@ -16,9 +16,9 @@
   </div>
 </section>
 
-<!-- Carousel section -->
+<!-- Carousel Section -->
 <section class="border-b border-white/20 bg-accent-500">
-  <!-- Keep the outer container at overflow-hidden to prevent slides from spilling outside -->
+  <!-- Outer container set to overflow-hidden -->
   <div
     class="mx-auto max-w-7xl border-white/20 border-x overflow-hidden"
     x-data="{
@@ -26,10 +26,10 @@
         new Splide(this.$refs.splide, {
           perPage: 4.5,
           gap: '1rem',
-          trimSpace: false,
           pagination: true,
-          dragAngleThreshold: 5, // Smaller angle => easier side drag
-          flickPower: 300,       // Lower power => shorter flick distance
+          dragAngleThreshold: 5,
+          flickPower: 300,
+          trimSpace: false,
           breakpoints: {
             640: {
               perPage: 1.5,
@@ -41,7 +41,7 @@
     }"
     x-init="init()"
   >
-    <!-- Remove manually added Splide classes; let Splide handle them -->
+    <!-- Let Splide add its own classes -->
     <section
       class="splide"
       aria-label="Splide/Alpine.js"
@@ -49,7 +49,8 @@
       id="splide01"
       aria-roledescription="carousel"
     >
-      <div class="splide__arrows splide__arrows--ltr items-center">
+      <!-- Splide Arrows -->
+      <div class="splide__arrows items-center">
         <button
           class="splide__arrow splide__arrow--prev"
           type="button"
@@ -65,7 +66,7 @@
           >
             <path
               d="m15.5 0.932-4.3 4.38 14.5 14.6-14.5 14.5 4.3 4.4 14.6-14.6 4.4-4.3-4.4-4.4-14.6-14.6z"
-            ></path>
+            />
           </svg>
         </button>
         <button
@@ -83,78 +84,65 @@
           >
             <path
               d="m15.5 0.932-4.3 4.38 14.5 14.6-14.5 14.5 4.3 4.4 14.6-14.6 4.4-4.3-4.4-4.4-14.6-14.6z"
-            ></path>
+            />
           </svg>
         </button>
       </div>
 
+      <!-- Splide Track -->
       <div
-        class="h-full splide__track splide__track--slide splide__track--ltr splide__track--draggable overflow-hidden"
+        class="h-full splide__track overflow-hidden"
         id="splide01-track"
-        style="padding-left: 0px; padding-right: 0px;"
         aria-live="polite"
         aria-atomic="true"
-        aria-busy="false"
       >
         <ul class="splide__list" id="splide01-list" role="presentation">
-          <!-- Slide 1 -->
+          <!-- Slides -->
           <li class="flex justify-center flex-col splide__slide">
             <img
-              alt="work"
+              alt="work 1"
               class="w-full object-cover object-center bg-white border-t border-black lg:border-r"
               src="/work/1.png"
             />
           </li>
-
-          <!-- Slide 2 -->
           <li class="flex justify-center flex-col splide__slide">
             <img
-              alt="work"
+              alt="work 2"
               class="w-full object-cover object-center bg-white border-t border-black lg:border-r"
               src="/work/2.png"
             />
           </li>
-
-          <!-- Slide 3 -->
           <li class="flex justify-center flex-col splide__slide">
             <img
-              alt="work"
+              alt="work 3"
               class="w-full object-cover object-center bg-white border-t border-black lg:border-r"
               src="/work/3.png"
             />
           </li>
-
-          <!-- Slide 4 -->
           <li class="flex justify-center flex-col splide__slide">
             <img
-              alt="work"
+              alt="work 4"
               class="w-full object-cover object-center bg-white border-t border-black lg:border-r"
               src="/work/4.png"
             />
           </li>
-
-          <!-- Slide 5 -->
           <li class="flex justify-center flex-col splide__slide">
             <img
-              alt="work"
+              alt="work 5"
               class="w-full object-cover object-center bg-white border-t border-black lg:border-r"
               src="/work/5.png"
             />
           </li>
-
-          <!-- Slide 6 -->
           <li class="flex justify-center flex-col splide__slide">
             <img
-              alt="work"
+              alt="work 6"
               class="w-full object-cover object-center bg-white border-t border-black lg:border-r"
               src="/work/6.png"
             />
           </li>
-
-          <!-- Slide 7 -->
           <li class="flex justify-center flex-col splide__slide">
             <img
-              alt="work"
+              alt="work 7"
               class="w-full object-cover object-center bg-white border-t border-black lg:border-r"
               src="/work/7.png"
             />
@@ -164,7 +152,7 @@
     </section>
   </div>
 
-  <!-- "1000+ more" text below the carousel -->
+  <!-- "1000+ more" text -->
   <div class="mx-auto max-w-7xl border-white/20 border-x px-8 py-2 text-center">
     <p class="text-white text-lg font-display">1000+ more</p>
   </div>
