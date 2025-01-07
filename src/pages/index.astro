@@ -10,6 +10,7 @@ import Banner from "@/components/landing/Banner.astro";
 import Carousel from "@/components/landing/Carousel.astro";
 import Offerings from "@/components/landing/Offerings.astro";
 import Success from "@/components/landing/Success.astro";
+import FAQItem from "@/components/FAQItem.astro";
 import Faq from "@/components/landing/Faq.astro";
 ---
 
@@ -27,5 +28,5 @@ import Faq from "@/components/landing/Faq.astro";
   <Success />
   <Offerings />
   <Cta />
-  <Faq />
+  <Faq FAQItem={FAQItem} />
 </BaseLayout>

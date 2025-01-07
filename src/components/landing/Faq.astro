@@ -1,5 +1,9 @@
 ---
-import FAQItem from "../components/FAQItem.astro";
+interface Props {
+  FAQItem: any; // You can define a more specific type if needed
+}
+
+const { FAQItem } = Astro.props as Props;
 ---
 
 <section class="faq-section py-12 bg-gray-900 text-white">
