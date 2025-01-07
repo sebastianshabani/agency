@@ -1,7 +1,6 @@
 ---
 ---
 
-
 <!-- Heading Section -->
 <section class="border-b border-white/20 bg-accent-500">
   <div class="mx-auto max-w-7xl border-white/20 border-x px-8 py-8 gradient-grid overflow-hidden">
@@ -16,140 +15,96 @@
   </div>
 </section>
 
-<!-- Carousel Section -->
-<section class="border-b border-white/20 bg-accent-500">
-  <!-- Outer container set to overflow-hidden -->
-  <div
-    class="mx-auto max-w-7xl border-white/20 border-x overflow-hidden"
-    x-data="{
-      init() {
-        new Splide(this.$refs.splide, {
-          perPage: 4.5,
-          gap: '1rem',
-          pagination: true,
-          dragAngleThreshold: 5,
-          flickPower: 300,
-          trimSpace: false,
-          breakpoints: {
-            640: {
-              perPage: 1.5,
-              trimSpace: false,
-            },
-          },
-        }).mount();
-      }
-    }"
-    x-init="init()"
-  >
-    <!-- Let Splide add its own classes -->
-    <section
-      class="splide"
-      aria-label="Splide/Alpine.js"
-      x-ref="splide"
-      id="splide01"
-      aria-roledescription="carousel"
-    >
-      <!-- Splide Arrows -->
-      <div class="splide__arrows items-center">
-        <button
-          class="splide__arrow splide__arrow--prev"
-          type="button"
-          aria-label="Previous slide"
-          aria-controls="splide01-track"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 40 40"
-            width="40"
-            height="40"
-            focusable="false"
-          >
-            <path
-              d="m15.5 0.932-4.3 4.38 14.5 14.6-14.5 14.5 4.3 4.4 14.6-14.6 4.4-4.3-4.4-4.4-14.6-14.6z"
-            />
-          </svg>
-        </button>
-        <button
-          class="splide__arrow splide__arrow--next"
-          type="button"
-          aria-label="Next slide"
-          aria-controls="splide01-track"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 40 40"
-            width="40"
-            height="40"
-            focusable="false"
-          >
-            <path
-              d="m15.5 0.932-4.3 4.38 14.5 14.6-14.5 14.5 4.3 4.4 14.6-14.6 4.4-4.3-4.4-4.4-14.6-14.6z"
-            />
-          </svg>
-        </button>
+<!-- Carousel Section (Marquee) -->
+<section class="border-b border-white/20 bg-accent-500 service-carousel relative w-full overflow-hidden py-4">
+  <div class="mx-auto max-w-7xl">
+    <div class="relative">
+      <!-- Gradient Overlays (fade out edges) -->
+      <div class="pointer-events-none absolute inset-0 z-10 flex w-full justify-between">
+        <div class="w-44 bg-gradient-to-r from-[#1e1e1e] via-transparent to-transparent"></div>
+        <div class="w-44 bg-gradient-to-l from-[#1e1e1e] via-transparent to-transparent"></div>
       </div>
 
-      <!-- Splide Track -->
-      <div
-        class="h-full splide__track overflow-hidden"
-        id="splide01-track"
-        aria-live="polite"
-        aria-atomic="true"
-      >
-        <ul class="splide__list" id="splide01-list" role="presentation">
-          <!-- Slides -->
-          <li class="flex justify-center flex-col splide__slide">
-            <img
-              alt="work 1"
-              class="w-full object-cover object-center bg-white border-t border-black lg:border-r"
-              src="/work/1.png"
-            />
-          </li>
-          <li class="flex justify-center flex-col splide__slide">
-            <img
-              alt="work 2"
-              class="w-full object-cover object-center bg-white border-t border-black lg:border-r"
-              src="/work/2.png"
-            />
-          </li>
-          <li class="flex justify-center flex-col splide__slide">
-            <img
-              alt="work 3"
-              class="w-full object-cover object-center bg-white border-t border-black lg:border-r"
-              src="/work/3.png"
-            />
-          </li>
-          <li class="flex justify-center flex-col splide__slide">
-            <img
-              alt="work 4"
-              class="w-full object-cover object-center bg-white border-t border-black lg:border-r"
-              src="/work/4.png"
-            />
-          </li>
-          <li class="flex justify-center flex-col splide__slide">
-            <img
-              alt="work 5"
-              class="w-full object-cover object-center bg-white border-t border-black lg:border-r"
-              src="/work/5.png"
-            />
-          </li>
-          <li class="flex justify-center flex-col splide__slide">
-            <img
-              alt="work 6"
-              class="w-full object-cover object-center bg-white border-t border-black lg:border-r"
-              src="/work/6.png"
-            />
-          </li>
-          <li class="flex justify-center flex-col splide__slide">
-            <img
-              alt="work 7"
-              class="w-full object-cover object-center bg-white border-t border-black lg:border-r"
-              src="/work/7.png"
-            />
-          </li>
-        </ul>
+      <!-- Marquee Container -->
+      <div class="marquee-container overflow-x-auto scrollbar-hide">
+        <!-- .image-marquee-animation is the animated wrapper -->
+        <div class="flex items-center image-marquee-animation gap-4 whitespace-nowrap">
+          <!-- Original Images -->
+          <img
+            src="/work/1.png"
+            alt="work 1"
+            class="w-[232px] h-[72px] rounded-full border-t border-black lg:border-r"
+          />
+          <img
+            src="/work/2.png"
+            alt="work 2"
+            class="w-[232px] h-[72px] rounded-full border-t border-black lg:border-r"
+          />
+          <img
+            src="/work/3.png"
+            alt="work 3"
+            class="w-[232px] h-[72px] rounded-full border-t border-black lg:border-r"
+          />
+          <img
+            src="/work/4.png"
+            alt="work 4"
+            class="w-[232px] h-[72px] rounded-full border-t border-black lg:border-r"
+          />
+          <img
+            src="/work/5.png"
+            alt="work 5"
+            class="w-[232px] h-[72px] rounded-full border-t border-black lg:border-r"
+          />
+          <img
+            src="/work/6.png"
+            alt="work 6"
+            class="w-[232px] h-[72px] rounded-full border-t border-black lg:border-r"
+          />
+          <img
+            src="/work/7.png"
+            alt="work 7"
+            class="w-[232px] h-[72px] rounded-full border-t border-black lg:border-r"
+          />
+
+          <!-- Duplicated Images for continuous scroll -->
+          <img
+            src="/work/1.png"
+            alt="work 1 duplicate"
+            class="w-[232px] h-[72px] rounded-full border-t border-black lg:border-r"
+          />
+          <img
+            src="/work/2.png"
+            alt="work 2 duplicate"
+            class="w-[232px] h-[72px] rounded-full border-t border-black lg:border-r"
+          />
+          <img
+            src="/work/3.png"
+            alt="work 3 duplicate"
+            class="w-[232px] h-[72px] rounded-full border-t border-black lg:border-r"
+          />
+          <img
+            src="/work/4.png"
+            alt="work 4 duplicate"
+            class="w-[232px] h-[72px] rounded-full border-t border-black lg:border-r"
+          />
+          <img
+            src="/work/5.png"
+            alt="work 5 duplicate"
+            class="w-[232px] h-[72px] rounded-full border-t border-black lg:border-r"
+          />
+          <img
+            src="/work/6.png"
+            alt="work 6 duplicate"
+            class="w-[232px] h-[72px] rounded-full border-t border-black lg:border-r"
+          />
+          <img
+            src="/work/7.png"
+            alt="work 7 duplicate"
+            class="w-[232px] h-[72px] rounded-full border-t border-black lg:border-r"
+          />
+        </div>
       </div>
-    </section>
+    </div>
   </div>
 
   <!-- "1000+ more" text -->
@@ -157,3 +112,105 @@
     <p class="text-white text-lg font-display">1000+ more</p>
   </div>
 </section>
+
+<!-- Inline Styles for Marquee and Drag -->
+<style>
+  /* Hide scrollbar for Chrome/Safari */
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Hide scrollbar for Firefox/Edge */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  /* Marquee Animation */
+  @keyframes marquee {
+    0% {
+      transform: translateX(0%);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+
+  /* Animated container (continuous scroll) */
+  .image-marquee-animation {
+    animation: marquee 30s linear infinite;
+    width: max-content; /* Enough width for all images */
+  }
+
+  /* Pause animation on hover */
+  .marquee-container:hover .image-marquee-animation {
+    animation-play-state: paused;
+  }
+
+  /* Snap Scrolling (optional) */
+  .marquee-container {
+    scroll-snap-type: x mandatory;
+    touch-action: pan-x;
+  }
+
+  .marquee-container > * {
+    scroll-snap-align: start;
+  }
+</style>
+
+<!-- Inline Script for Drag -->
+<script>
+  function handleDrag() {
+    const marqueeContainer = document.querySelector('.marquee-container');
+    const marqueeAnimation = document.querySelector('.image-marquee-animation');
+    if (!marqueeContainer || !marqueeAnimation) return;
+
+    let isDragging = false;
+    let startX = 0;
+    let scrollLeft = 0;
+
+    const startDrag = (e) => {
+      isDragging = true;
+      marqueeAnimation.style.animationPlayState = 'paused';
+      startX = e.pageX || (e.touches?.[0]?.pageX ?? 0);
+      scrollLeft = marqueeContainer.scrollLeft;
+    };
+
+    const onDrag = (e) => {
+      if (!isDragging) return;
+      const currentX = e.pageX || (e.touches?.[0]?.pageX ?? 0);
+      const x = currentX - startX;
+      marqueeContainer.scrollLeft = scrollLeft - x;
+    };
+
+    const stopDrag = () => {
+      if (isDragging) {
+        isDragging = false;
+        marqueeAnimation.style.animationPlayState = 'running';
+      }
+    };
+
+    // Mouse events
+    marqueeContainer.addEventListener('mousedown', startDrag);
+    document.addEventListener('mousemove', onDrag);
+    document.addEventListener('mouseup', stopDrag);
+
+    // Touch events
+    marqueeContainer.addEventListener('touchstart', startDrag);
+    document.addEventListener('touchmove', onDrag);
+    document.addEventListener('touchend', stopDrag);
+
+    // Cleanup if needed
+    return () => {
+      marqueeContainer.removeEventListener('mousedown', startDrag);
+      document.removeEventListener('mousemove', onDrag);
+      document.removeEventListener('mouseup', stopDrag);
+      marqueeContainer.removeEventListener('touchstart', startDrag);
+      document.removeEventListener('touchmove', onDrag);
+      document.removeEventListener('touchend', stopDrag);
+    };
+  }
+
+  // Initialize drag after DOM load
+  document.addEventListener('DOMContentLoaded', handleDrag);
+</script>
