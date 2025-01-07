@@ -38,21 +38,14 @@ const { title, details } = Astro.props as Props;
   </div>
 </div>
 
-<script>
+<!-- Client-side script -->
+<script is:inline>
   function accordionSetup() {
-    const accordionMenus = document.querySelectorAll(
-      ".accordion",
-    ) as NodeListOf<HTMLElement>;
+    const accordionMenus = document.querySelectorAll(".accordion");
     accordionMenus.forEach((accordionMenu) => {
-      const accordionButton = accordionMenu.querySelector(
-        ".accordion__button",
-      ) as HTMLElement;
-      const accordionChevron = accordionMenu.querySelector(
-        ".accordion__chevron",
-      ) as HTMLElement;
-      const accordionContent = accordionMenu.querySelector(
-        ".accordion__content",
-      ) as HTMLElement;
+      const accordionButton = accordionMenu.querySelector(".accordion__button");
+      const accordionChevron = accordionMenu.querySelector(".accordion__chevron");
+      const accordionContent = accordionMenu.querySelector(".accordion__content");
 
       if (accordionButton && accordionContent && accordionChevron) {
         accordionButton.addEventListener("click", (event) => {
