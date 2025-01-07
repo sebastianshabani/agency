@@ -1,10 +1,10 @@
 <section class="border-b border-white/20 bg-accent-500">
-  <div class="mx-auto max-w-7xl border-white/20 border-x px-8 py-12 gradient-grid overflow-hidden">
-    <div class="mx-auto text-center"> <!-- Added text-center -->
+  <div class="mx-auto max-w-7xl border-white/20 border-x px-8 py-8 gradient-grid overflow-hidden"> <!-- Reduced py-12 to py-8 -->
+    <div class="mx-auto text-center">
       <h3 class="text-3xl font-display text-white uppercase">
         THE BRANDS YOU LOVE - THE ADS THEY LOVE
       </h3>
-      <h3 class="text-3xl font-display text-white uppercase mt-1"> <!-- Added mt-2 for spacing -->
+      <h3 class="text-xl font-display text-white uppercase mt-1"> <!-- Adjusted mt-1 for spacing -->
         PORTFOLIO
       </h3>
     </div>
@@ -16,8 +16,8 @@
     class="mx-auto max-w-7xl border-white/20 border-x overflow-hidden"
     x-data="{ init() {
       new Splide(this.$refs.splide, {
-        perPage: 5,
-        gap: '0rem',
+        perPage: 4.5,
+        gap: '1rem',
         breakpoints: {
           640: {
             perPage: 1,
@@ -149,7 +149,7 @@
   </div>
 
   <!-- Add "1000+ more" text below the carousel -->
-  <div class="mx-auto max-w-7xl border-white/20 border-x px-8 py-4 text-center">
+  <div class="mx-auto max-w-7xl border-white/20 border-x px-8 py-2 text-center"> <!-- Reduced py-4 to py-2 -->
     <p class="text-white text-lg font-display">1000+ more</p>
   </div>
 </section>
