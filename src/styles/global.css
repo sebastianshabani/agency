@@ -116,7 +116,7 @@
 
 /* Ensure the container doesn't overflow */
 .splide__track {
-  overflow: visible; /* Allow partial visibility of slides */
+  overflow: hidden; /* Allow partial visibility of slides */
 }
 
 /* Hide scrollbar for WebKit browsers (Chrome, Safari) */
