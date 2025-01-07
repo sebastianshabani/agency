@@ -2,7 +2,7 @@
 ---
 
 
-<!-- Portfolio Section -->
+<!-- First section (heading) -->
 <section class="border-b border-white/20 bg-accent-500">
   <div class="mx-auto max-w-7xl border-white/20 border-x px-8 py-8 gradient-grid overflow-hidden">
     <div class="mx-auto text-center">
@@ -16,20 +16,24 @@
   </div>
 </section>
 
+<!-- Carousel section -->
 <section class="border-b border-white/20 bg-accent-500">
-  <!-- Changed overflow-hidden to overflow-visible and added x-init="init()" -->
+  <!-- Keep the outer container at overflow-hidden to prevent slides from spilling outside -->
   <div
-    class="mx-auto max-w-7xl border-white/20 border-x overflow-visible"
+    class="mx-auto max-w-7xl border-white/20 border-x overflow-hidden"
     x-data="{
       init() {
         new Splide(this.$refs.splide, {
           perPage: 4.5,
           gap: '1rem',
-          trimSpace: false, // Prevent trimming space around slides
+          trimSpace: false,
+          pagination: true,
+          dragAngleThreshold: 5, // Smaller angle => easier side drag
+          flickPower: 300,       // Lower power => shorter flick distance
           breakpoints: {
             640: {
-              perPage: 1.5, // Show 1.5 images on mobile
-              trimSpace: false, // Prevent trimming space around slides on mobile
+              perPage: 1.5,
+              trimSpace: false,
             },
           },
         }).mount();
@@ -37,8 +41,9 @@
     }"
     x-init="init()"
   >
+    <!-- Remove manually added Splide classes; let Splide handle them -->
     <section
-      class="splide is-initialized splide--slide splide--ltr splide--draggable is-active"
+      class="splide"
       aria-label="Splide/Alpine.js"
       x-ref="splide"
       id="splide01"
@@ -159,7 +164,7 @@
     </section>
   </div>
 
-  <!-- Add "1000+ more" text below the carousel -->
+  <!-- "1000+ more" text below the carousel -->
   <div class="mx-auto max-w-7xl border-white/20 border-x px-8 py-2 text-center">
     <p class="text-white text-lg font-display">1000+ more</p>
   </div>
