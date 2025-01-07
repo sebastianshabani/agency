@@ -1,42 +1,46 @@
+---
+import FAQItem from "../components/FAQItem.astro";
+---
+
 <section class="faq-section py-12 bg-gray-900 text-white">
-    <div class="container mx-auto px-4">
-      <h2 class="text-3xl font-display text-center mb-8">Frequently Asked Questions</h2>
-  
-      <!-- FAQ Items -->
-      <FAQItem
-        title="What services do you offer?"
-        details="Our return policy allows you to return items within 30 days of purchase. Please ensure the product is unused and in its original packaging."
-      />
-      <FAQItem
-        title="What makes HYPER different?"
-        details="Once your order is shipped, you will receive a tracking number via email. You can use this number to track your order on our website."
-      />
-      <FAQItem
-        title="What clients have you had?"
-        details="We have worked with a variety of clients, including small businesses, startups, and large enterprises. Our portfolio includes projects in industries such as e-commerce, technology, and healthcare."
-      />
-      <FAQItem
-        title="What are the benefits of your creative services?"
-        details="Our creative services are designed to help you stand out in a crowded market. We focus on high-conversion strategies, innovative design, and measurable results to drive your business growth."
-      />
-      <FAQItem
-        title="Why subscribe to Ad Creatives?"
-        details="Subscribing to our Ad Creatives service ensures you receive fresh, high-quality ads every month. This helps you maintain a consistent and engaging presence across all your marketing channels."
-      />
-      <FAQItem
-        title="What are your rates?"
-        details="Our rates vary depending on the scope of the project and the services required. Contact us for a personalized quote tailored to your specific needs."
-      />
-  
-      <!-- Call-to-Action Button -->
-      <div class="text-center mt-8">
-        <a
-          href="#"
-          onclick="Calendly.initPopupWidget({url: 'https://calendly.com/hyper-creative/30min?hide_event_type_details=1&hide_gdpr_banner=1'}); return false;"
-          class="w-full bg-orange duration-200 font-display hover:bg-black text-white lg:w-auto px-6 py-4 sm:rounded-full text-black hover:text-white text-center text-xs uppercase"
-        >
-          Book a call
-        </a>
-      </div>
+  <div class="container mx-auto px-4">
+    <h2 class="text-3xl font-display text-center mb-8">Frequently Asked Questions</h2>
+
+    <!-- FAQ Items -->
+    <FAQItem
+      title="What services do you offer?"
+      details="Our return policy allows you to return items within 30 days of purchase. Please ensure the product is unused and in its original packaging."
+    />
+    <FAQItem
+      title="What makes HYPER different?"
+      details="Once your order is shipped, you will receive a tracking number via email. You can use this number to track your order on our website."
+    />
+    <FAQItem
+      title="What clients have you had?"
+      details="We have worked with a variety of clients, including small businesses, startups, and large enterprises. Our portfolio includes projects in industries such as e-commerce, technology, and healthcare."
+    />
+    <FAQItem
+      title="What are the benefits of your creative services?"
+      details="Our creative services are designed to help you stand out in a crowded market. We focus on high-conversion strategies, innovative design, and measurable results to drive your business growth."
+    />
+    <FAQItem
+      title="Why subscribe to Ad Creatives?"
+      details="Subscribing to our Ad Creatives service ensures you receive fresh, high-quality ads every month. This helps you maintain a consistent and engaging presence across all your marketing channels."
+    />
+    <FAQItem
+      title="What are your rates?"
+      details="Our rates vary depending on the scope of the project and the services required. Contact us for a personalized quote tailored to your specific needs."
+    />
+
+    <!-- Call-to-Action Button -->
+    <div class="text-center mt-8">
+      <a
+        href="#"
+        onclick="Calendly.initPopupWidget({url: 'https://calendly.com/hyper-creative/30min?hide_event_type_details=1&hide_gdpr_banner=1'}); return false;"
+        class="w-full bg-orange duration-200 font-display hover:bg-black text-white lg:w-auto px-6 py-4 sm:rounded-full text-black hover:text-white text-center text-xs uppercase"
+      >
+        Book a call
+      </a>
     </div>
-  </section>
+  </div>
+</section>
