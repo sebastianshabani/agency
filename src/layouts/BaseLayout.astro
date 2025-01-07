@@ -5,10 +5,10 @@ import Footer from "../components/global/Footer.astro";
 
 // Rest of your BaseLayout.astro remains the same
 const {
- title = "HYPER - We Create Ads That Drive Sales | Creative Agency",
- description = "HYPER is a creative agency that creates ads that drive sales. Specializing in high-conversion strategies, innovative design, and measurable results. Part of SOP Group LTD.",
- canonicalUrl = "https://www.yourwebsite.com/",
- ogImage = "https://www.yourwebsite.com/images/og-image.jpg"
+  title = "HYPER - We Create Ads That Drive Sales | Creative Agency",
+  description = "HYPER is a creative agency that creates ads that drive sales. Specializing in high-conversion strategies, innovative design, and measurable results. Part of SOP Group LTD.",
+  canonicalUrl = "https://www.yourwebsite.com/",
+  ogImage = "https://www.yourwebsite.com/images/og-image.jpg"
 } = Astro.props;
 ---
 
@@ -21,8 +21,35 @@ const {
       canonicalUrl={canonicalUrl} 
       ogImage={ogImage} 
     />
+
+    <!-- Calendly Widget -->
+    <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet" />
+    <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
   </head>
   <body class="mx-auto bg-black 2xl:max-w-7xl">
+    <script>
+      function loadCalendly() {
+        const script = document.createElement('script');
+        script.src = 'https://assets.calendly.com/assets/external/widget.js';
+        script.async = true;
+        document.head.appendChild(script);
+    
+        const link = document.createElement('link');
+        link.href = 'https://assets.calendly.com/assets/external/widget.css';
+        link.rel = 'stylesheet';
+        document.head.appendChild(link);
+      }
+    
+      document.querySelectorAll('.calendly-button').forEach(button => {
+        button.addEventListener('click', (e) => {
+          e.preventDefault();
+          if (!window.Calendly) {
+            loadCalendly();
+          }
+          Calendly.initPopupWidget({ url: 'https://calendly.com/hyper-creative/30min?hide_event_type_details=1&hide_gdpr_banner=1' });
+        });
+      });
+    </script>
     <!-- Navigation Component -->
     <Navigation />
 
