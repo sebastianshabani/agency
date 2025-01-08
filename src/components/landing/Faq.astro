@@ -1,76 +1,72 @@
 <div class="max-w-4xl mx-auto space-y-4 md:grid md:grid-cols-2 md:gap-6 md:space-y-0">
-  <details class="group-1 rounded-lg bg-gray-50 p-6 [&_summary::-webkit-details-marker]:hidden">
+  <details class="rounded-lg bg-gray-50 p-6 [&_summary::-webkit-details-marker]:hidden" data-faq>
     <summary class="flex cursor-pointer items-center justify-between gap-1.5 text-gray-900">
       <h2 class="font-medium">Item 1: Lorem ipsum dolor sit amet?</h2>
-      <div class="relative size-5 shrink-0">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          class="absolute inset-0 size-5 transition-opacity duration-300 opacity-100 group-1-open:opacity-0"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-          stroke-width="2"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
-          />
-        </svg>
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          class="absolute inset-0 size-5 transition-opacity duration-300 opacity-0 group-1-open:opacity-100"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-          stroke-width="2"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            d="M15 12H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
-          />
-        </svg>
-      </div>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="plus-icon size-5 shrink-0"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+        stroke-width="2"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
+        />
+      </svg>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="minus-icon size-5 shrink-0 hidden"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+        stroke-width="2"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M15 12H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
+        />
+      </svg>
     </summary>
     <p class="mt-4 leading-relaxed text-gray-700">
       Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab hic veritatis molestias culpa in!
     </p>
   </details>
 
-  <details class="group-2 rounded-lg bg-gray-50 p-6 [&_summary::-webkit-details-marker]:hidden">
+  <details class="rounded-lg bg-gray-50 p-6 [&_summary::-webkit-details-marker]:hidden" data-faq>
     <summary class="flex cursor-pointer items-center justify-between gap-1.5 text-gray-900">
       <h2 class="font-medium">Item 2: Consectetur adipisicing elit?</h2>
-      <div class="relative size-5 shrink-0">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          class="absolute inset-0 size-5 transition-opacity duration-300 opacity-100 group-2-open:opacity-0"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-          stroke-width="2"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
-          />
-        </svg>
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          class="absolute inset-0 size-5 transition-opacity duration-300 opacity-0 group-2-open:opacity-100"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-          stroke-width="2"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            d="M15 12H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
-          />
-        </svg>
-      </div>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="plus-icon size-5 shrink-0"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+        stroke-width="2"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
+        />
+      </svg>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="minus-icon size-5 shrink-0 hidden"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+        stroke-width="2"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M15 12H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
+        />
+      </svg>
     </summary>
     <p class="mt-4 leading-relaxed text-gray-700">
       Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae laboriosam neque aliquid libero!
@@ -78,17 +74,19 @@
   </details>
 </div>
 
-<style>
-  .group-1[open] :where(.group-1-open\:opacity-0) {
-    opacity: 0;
-  }
-  .group-1[open] :where(.group-1-open\:opacity-100) {
-    opacity: 1;
-  }
-  .group-2[open] :where(.group-2-open\:opacity-0) {
-    opacity: 0;
-  }
-  .group-2[open] :where(.group-2-open\:opacity-100) {
-    opacity: 1;
-  }
-</style>
+<script>
+  document.querySelectorAll('[data-faq]').forEach(details => {
+    const plusIcon = details.querySelector('.plus-icon');
+    const minusIcon = details.querySelector('.minus-icon');
+    
+    details.addEventListener('toggle', () => {
+      if (details.open) {
+        plusIcon.classList.add('hidden');
+        minusIcon.classList.remove('hidden');
+      } else {
+        plusIcon.classList.remove('hidden');
+        minusIcon.classList.add('hidden');
+      }
+    });
+  });
+</script>
