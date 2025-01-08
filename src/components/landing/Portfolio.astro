@@ -3,8 +3,8 @@
 import portfolioData from '../../data/portfolioData.json';
 ---
 
-<section class="portfolio-section border-b border-white/20 bg-accent-500 overflow-hidden relative"> <!-- Added relative to manage overflow -->
-  <div class="mx-auto max-w-7xl border-white/20 border-x px-8 py-8 gradient-grid">
+<section class="portfolio-section border-b border-white/20 bg-accent-500 overflow-hidden relative">
+  <div class="mx-auto max-w-7xl border-white/20 border-x px-8 py-8 gradient-grid overflow-hidden"> <!-- Added overflow-hidden here -->
     <div class="mx-auto text-center">
       <h3 class="text-3xl font-display text-white uppercase">
         {portfolioData.heading.title}
@@ -13,28 +13,28 @@ import portfolioData from '../../data/portfolioData.json';
         {portfolioData.heading.subtitle}
       </h3>
     </div>
-  </div>
 
-  <!-- Portfolio Marquee -->
-  <div class="portfolio-marquee-container scrollbar-hide overflow-hidden"> <!-- Added overflow-hidden to marquee container -->
-    <div class="portfolio-image-marquee gap-5"> <!-- Adjusted gap to 20px (1.25rem) -->
-      {portfolioData.images.map((image, index) => (
-        <img
-          key={index}
-          src={image}
-          alt={`Portfolio Image ${index + 1}`}
-          class="portfolio-image"
-        />
-      ))}
+    <!-- Portfolio Marquee -->
+    <div class="portfolio-marquee-container mx-auto max-w-7xl scrollbar-hide overflow-hidden"> <!-- Scoped to max-w-7xl -->
+      <div class="portfolio-image-marquee gap-5"> <!-- Adjusted gap to 20px (1.25rem) -->
+        {portfolioData.images.map((image, index) => (
+          <img
+            key={index}
+            src={image}
+            alt={`Portfolio Image ${index + 1}`}
+            class="portfolio-image"
+          />
+        ))}
 
-      {portfolioData.images.map((image, index) => (
-        <img
-          key={`duplicate-${index}`}
-          src={image}
-          alt={`Portfolio Image Duplicate ${index + 1}`}
-          class="portfolio-image"
-        />
-      ))}
+        {portfolioData.images.map((image, index) => (
+          <img
+            key={`duplicate-${index}`}
+            src={image}
+            alt={`Portfolio Image Duplicate ${index + 1}`}
+            class="portfolio-image"
+          />
+        ))}
+      </div>
     </div>
   </div>
 </section>
@@ -45,15 +45,40 @@ import portfolioData from '../../data/portfolioData.json';
     const marqueeAnimation = document.querySelector('.portfolio-image-marquee');
     if (!marqueeContainer || !marqueeAnimation) return;
 
+    // Infinite scrolling logic
+    const scrollWidth = marqueeAnimation.scrollWidth / 2;
+    const handleScroll = () => {
+      if (marqueeContainer.scrollLeft >= scrollWidth) {
+        marqueeContainer.scrollLeft = 0;
+      } else if (marqueeContainer.scrollLeft === 0) {
+        marqueeContainer.scrollLeft = scrollWidth;
+      }
+    };
+    marqueeContainer.addEventListener('scroll', handleScroll);
+
+    // Auto-scroll functionality
+    let autoScrollInterval = setInterval(() => {
+      marqueeContainer.scrollBy({ left: 1, behavior: 'smooth' });
+    }, 20);
+
+    // Pause auto-scroll on hover or drag
+    marqueeContainer.addEventListener('mouseenter', () => clearInterval(autoScrollInterval));
+    marqueeContainer.addEventListener('mouseleave', () => {
+      autoScrollInterval = setInterval(() => {
+        marqueeContainer.scrollBy({ left: 1, behavior: 'smooth' });
+      }, 20);
+    });
+
+    // Drag-to-scroll functionality
     let isDragging = false;
     let startX = 0;
     let scrollLeft = 0;
 
     const startDrag = (e) => {
       isDragging = true;
-      marqueeAnimation.style.animationPlayState = 'paused';
       startX = e.pageX || (e.touches?.[0]?.pageX ?? 0);
       scrollLeft = marqueeContainer.scrollLeft;
+      clearInterval(autoScrollInterval); // Pause auto-scroll while dragging
     };
 
     const onDrag = (e) => {
@@ -66,7 +91,10 @@ import portfolioData from '../../data/portfolioData.json';
     const stopDrag = () => {
       if (isDragging) {
         isDragging = false;
-        marqueeAnimation.style.animationPlayState = 'running';
+        // Restart auto-scroll after dragging
+        autoScrollInterval = setInterval(() => {
+          marqueeContainer.scrollBy({ left: 1, behavior: 'smooth' });
+        }, 20);
       }
     };
 

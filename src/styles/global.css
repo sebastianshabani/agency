@@ -116,7 +116,7 @@
   display: none;
 }
 
-/* Portfolio-Specific Styles */
+/* Portfolio*/
 .portfolio-marquee-container {
   width: 100%;
   overflow-x: auto;
@@ -126,13 +126,15 @@
   touch-action: pan-x;
   scroll-behavior: smooth;
 }
+
 .portfolio-image-marquee {
   animation: marquee 30s linear infinite;
   width: max-content;
-  max-width:100%;
+  max-width: 100%;
   display: flex;
-  gap: 4px;
+  gap: 20px; /* Adjusted gap to 20px */
 }
+
 .portfolio-image {
   width: 255px;
   height: 392px;
