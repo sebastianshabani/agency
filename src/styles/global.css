@@ -83,11 +83,19 @@
 /* Snap images to the start of the container */
 .image-marquee-animation img {
   scroll-snap-align: start; /* Snap images to the start of the container */
+<<<<<<< HEAD
+  width: 232px; /* Fixed width */
+  height: 72px; /* Fixed height */
+  object-fit: cover; /* Maintain aspect ratio */
+  border-radius: 12px; /* Rounded corners */
+  border: 1px solid black; /* Border styling */
+=======
   width: 255px; /* Fixed width */
   height: 392px; /* Fixed height */
   object-fit: cover; /* Maintain aspect ratio */
   border-radius: 12px; /* Rounded corners */
   border: 1px solid black; /* Border styling */
+>>>>>>> 63969bb1ae888ed8f816972832ce8020d84b8f6a
   flex-shrink: 0; /* Prevent images from shrinking */
 }
 
