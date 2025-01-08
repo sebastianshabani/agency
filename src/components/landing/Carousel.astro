@@ -3,43 +3,25 @@
 import carouselData from '../../data/carouselData.json';
 ---
 
-<section class="service-carousel relative w-full overflow-hidden py-4">
+<section class="carousel-section service-carousel relative w-full overflow-hidden py-4">
   <div class="mx-auto max-w-7xl">
     <div class="relative">
-      <!-- Gradient Overlays -->
       <div class="pointer-events-none absolute inset-0 z-10 flex w-full justify-between">
         <div class="w-44 bg-gradient-to-r from-[#1e1e1e] via-transparent to-transparent"></div>
         <div class="w-44 bg-gradient-to-l from-[#1e1e1e] via-transparent to-transparent"></div>
       </div>
 
       <!-- Marquee Container -->
-      <div class="marquee-container">
-        <div class="flex items-center image-marquee-animation gap-4 whitespace-nowrap">
-          <!-- Original Elements -->
+      <div class="carousel-marquee-container overflow-x-auto scrollbar-hide">
+        <div class="flex items-center carousel-image-marquee-animation gap-4 whitespace-nowrap">
           {carouselData.images.map((item) => (
-            <div class="flex items-center w-[232px] h-[72px] rounded-[12px] bg-[#EFF3E4] border border-[#1e1e1e]">
-              <div class="flex items-center ml-2">
-                <img
-                  src={item.src}
-                  alt={item.alt}
-                  class="w-[60px] h-[60px] rounded-[12px] object-cover"
-                />
-                <span class="ml-4 text-sm font-medium text-[#1e1e1e]">{item.alt}</span>
-              </div>
-            </div>
-          ))}
-
-          <!-- Duplicated Elements for continuous scroll -->
-          {carouselData.images.map((item) => (
-            <div class="flex items-center w-[232px] h-[72px] rounded-[12px] bg-[#EFF3E4] border border-[#1e1e1e]">
-              <div class="flex items-center ml-2">
-                <img
-                  src={item.src}
-                  alt={`${item.alt} duplicate`}
-                  class="w-[60px] h-[60px] rounded-[12px] object-cover"
-                />
-                <span class="ml-4 text-sm font-medium text-[#1e1e1e]">{item.alt}</span>
-              </div>
+            <div class="carousel-item">
+              <img
+                src={item.src}
+                alt={item.alt}
+                class="carousel-image"
+              />
+              <span class="carousel-text">{item.alt}</span>
             </div>
           ))}
         </div>
@@ -49,86 +31,27 @@ import carouselData from '../../data/carouselData.json';
 </section>
 
 <style>
-  /* Using the animation duration from your global.css */
-  .image-marquee-animation {
-    animation: marquee 15s linear infinite;
-    width: max-content;
+  /* Carousel-specific styles */
+  .carousel-item {
+    width: 232px;
+    height: 72px;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    border: 1px solid #1e1e1e;
+    background-color: #EFF3E4;
+    border-radius: 12px;
   }
-
-  /* The rest of the styles are already defined in your global.css */
+  .carousel-image {
+    width: 80px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 12px;
+  }
+  .carousel-text {
+    margin-left: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #1e1e1e;
+  }
 </style>
-
-<script>
-  interface DragEvent {
-    pageX: number;
-    touches?: { 0: { pageX: number } };
-  }
-
-  function handleDrag() {
-    const marqueeContainer = document.querySelector('.marquee-container') as HTMLElement;
-    const marqueeAnimation = document.querySelector('.image-marquee-animation') as HTMLElement;
-
-    if (!marqueeContainer || !marqueeAnimation) return;
-
-    let isDragging = false;
-    let startX = 0;
-    let scrollLeft = 0;
-
-    const startDrag = (e: MouseEvent | TouchEvent) => {
-      isDragging = true;
-      marqueeAnimation.style.animationPlayState = 'paused';
-      
-      if (e instanceof MouseEvent) {
-        startX = e.pageX;
-      } else if (e instanceof TouchEvent && e.touches[0]) {
-        startX = e.touches[0].pageX;
-      }
-      
-      scrollLeft = marqueeContainer.scrollLeft;
-    };
-
-    const onDrag = (e: MouseEvent | TouchEvent) => {
-      if (!isDragging) return;
-
-      let currentX = 0;
-      if (e instanceof MouseEvent) {
-        currentX = e.pageX;
-      } else if (e instanceof TouchEvent && e.touches[0]) {
-        currentX = e.touches[0].pageX;
-      }
-
-      const x = currentX - startX;
-      marqueeContainer.scrollLeft = scrollLeft - x;
-    };
-
-    const stopDrag = () => {
-      if (isDragging) {
-        isDragging = false;
-        marqueeAnimation.style.animationPlayState = 'running';
-      }
-    };
-
-    // Mouse events
-    marqueeContainer.addEventListener('mousedown', startDrag);
-    document.addEventListener('mousemove', onDrag);
-    document.addEventListener('mouseup', stopDrag);
-
-    // Touch events
-    marqueeContainer.addEventListener('touchstart', startDrag);
-    document.addEventListener('touchmove', onDrag);
-    document.addEventListener('touchend', stopDrag);
-
-    // Cleanup function
-    return () => {
-      marqueeContainer.removeEventListener('mousedown', startDrag);
-      document.removeEventListener('mousemove', onDrag);
-      document.removeEventListener('mouseup', stopDrag);
-      marqueeContainer.removeEventListener('touchstart', startDrag);
-      document.removeEventListener('touchend', stopDrag);
-      document.removeEventListener('touchmove', onDrag);
-    };
-  }
-
-  // Initialize drag functionality
-  document.addEventListener('DOMContentLoaded', handleDrag);
-</script>

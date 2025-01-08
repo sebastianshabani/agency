@@ -3,8 +3,7 @@
 import portfolioData from '../../data/portfolioData.json';
 ---
 
-<!-- Heading Section -->
-<section class="border-b border-white/20 bg-accent-500">
+<section class="portfolio-section border-b border-white/20 bg-accent-500">
   <div class="mx-auto max-w-7xl border-white/20 border-x px-8 py-8 gradient-grid overflow-hidden">
     <div class="mx-auto text-center">
       <h3 class="text-3xl font-display text-white uppercase">
@@ -15,140 +14,32 @@ import portfolioData from '../../data/portfolioData.json';
       </h3>
     </div>
   </div>
-</section>
 
-<!-- Carousel Section (Marquee) -->
-<section class="border-b border-white/20 bg-accent-500 service-carousel relative w-full overflow-hidden py-4">
-  <div class="mx-auto max-w-7xl">
-    <div class="relative">
-      <!-- Gradient Overlays (fade out edges) -->
-      <div class="pointer-events-none absolute inset-0 z-10 flex w-full justify-between">
-        <div class="w-44 bg-gradient-to-r from-[#1e1e1e] via-transparent to-transparent"></div>
-        <div class="w-44 bg-gradient-to-l from-[#1e1e1e] via-transparent to-transparent"></div>
-      </div>
-
-      <!-- Marquee Container -->
-      <div class="marquee-container overflow-x-auto scrollbar-hide" style="touch-action: pan-x;">
-        <!-- .image-marquee-animation is the animated wrapper -->
-        <div class="flex items-center image-marquee-animation gap-4 whitespace-nowrap">
-          <!-- Original Images -->
-          {portfolioData.images.map((image, index) => (
-            <img
-              key={index}
-              src={image}
-              alt={`work ${index + 1}`}
-              class="w-[255px] h-[392px] object-cover rounded-3xl border-t border-black lg:border-r"
-            />
-          ))}
-
-          <!-- Duplicated Images for continuous scroll -->
-          {portfolioData.images.map((image, index) => (
-            <img
-              key={`duplicate-${index}`}
-              src={image}
-              alt={`work ${index + 1} duplicate`}
-              class="w-[255px] h-[392px] object-cover rounded-3xl border-t border-black lg:border-r"
-            />
-          ))}
-        </div>
-      </div>
+  <!-- Marquee Container -->
+  <div class="portfolio-marquee-container overflow-x-auto scrollbar-hide">
+    <div class="flex items-center portfolio-image-marquee-animation gap-4 whitespace-nowrap">
+      {portfolioData.images.map((image, index) => (
+        <img
+          key={index}
+          src={image}
+          alt={`Portfolio Image ${index + 1}`}
+          class="portfolio-image"
+        />
+      ))}
     </div>
   </div>
-
-  <!-- "1000+ more" text -->
-  <div class="mx-auto max-w-7xl border-white/20 border-x px-8 py-2 text-center">
-    <p class="text-white text-lg font-display">{portfolioData.footerText}</p>
-  </div>
 </section>
 
-<!-- Inline Styles for Marquee and Drag -->
 <style>
-  /* Hide scrollbar for Chrome/Safari */
-  .scrollbar-hide::-webkit-scrollbar {
-    display: none;
-  }
-
-  /* Hide scrollbar for Firefox/Edge */
-  .scrollbar-hide {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-  }
-
-  /* Marquee Animation */
-  @keyframes marquee {
-    0% {
-      transform: translateX(0%);
-    }
-    100% {
-      transform: translateX(-50%);
-    }
-  }
-
-  /* Animated container (continuous scroll) */
-  .image-marquee-animation {
+  /* Portfolio-specific styles */
+  .portfolio-image-marquee-animation {
     animation: marquee 30s linear infinite;
-    width: max-content; /* Enough width for all images */
   }
-
-  /* Pause animation on hover */
-  .marquee-container:hover .image-marquee-animation {
-    animation-play-state: paused;
+  .portfolio-image {
+    width: 255px;
+    height: 392px;
+    object-fit: cover;
+    border-radius: 12px;
+    border: 1px solid black;
   }
 </style>
-
-<!-- Inline Script for Drag -->
-<script>
-  function handleDrag() {
-    const marqueeContainer = document.querySelector('.marquee-container');
-    const marqueeAnimation = document.querySelector('.image-marquee-animation');
-    if (!marqueeContainer || !marqueeAnimation) return;
-
-    let isDragging = false;
-    let startX = 0;
-    let scrollLeft = 0;
-
-    const startDrag = (e) => {
-      isDragging = true;
-      marqueeAnimation.style.animationPlayState = 'paused';
-      startX = e.pageX || (e.touches?.[0]?.pageX ?? 0);
-      scrollLeft = marqueeContainer.scrollLeft;
-    };
-
-    const onDrag = (e) => {
-      if (!isDragging) return;
-      const currentX = e.pageX || (e.touches?.[0]?.pageX ?? 0);
-      const x = currentX - startX;
-      marqueeContainer.scrollLeft = scrollLeft - x;
-    };
-
-    const stopDrag = () => {
-      if (isDragging) {
-        isDragging = false;
-        marqueeAnimation.style.animationPlayState = 'running';
-      }
-    };
-
-    // Mouse events
-    marqueeContainer.addEventListener('mousedown', startDrag);
-    document.addEventListener('mousemove', onDrag);
-    document.addEventListener('mouseup', stopDrag);
-
-    // Touch events
-    marqueeContainer.addEventListener('touchstart', startDrag);
-    document.addEventListener('touchmove', onDrag);
-    document.addEventListener('touchend', stopDrag);
-
-    // Cleanup if needed
-    return () => {
-      marqueeContainer.removeEventListener('mousedown', startDrag);
-      document.removeEventListener('mousemove', onDrag);
-      document.removeEventListener('mouseup', stopDrag);
-      marqueeContainer.removeEventListener('touchstart', startDrag);
-      document.removeEventListener('touchmove', onDrag);
-      document.removeEventListener('touchend', stopDrag);
-    };
-  }
-
-  // Initialize drag after DOM load
-  document.addEventListener('DOMContentLoaded', handleDrag);
-</script>
