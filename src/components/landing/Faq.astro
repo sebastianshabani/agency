@@ -22,10 +22,10 @@ const faqData = [
   }
 ];
 ---
-<!-- Use grid-auto-flow: column to create independent columns -->
-<section class="max-w-5xl mx-auto grid gap-6 grid-auto-flow:column md:grid-cols-2">
+<!-- Use CSS columns for independent column behavior -->
+<section class="max-w-5xl mx-auto columns-1 md:columns-2 gap-6">
   {faqData.map(({ id, question, answer }) => (
-    <div>
+    <div class="mb-6 break-inside-avoid">
       <details 
         id={`faq-${id}`} 
         class="group bg-gray-50 p-6 rounded-lg [&_summary::-webkit-details-marker]:hidden"
