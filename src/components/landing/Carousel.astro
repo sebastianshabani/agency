@@ -1,8 +1,3 @@
----
-// Import the JSON file for Carousel
-import carouselData from '../../data/carouselData.json';
----
-
 <section class="carousel-section service-carousel relative w-full overflow-hidden py-4">
   <div class="mx-auto max-w-7xl">
     <div class="relative">
@@ -13,7 +8,7 @@ import carouselData from '../../data/carouselData.json';
 
       <!-- Carousel Container -->
       <div class="carousel-marquee-container scrollbar-hide">
-        <div class="carousel-image-marquee gap-5" id="carousel-loop"> <!-- Adjusted gap to 20px (1.25rem) -->
+        <div class="carousel-image-marquee gap-5" id="carousel-loop">
           {carouselData.images.map((item, index) => (
             <div class="carousel-item" key={index}>
               <img
@@ -47,25 +42,46 @@ import carouselData from '../../data/carouselData.json';
     const marqueeAnimation = document.querySelector('#carousel-loop');
     if (!marqueeContainer || !marqueeAnimation) return;
 
+    // Enable smooth scrolling
+    marqueeContainer.style.overflowX = 'scroll';
+    marqueeContainer.style.scrollBehavior = 'smooth';
+
     // Looping logic for infinite scrolling
-    marqueeContainer.addEventListener('scroll', () => {
-      const scrollWidth = marqueeAnimation.scrollWidth / 2;
+    const scrollWidth = marqueeAnimation.scrollWidth / 2;
+
+    const checkScroll = () => {
       if (marqueeContainer.scrollLeft >= scrollWidth) {
         marqueeContainer.scrollLeft = 0;
       } else if (marqueeContainer.scrollLeft === 0) {
         marqueeContainer.scrollLeft = scrollWidth;
       }
+    };
+
+    marqueeContainer.addEventListener('scroll', checkScroll);
+
+    // Auto-scroll functionality
+    let autoScrollInterval = setInterval(() => {
+      marqueeContainer.scrollBy({ left: 1, behavior: 'smooth' });
+    }, 20);
+
+    // Pause auto-scroll on hover or drag
+    marqueeContainer.addEventListener('mouseenter', () => clearInterval(autoScrollInterval));
+    marqueeContainer.addEventListener('mouseleave', () => {
+      autoScrollInterval = setInterval(() => {
+        marqueeContainer.scrollBy({ left: 1, behavior: 'smooth' });
+      }, 20);
     });
 
+    // Drag functionality
     let isDragging = false;
     let startX = 0;
     let scrollLeft = 0;
 
     const startDrag = (e) => {
       isDragging = true;
-      marqueeAnimation.style.animationPlayState = 'paused';
       startX = e.pageX || (e.touches?.[0]?.pageX ?? 0);
       scrollLeft = marqueeContainer.scrollLeft;
+      clearInterval(autoScrollInterval); // Pause auto-scroll while dragging
     };
 
     const onDrag = (e) => {
@@ -78,7 +94,10 @@ import carouselData from '../../data/carouselData.json';
     const stopDrag = () => {
       if (isDragging) {
         isDragging = false;
-        marqueeAnimation.style.animationPlayState = 'running';
+        // Restart auto-scroll after dragging
+        autoScrollInterval = setInterval(() => {
+          marqueeContainer.scrollBy({ left: 1, behavior: 'smooth' });
+        }, 20);
       }
     };
 
