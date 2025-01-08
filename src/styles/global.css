@@ -29,6 +29,7 @@
   descent-override: 0%;
 }
 
+/* Marquee Animation */
 @keyframes marquee {
   0% {
     transform: translateX(0%);
@@ -82,8 +83,11 @@
 /* Snap images to the start of the container */
 .image-marquee-animation img {
   scroll-snap-align: start; /* Snap images to the start of the container */
-  width: 232px; /* Ensure images have a fixed width */
-  height: 72px; /* Ensure images have a fixed height */
+  width: 255px; /* Fixed width */
+  height: 392px; /* Fixed height */
+  object-fit: cover; /* Maintain aspect ratio */
+  border-radius: 12px; /* Rounded corners */
+  border: 1px solid black; /* Border styling */
   flex-shrink: 0; /* Prevent images from shrinking */
 }
 

@@ -37,7 +37,7 @@ import portfolioData from '../../data/portfolioData.json';
               key={index}
               src={image}
               alt={`work ${index + 1}`}
-              class="w-[255px] h-[392px] rounded-3xl border-t border-black lg:border-r"
+              class="w-[255px] h-[392px] object-cover rounded-3xl border-t border-black lg:border-r"
             />
           ))}
 
@@ -47,7 +47,7 @@ import portfolioData from '../../data/portfolioData.json';
               key={`duplicate-${index}`}
               src={image}
               alt={`work ${index + 1} duplicate`}
-              class="w-[255px] h-[392px] rounded-3xl border-t border-black lg:border-r"
+              class="w-[255px] h-[392px] object-cover rounded-3xl border-t border-black lg:border-r"
             />
           ))}
         </div>
