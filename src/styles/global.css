@@ -252,88 +252,36 @@
 .accordion-toggle:checked ~ .accordion-button .accordion-chevron {
   transform: rotate(180deg); /* Rotate the chevron when open */
 }
-/* Scoped Styles for UsVsThem */
-.us-vs-them .bg-dark-green {
-  background-color: #001e1c;
-}
-
-.us-vs-them .bg-light-green {
-  background-color: #d8ff85;
-}
-
-.us-vs-them .text-white {
-  color: #ffffff;
-}
-
-.us-vs-them .text-black {
-  color: #000000;
-}
-
-.us-vs-them .text-center {
-  text-align: center;
-}
-
-.us-vs-them .font-display {
-  font-family: Basement, sans-serif; /* Using your custom font */
-  font-weight: 700;
-}
-
-.us-vs-them .text-3xl {
-  font-size: 1.875rem;
-  line-height: 2.25rem;
-}
-
-.us-vs-them .md\:text-5xl {
-  font-size: 3rem;
-  line-height: 3.5rem;
-}
-
-.us-vs-them .table-auto {
-  width: auto;
+.us-vs-them table {
   border-collapse: collapse;
-}
-
-.us-vs-them .w-full {
   width: 100%;
 }
 
-.us-vs-them .p-4 {
-  padding: 1rem;
-}
-
-.us-vs-them .overflow-x-auto {
-  overflow-x: auto;
-}
-
-.us-vs-them .mt-10 {
-  margin-top: 2.5rem;
-}
-
-.us-vs-them .font-bold {
-  font-weight: 700;
-}
-
-.us-vs-them table th,
-.us-vs-them table td {
-  border: 1px solid rgba(255, 255, 255, 0.2); /* Light border */
-  padding: 15px;
-}
-
 .us-vs-them th {
+  text-align: center;
   font-weight: bold;
-  background-color: #d8ff85;
-  color: #001e1c;
-  text-align: left;
+  padding: 16px;
 }
 
 .us-vs-them td {
   text-align: center;
+  padding: 16px;
 }
 
-.us-vs-them tr:nth-child(odd) {
-  background-color: #002a27; /* Slightly darker green for rows */
+.us-vs-them tr:not(.bg-light-green):hover {
+  background-color: rgba(255, 255, 255, 0.05);
 }
 
-.us-vs-them tr:nth-child(even) {
-  background-color: #001e1c; /* Dark green for alternate rows */
+.us-vs-them .bg-light-green {
+  background-color: #32cd32; /* Light green */
+}
+
+.us-vs-them .rounded-l-full {
+  border-top-left-radius: 9999px;
+  border-bottom-left-radius: 9999px;
+}
+
+.us-vs-them .rounded-r-full {
+  border-top-right-radius: 9999px;
+  border-bottom-right-radius: 9999px;
 }
