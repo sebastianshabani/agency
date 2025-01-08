@@ -128,11 +128,11 @@
 }
 
 .portfolio-image-marquee {
-  animation: marquee 30s linear infinite;
+  animation: marquee 20s linear infinite;
   width: max-content;
   max-width: 100%;
   display: flex;
-  gap: 20px; /* Adjusted gap to 20px */
+  gap: 5px;
 }
 
 .portfolio-image {
