@@ -1,59 +1,72 @@
-<div class="max-w-4xl mx-auto space-y-4 md:grid md:grid-cols-2 md:gap-6 md:space-y-0">
-  <details class="rounded-lg bg-gray-50 p-6">
-    <summary class="flex cursor-pointer items-center justify-between gap-1.5 text-gray-900">
-      <h2 class="font-medium">Item 1: Lorem ipsum dolor sit amet?</h2>
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        class="size-5 shrink-0"
-        fill="none"
-        viewBox="0 0 24 24"
-        stroke="currentColor"
-        stroke-width="2"
-      >
-        <path
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
-        />
-      </svg>
-    </summary>
-    <p class="mt-4 leading-relaxed text-gray-700">
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab hic veritatis molestias culpa in!
-    </p>
-  </details>
+import { useState } from 'react';
+import { Plus, Minus } from 'lucide-react';
 
-  <details class="rounded-lg bg-gray-50 p-6">
-    <summary class="flex cursor-pointer items-center justify-between gap-1.5 text-gray-900">
-      <h2 class="font-medium">Item 2: Consectetur adipisicing elit?</h2>
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        class="size-5 shrink-0"
-        fill="none"
-        viewBox="0 0 24 24"
-        stroke="currentColor"
-        stroke-width="2"
-      >
-        <path
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
-        />
-      </svg>
-    </summary>
-    <p class="mt-4 leading-relaxed text-gray-700">
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae laboriosam neque aliquid libero!
-    </p>
-  </details>
-</div>
+const faqData = [
+  {
+    id: 1,
+    question: "What is Lorem Ipsum?",
+    answer: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s."
+  },
+  {
+    id: 2,
+    question: "Where does it come from?",
+    answer: "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC."
+  },
+  {
+    id: 3,
+    question: "Why do we use it?",
+    answer: "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout."
+  },
+  {
+    id: 4,
+    question: "When should we use Lorem Ipsum?",
+    answer: "Lorem Ipsum is simply dummy text used when you need to fill space without using meaningful content during the design phase."
+  }
+];
 
-<style>
-  details > summary {
-    list-style: none;
-  }
-  details[open] svg {
-    transform: rotate(45deg);
-  }
-  details svg {
-    transition: transform 0.2s;
-  }
-</style>
+export default function FAQ() {
+  const [openItems, setOpenItems] = useState(new Set());
+
+  const toggleItem = (id) => {
+    setOpenItems(prev => {
+      const newSet = new Set(prev);
+      if (newSet.has(id)) {
+        newSet.delete(id);
+      } else {
+        newSet.add(id);
+      }
+      return newSet;
+    });
+  };
+
+  return (
+    <div className="max-w-4xl mx-auto">
+      <div className="grid md:grid-cols-2 gap-6">
+        {faqData.map(({ id, question, answer }) => (
+          <div 
+            key={id}
+            className="bg-gray-50 rounded-lg p-6"
+          >
+            <button
+              onClick={() => toggleItem(id)}
+              className="w-full flex justify-between items-center gap-4 text-left"
+            >
+              <h3 className="font-medium text-gray-900">{question}</h3>
+              {openItems.has(id) ? (
+                <Minus className="h-5 w-5 flex-shrink-0 text-gray-900" />
+              ) : (
+                <Plus className="h-5 w-5 flex-shrink-0 text-gray-900" />
+              )}
+            </button>
+            
+            {openItems.has(id) && (
+              <p className="mt-4 text-gray-700 leading-relaxed">
+                {answer}
+              </p>
+            )}
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
