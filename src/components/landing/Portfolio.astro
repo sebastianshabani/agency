@@ -3,7 +3,7 @@
 import portfolioData from '../../data/portfolioData.json';
 ---
 
-<section class="portfolio-section border-b border-white/20 bg-accent-500 overflow-hidden"> <!-- Added overflow-hidden -->
+<section class="portfolio-section border-b border-white/20 bg-accent-500 overflow-hidden relative"> <!-- Added relative to manage overflow -->
   <div class="mx-auto max-w-7xl border-white/20 border-x px-8 py-8 gradient-grid">
     <div class="mx-auto text-center">
       <h3 class="text-3xl font-display text-white uppercase">
@@ -16,7 +16,7 @@ import portfolioData from '../../data/portfolioData.json';
   </div>
 
   <!-- Portfolio Marquee -->
-  <div class="portfolio-marquee-container scrollbar-hide">
+  <div class="portfolio-marquee-container scrollbar-hide overflow-hidden"> <!-- Added overflow-hidden to marquee container -->
     <div class="portfolio-image-marquee gap-5"> <!-- Adjusted gap to 20px (1.25rem) -->
       {portfolioData.images.map((image, index) => (
         <img

@@ -13,7 +13,7 @@ import carouselData from '../../data/carouselData.json';
 
       <!-- Carousel Container -->
       <div class="carousel-marquee-container scrollbar-hide">
-        <div class="carousel-image-marquee gap-5"> <!-- Adjusted gap to 20px (1.25rem) -->
+        <div class="carousel-image-marquee gap-5" id="carousel-loop"> <!-- Adjusted gap to 20px (1.25rem) -->
           {carouselData.images.map((item, index) => (
             <div class="carousel-item" key={index}>
               <img
@@ -44,8 +44,18 @@ import carouselData from '../../data/carouselData.json';
 <script>
   document.addEventListener('DOMContentLoaded', () => {
     const marqueeContainer = document.querySelector('.carousel-marquee-container');
-    const marqueeAnimation = document.querySelector('.carousel-image-marquee');
+    const marqueeAnimation = document.querySelector('#carousel-loop');
     if (!marqueeContainer || !marqueeAnimation) return;
+
+    // Looping logic for infinite scrolling
+    marqueeContainer.addEventListener('scroll', () => {
+      const scrollWidth = marqueeAnimation.scrollWidth / 2;
+      if (marqueeContainer.scrollLeft >= scrollWidth) {
+        marqueeContainer.scrollLeft = 0;
+      } else if (marqueeContainer.scrollLeft === 0) {
+        marqueeContainer.scrollLeft = scrollWidth;
+      }
+    });
 
     let isDragging = false;
     let startX = 0;
