@@ -3,42 +3,39 @@ const faqData = [
   {
     id: 1,
     question: "What is Lorem Ipsum?",
-    answer: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s."
+    answer: "Lorem Ipsum is simply dummy text of the printing and typesetting industry."
   },
   {
     id: 2,
     question: "Where does it come from?",
-    answer: "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC."
+    answer: "Contrary to popular belief, Lorem Ipsum is not simply random text."
   },
   {
     id: 3,
     question: "Why do we use it?",
-    answer: "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout."
+    answer: "It is a long established fact that a reader will be distracted by the readable content."
   },
   {
     id: 4,
     question: "When should we use Lorem Ipsum?",
-    answer: "Lorem Ipsum is simply dummy text used when you need to fill space without using meaningful content during the design phase."
+    answer: "Lorem Ipsum is used when you need to fill space during the design phase."
   }
 ];
 ---
 
-<section class="max-w-5xl mx-auto grid gap-6 sm:grid-cols-1 md:grid-cols-2 relative">
-  {faqData.map(({ id, question, answer }, index) => (
-    <div
-      class={`mb-6 ${index >= faqData.length / 2 ? 'md:absolute md:left-[calc(50%+12px)]' : ''}`}
-      style={index >= faqData.length / 2 ? { top: `${(index - faqData.length / 2) * 120}px` } : {}}
-    >
+<section class="max-w-5xl mx-auto grid gap-6 md:grid-cols-2">
+  {faqData.map(({ id, question, answer }) => (
+    <div class="mb-6">
       <details
         id={`faq-${id}`}
-        class="group bg-gray-50 p-6 rounded-lg [&_summary::-webkit-details-marker]:hidden"
+        class="group bg-gray-50 p-6 rounded-lg"
       >
-        <summary class="flex cursor-pointer justify-between items-center text-gray-900">
+        <summary class="flex cursor-pointer justify-between items-center">
           <h3 class="font-medium">{question}</h3>
-          <span class="relative size-5 shrink-0">
+          <span class="relative w-5 h-5">
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              class="absolute inset-0 size-5 opacity-100 group-open:opacity-0"
+              class="absolute inset-0 w-5 h-5 opacity-100 group-open:opacity-0"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -47,21 +44,7 @@ const faqData = [
               <path 
                 stroke-linecap="round" 
                 stroke-linejoin="round" 
-                d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" 
-              />
-            </svg>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              class="absolute inset-0 size-5 opacity-0 group-open:opacity-100"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              stroke-width="2"
-            >
-              <path 
-                stroke-linecap="round" 
-                stroke-linejoin="round" 
-                d="M15 12H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" 
+                d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
               />
             </svg>
           </span>
