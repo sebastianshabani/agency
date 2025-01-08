@@ -12,7 +12,7 @@ import faqData from '../../data/faqData.json';
     </h2>
 
     <!-- FAQ Section -->
-    <div class="flow-root">
+    <div class="flow-root mt-10"> <!-- Added mt-10 for spacing below the heading -->
       <div class="-my-8 divide-y divide-gray-100 dark:divide-gray-800">
         {faqData.map(({ id, question, answer }) => (
           <details key={id} class="group py-8 [&_summary::-webkit-details-marker]:hidden">
@@ -57,5 +57,8 @@ import faqData from '../../data/faqData.json';
         ))}
       </div>
     </div>
+
+    <!-- Add padding below the FAQ section -->
+    <div class="mt-10"></div> <!-- Added mt-10 for spacing below the FAQ items -->
   </div>
 </section>
