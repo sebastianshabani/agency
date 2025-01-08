@@ -89,7 +89,8 @@
 .carousel-item {
   display: flex;
   align-items: center;
-  width: 232px;
+  width: auto; /* Allow width to adjust dynamically */
+  min-width: 232px; /* Ensure a minimum width */
   height: 72px;
   background-color: #EFF3E4; /* Light green background */
   border-radius: 12px;
@@ -97,6 +98,7 @@
   padding: 8px;
   gap: 12px; /* Spacing between image and text */
   overflow: hidden; /* Prevent overflow */
+  flex-shrink: 0; /* Prevent shrinking */
 }
 
 .carousel-image {
@@ -104,11 +106,14 @@
   height: 56px;
   border-radius: 12px; /* Rounded corners for images */
   object-fit: cover; /* Ensure proper scaling */
+  flex-shrink: 0; /* Prevent shrinking */
 }
 .carousel-text {
   font-size: 16px;
   font-weight: 500;
   color: #1e1e1e;
+  white-space: nowrap; /* Prevent line breaks */
+  flex-shrink: 0; /* Prevent text from shrinking */
 }
 
 /* Hide scrollbar for Chrome/Safari */
@@ -128,7 +133,7 @@
 }
 
 .portfolio-image-marquee {
-  animation: marquee 20s linear infinite;
+  animation: marquee 40s linear infinite;
   width: max-content;
   max-width: 100%;
   display: flex;
