@@ -45,8 +45,9 @@ import portfolioData from '../../data/portfolioData.json';
     const marqueeAnimation = document.querySelector('.portfolio-image-marquee');
     if (!marqueeContainer || !marqueeAnimation) return;
 
-    // Infinite scrolling logic
     const scrollWidth = marqueeAnimation.scrollWidth / 2;
+
+    // Infinite scrolling logic
     const handleScroll = () => {
       if (marqueeContainer.scrollLeft >= scrollWidth) {
         marqueeContainer.scrollLeft = 0;
@@ -56,18 +57,24 @@ import portfolioData from '../../data/portfolioData.json';
     };
     marqueeContainer.addEventListener('scroll', handleScroll);
 
-    // Auto-scroll functionality
-    let autoScrollInterval = setInterval(() => {
-      marqueeContainer.scrollBy({ left: 1, behavior: 'smooth' });
-    }, 20);
+    // Smooth auto-scroll using requestAnimationFrame
+    let isScrolling = true;
+
+    const autoScroll = () => {
+      if (isScrolling) {
+        marqueeContainer.scrollBy({ left: 1, behavior: 'smooth' });
+      }
+      requestAnimationFrame(autoScroll);
+    };
+
+    autoScroll(); // Start auto-scroll
 
     // Pause auto-scroll on hover or drag
-    marqueeContainer.addEventListener('mouseenter', () => clearInterval(autoScrollInterval));
-    marqueeContainer.addEventListener('mouseleave', () => {
-      autoScrollInterval = setInterval(() => {
-        marqueeContainer.scrollBy({ left: 1, behavior: 'smooth' });
-      }, 20);
-    });
+    const stopAutoScroll = () => (isScrolling = false);
+    const startAutoScroll = () => (isScrolling = true);
+
+    marqueeContainer.addEventListener('mouseenter', stopAutoScroll);
+    marqueeContainer.addEventListener('mouseleave', startAutoScroll);
 
     // Drag-to-scroll functionality
     let isDragging = false;
@@ -78,7 +85,7 @@ import portfolioData from '../../data/portfolioData.json';
       isDragging = true;
       startX = e.pageX || (e.touches?.[0]?.pageX ?? 0);
       scrollLeft = marqueeContainer.scrollLeft;
-      clearInterval(autoScrollInterval); // Pause auto-scroll while dragging
+      stopAutoScroll(); // Pause auto-scroll while dragging
     };
 
     const onDrag = (e) => {
@@ -91,10 +98,7 @@ import portfolioData from '../../data/portfolioData.json';
     const stopDrag = () => {
       if (isDragging) {
         isDragging = false;
-        // Restart auto-scroll after dragging
-        autoScrollInterval = setInterval(() => {
-          marqueeContainer.scrollBy({ left: 1, behavior: 'smooth' });
-        }, 20);
+        startAutoScroll(); // Restart auto-scroll after dragging
       }
     };
 
