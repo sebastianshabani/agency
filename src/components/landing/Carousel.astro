@@ -1,5 +1,5 @@
 ---
-// Import the JSON file
+// Import the JSON file for Carousel
 import carouselData from '../../data/carouselData.json';
 ---
 
@@ -11,10 +11,9 @@ import carouselData from '../../data/carouselData.json';
         <div class="w-44 bg-gradient-to-l from-[#1e1e1e] via-transparent to-transparent"></div>
       </div>
 
-      <!-- Marquee Container -->
-      <div class="carousel-marquee-container overflow-x-auto scrollbar-hide">
-        <div class="flex items-center carousel-image-marquee-animation gap-4 whitespace-nowrap">
-          <!-- Original Elements -->
+      <!-- Carousel Container -->
+      <div class="carousel-marquee-container scrollbar-hide">
+        <div class="carousel-image-marquee">
           {carouselData.images.map((item, index) => (
             <div class="carousel-item" key={index}>
               <img
@@ -25,7 +24,7 @@ import carouselData from '../../data/carouselData.json';
               <span class="carousel-text">{item.alt}</span>
             </div>
           ))}
-          <!-- Duplicated Elements -->
+
           {carouselData.images.map((item, index) => (
             <div class="carousel-item" key={`duplicate-${index}`}>
               <img
@@ -42,30 +41,43 @@ import carouselData from '../../data/carouselData.json';
   </div>
 </section>
 
-<style>
-  .carousel-item {
-    width: 232px;
-    height: 72px;
-    display: flex;
-    align-items: center;
-    justify-content: start;
-    border: 1px solid #1e1e1e;
-    background-color: #EFF3E4;
-    border-radius: 12px;
-  }
-  .carousel-image {
-    width: 80px;
-    height: 60px;
-    object-fit: cover;
-    border-radius: 12px;
-  }
-  .carousel-text {
-    margin-left: 8px;
-    font-size: 14px;
-    font-weight: 500;
-    color: #1e1e1e;
-  }
-  .carousel-image-marquee-animation {
-    animation: marquee 15s linear infinite;
-  }
-</style>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const marqueeContainer = document.querySelector('.carousel-marquee-container');
+    const marqueeAnimation = document.querySelector('.carousel-image-marquee');
+    if (!marqueeContainer || !marqueeAnimation) return;
+
+    let isDragging = false;
+    let startX = 0;
+    let scrollLeft = 0;
+
+    const startDrag = (e) => {
+      isDragging = true;
+      marqueeAnimation.style.animationPlayState = 'paused';
+      startX = e.pageX || (e.touches?.[0]?.pageX ?? 0);
+      scrollLeft = marqueeContainer.scrollLeft;
+    };
+
+    const onDrag = (e) => {
+      if (!isDragging) return;
+      const currentX = e.pageX || (e.touches?.[0]?.pageX ?? 0);
+      const x = currentX - startX;
+      marqueeContainer.scrollLeft = scrollLeft - x;
+    };
+
+    const stopDrag = () => {
+      if (isDragging) {
+        isDragging = false;
+        marqueeAnimation.style.animationPlayState = 'running';
+      }
+    };
+
+    marqueeContainer.addEventListener('mousedown', startDrag);
+    document.addEventListener('mousemove', onDrag);
+    document.addEventListener('mouseup', stopDrag);
+
+    marqueeContainer.addEventListener('touchstart', startDrag);
+    document.addEventListener('touchmove', onDrag);
+    document.addEventListener('touchend', stopDrag);
+  });
+</script>

@@ -1,5 +1,6 @@
 ---
-// Import the JSON file
+
+// Import the JSON file for Portfolio
 import portfolioData from '../../data/portfolioData.json';
 ---
 
@@ -15,10 +16,9 @@ import portfolioData from '../../data/portfolioData.json';
     </div>
   </div>
 
-  <!-- Marquee Container -->
-  <div class="portfolio-marquee-container overflow-x-auto scrollbar-hide">
-    <div class="flex items-center portfolio-image-marquee-animation gap-4 whitespace-nowrap">
-      <!-- Original Images -->
+  <!-- Portfolio Marquee -->
+  <div class="portfolio-marquee-container scrollbar-hide">
+    <div class="portfolio-image-marquee">
       {portfolioData.images.map((image, index) => (
         <img
           key={index}
@@ -27,7 +27,7 @@ import portfolioData from '../../data/portfolioData.json';
           class="portfolio-image"
         />
       ))}
-      <!-- Duplicated Images for Seamless Scrolling -->
+
       {portfolioData.images.map((image, index) => (
         <img
           key={`duplicate-${index}`}
@@ -40,27 +40,10 @@ import portfolioData from '../../data/portfolioData.json';
   </div>
 </section>
 
-<style>
-  .portfolio-section .portfolio-image {
-    width: 255px;
-    height: 392px;
-    object-fit: cover;
-    border-radius: 12px;
-    border: 1px solid black;
-  }
-  .portfolio-image-marquee-animation {
-    animation: marquee 30s linear infinite;
-    display: flex;
-  }
-  .portfolio-marquee-container:hover .portfolio-image-marquee-animation {
-    animation-play-state: paused;
-  }
-</style>
-
 <script>
   document.addEventListener('DOMContentLoaded', () => {
     const marqueeContainer = document.querySelector('.portfolio-marquee-container');
-    const marqueeAnimation = document.querySelector('.portfolio-image-marquee-animation');
+    const marqueeAnimation = document.querySelector('.portfolio-image-marquee');
     if (!marqueeContainer || !marqueeAnimation) return;
 
     let isDragging = false;
