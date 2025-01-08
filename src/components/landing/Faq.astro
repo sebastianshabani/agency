@@ -4,6 +4,12 @@ import faqData from '../../data/faqData.json';
 ---
 
 <div class="max-w-3xl mx-auto">
+  <!-- Custom Centered Heading -->
+  <h2 class="text-white font-display uppercase text-xl lg:text-3xl text-center">
+    Frequently Asked Questions
+  </h2>
+
+  <!-- FAQ Section -->
   <div class="flow-root">
     <div class="-my-8 divide-y divide-gray-100 dark:divide-gray-800">
       {faqData.map(({ id, question, answer }) => (
