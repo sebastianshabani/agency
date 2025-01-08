@@ -14,11 +14,23 @@ import carouselData from '../../data/carouselData.json';
       <!-- Marquee Container -->
       <div class="carousel-marquee-container overflow-x-auto scrollbar-hide">
         <div class="flex items-center carousel-image-marquee-animation gap-4 whitespace-nowrap">
-          {carouselData.images.map((item) => (
-            <div class="carousel-item">
+          <!-- Original Elements -->
+          {carouselData.images.map((item, index) => (
+            <div class="carousel-item" key={index}>
               <img
                 src={item.src}
                 alt={item.alt}
+                class="carousel-image"
+              />
+              <span class="carousel-text">{item.alt}</span>
+            </div>
+          ))}
+          <!-- Duplicated Elements -->
+          {carouselData.images.map((item, index) => (
+            <div class="carousel-item" key={`duplicate-${index}`}>
+              <img
+                src={item.src}
+                alt={`${item.alt} Duplicate`}
                 class="carousel-image"
               />
               <span class="carousel-text">{item.alt}</span>
@@ -31,7 +43,6 @@ import carouselData from '../../data/carouselData.json';
 </section>
 
 <style>
-  /* Carousel-specific styles */
   .carousel-item {
     width: 232px;
     height: 72px;
@@ -53,5 +64,8 @@ import carouselData from '../../data/carouselData.json';
     font-size: 14px;
     font-weight: 500;
     color: #1e1e1e;
+  }
+  .carousel-image-marquee-animation {
+    animation: marquee 15s linear infinite;
   }
 </style>

@@ -18,6 +18,7 @@ import portfolioData from '../../data/portfolioData.json';
   <!-- Marquee Container -->
   <div class="portfolio-marquee-container overflow-x-auto scrollbar-hide">
     <div class="flex items-center portfolio-image-marquee-animation gap-4 whitespace-nowrap">
+      <!-- Original Images -->
       {portfolioData.images.map((image, index) => (
         <img
           key={index}
@@ -26,20 +27,73 @@ import portfolioData from '../../data/portfolioData.json';
           class="portfolio-image"
         />
       ))}
+      <!-- Duplicated Images for Seamless Scrolling -->
+      {portfolioData.images.map((image, index) => (
+        <img
+          key={`duplicate-${index}`}
+          src={image}
+          alt={`Portfolio Image Duplicate ${index + 1}`}
+          class="portfolio-image"
+        />
+      ))}
     </div>
   </div>
 </section>
 
 <style>
-  /* Portfolio-specific styles */
-  .portfolio-image-marquee-animation {
-    animation: marquee 30s linear infinite;
-  }
-  .portfolio-image {
+  .portfolio-section .portfolio-image {
     width: 255px;
     height: 392px;
     object-fit: cover;
     border-radius: 12px;
     border: 1px solid black;
   }
+  .portfolio-image-marquee-animation {
+    animation: marquee 30s linear infinite;
+    display: flex;
+  }
+  .portfolio-marquee-container:hover .portfolio-image-marquee-animation {
+    animation-play-state: paused;
+  }
 </style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const marqueeContainer = document.querySelector('.portfolio-marquee-container');
+    const marqueeAnimation = document.querySelector('.portfolio-image-marquee-animation');
+    if (!marqueeContainer || !marqueeAnimation) return;
+
+    let isDragging = false;
+    let startX = 0;
+    let scrollLeft = 0;
+
+    const startDrag = (e) => {
+      isDragging = true;
+      marqueeAnimation.style.animationPlayState = 'paused';
+      startX = e.pageX || (e.touches?.[0]?.pageX ?? 0);
+      scrollLeft = marqueeContainer.scrollLeft;
+    };
+
+    const onDrag = (e) => {
+      if (!isDragging) return;
+      const currentX = e.pageX || (e.touches?.[0]?.pageX ?? 0);
+      const x = currentX - startX;
+      marqueeContainer.scrollLeft = scrollLeft - x;
+    };
+
+    const stopDrag = () => {
+      if (isDragging) {
+        isDragging = false;
+        marqueeAnimation.style.animationPlayState = 'running';
+      }
+    };
+
+    marqueeContainer.addEventListener('mousedown', startDrag);
+    document.addEventListener('mousemove', onDrag);
+    document.addEventListener('mouseup', stopDrag);
+
+    marqueeContainer.addEventListener('touchstart', startDrag);
+    document.addEventListener('touchmove', onDrag);
+    document.addEventListener('touchend', stopDrag);
+  });
+</script>
