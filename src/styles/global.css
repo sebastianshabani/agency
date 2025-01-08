@@ -228,30 +228,6 @@
 .splide {
   padding-bottom: 1rem; /* Adjust this value to create space for the pagination */
 }
-.accordion-toggle {
-  display: none; /* Hide the checkbox */
-}
-
-.accordion-button {
-  background-color: transparent;
-  color: white;
-  font-weight: bold;
-}
-.accordion-button:hover {
-  background-color: rgba(255, 255, 255, 0.1);
-}
-
-.accordion-content {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.3s ease-out;
-}
-.accordion-toggle:checked ~ .accordion-content {
-  max-height: 200px; /* Adjust based on your content */
-}
-.accordion-toggle:checked ~ .accordion-button .accordion-chevron {
-  transform: rotate(180deg); /* Rotate the chevron when open */
-}
 .us-vs-them table {
   border-collapse: collapse;
   width: 100%;
