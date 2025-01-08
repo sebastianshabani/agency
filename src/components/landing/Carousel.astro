@@ -13,7 +13,7 @@ import carouselData from '../../data/carouselData.json';
 
       <!-- Carousel Container -->
       <div class="carousel-marquee-container scrollbar-hide">
-        <div class="carousel-image-marquee">
+        <div class="carousel-image-marquee gap-5"> <!-- Adjusted gap to 20px (1.25rem) -->
           {carouselData.images.map((item, index) => (
             <div class="carousel-item" key={index}>
               <img

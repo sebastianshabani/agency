@@ -1,11 +1,10 @@
 ---
-
 // Import the JSON file for Portfolio
 import portfolioData from '../../data/portfolioData.json';
 ---
 
-<section class="portfolio-section border-b border-white/20 bg-accent-500">
-  <div class="mx-auto max-w-7xl border-white/20 border-x px-8 py-8 gradient-grid overflow-hidden">
+<section class="portfolio-section border-b border-white/20 bg-accent-500 overflow-hidden"> <!-- Added overflow-hidden -->
+  <div class="mx-auto max-w-7xl border-white/20 border-x px-8 py-8 gradient-grid">
     <div class="mx-auto text-center">
       <h3 class="text-3xl font-display text-white uppercase">
         {portfolioData.heading.title}
@@ -18,7 +17,7 @@ import portfolioData from '../../data/portfolioData.json';
 
   <!-- Portfolio Marquee -->
   <div class="portfolio-marquee-container scrollbar-hide">
-    <div class="portfolio-image-marquee">
+    <div class="portfolio-image-marquee gap-5"> <!-- Adjusted gap to 20px (1.25rem) -->
       {portfolioData.images.map((image, index) => (
         <img
           key={index}
