@@ -101,7 +101,7 @@
 
 .carousel-image {
   width: 80px;
-  height: 60px;
+  height: 56px;
   border-radius: 12px; /* Rounded corners for images */
   object-fit: cover; /* Ensure proper scaling */
 }
@@ -118,6 +118,7 @@
 
 /* Portfolio-Specific Styles */
 .portfolio-marquee-container {
+  width: 100%;
   overflow-x: auto;
   scrollbar-width: none;
   -ms-overflow-style: none;
@@ -127,6 +128,8 @@
 }
 .portfolio-image-marquee {
   animation: marquee 30s linear infinite;
+  width: max-content;
+  max-width:100%;
   display: flex;
   gap: 4px;
 }
