@@ -57,3 +57,19 @@ const faqData = [
     </details>
   ))}
 </section>
+
+<!-- Add this script to ensure independent behavior -->
+<script>
+  document.querySelectorAll('details').forEach((detail) => {
+    detail.addEventListener('toggle', () => {
+      if (detail.open) {
+        // Close all other details elements
+        document.querySelectorAll('details').forEach((otherDetail) => {
+          if (otherDetail !== detail) {
+            otherDetail.open = false;
+          }
+        });
+      }
+    });
+  });
+</script>
