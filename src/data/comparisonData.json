@@ -1,0 +1,31 @@
+{
+    "title": "Hiring or traditional outsourcing? <em>Neither.</em>",
+    "columns": ["", "Speed", "Flexibility", "Quality", "Scalability", "Cost-effectiveness"],
+    "rows": [
+      {
+        "label": "HYPER",
+        "class": "bg-light-green text-black rounded-full",
+        "cells": ["✔", "✔", "✔", "✔", "✔"]
+      },
+      {
+        "label": "In-house team",
+        "class": "",
+        "cells": ["✘", "✘", "✔", "✔", "✘"]
+      },
+      {
+        "label": "Creative agencies",
+        "class": "",
+        "cells": ["✘", "✘", "✔", "✔", "✘"]
+      },
+      {
+        "label": "Freelancers",
+        "class": "",
+        "cells": ["✘", "✘", "✘", "✔", "✔"]
+      },
+      {
+        "label": "Self-service tools",
+        "class": "",
+        "cells": ["✘", "✘", "✘", "✔", "✘"]
+      }
+    ]
+  }
