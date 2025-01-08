@@ -13,26 +13,34 @@ import carouselData from '../../data/carouselData.json';
       </div>
 
       <!-- Marquee Container -->
-      <div class="marquee-container overflow-x-auto scrollbar-hide">
+      <div class="marquee-container">
         <div class="flex items-center image-marquee-animation gap-4 whitespace-nowrap">
-          <!-- Original Images -->
-          {carouselData.images.map((image, index) => (
-            <img
-              key={index}
-              src={image.src}
-              alt={image.alt}
-              class="w-[232px] h-[72px] rounded-full"
-            />
+          <!-- Original Elements -->
+          {carouselData.images.map((item) => (
+            <div class="flex items-center w-[232px] h-[72px] rounded-[12px] bg-[#EFF3E4] border border-[#1e1e1e]">
+              <div class="flex items-center ml-2">
+                <img
+                  src={item.src}
+                  alt={item.alt}
+                  class="w-[60px] h-[60px] rounded-[12px] object-cover"
+                />
+                <span class="ml-4 text-sm font-medium text-[#1e1e1e]">{item.alt}</span>
+              </div>
+            </div>
           ))}
 
-          <!-- Duplicated Images for continuous scroll -->
-          {carouselData.images.map((image, index) => (
-            <img
-              key={`duplicate-${index}`}
-              src={image.src}
-              alt={`${image.alt} duplicate`}
-              class="w-[232px] h-[72px] rounded-full"
-            />
+          <!-- Duplicated Elements for continuous scroll -->
+          {carouselData.images.map((item) => (
+            <div class="flex items-center w-[232px] h-[72px] rounded-[12px] bg-[#EFF3E4] border border-[#1e1e1e]">
+              <div class="flex items-center ml-2">
+                <img
+                  src={item.src}
+                  alt={`${item.alt} duplicate`}
+                  class="w-[60px] h-[60px] rounded-[12px] object-cover"
+                />
+                <span class="ml-4 text-sm font-medium text-[#1e1e1e]">{item.alt}</span>
+              </div>
+            </div>
           ))}
         </div>
       </div>
@@ -41,45 +49,13 @@ import carouselData from '../../data/carouselData.json';
 </section>
 
 <style>
-  /* Hide scrollbar */
-  .scrollbar-hide::-webkit-scrollbar {
-    display: none;
-  }
-  
-  .scrollbar-hide {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-  }
-
-  /* Marquee Animation */
-  @keyframes marquee {
-    0% {
-      transform: translateX(0%);
-    }
-    100% {
-      transform: translateX(-50%);
-    }
-  }
-
+  /* Using the animation duration from your global.css */
   .image-marquee-animation {
-    animation: marquee 30s linear infinite;
+    animation: marquee 15s linear infinite;
     width: max-content;
   }
 
-  /* Pause on hover */
-  .marquee-container:hover .image-marquee-animation {
-    animation-play-state: paused;
-  }
-
-  /* Snap scrolling */
-  .marquee-container {
-    scroll-snap-type: x mandatory;
-    touch-action: pan-x;
-  }
-
-  .marquee-container > * {
-    scroll-snap-align: start;
-  }
+  /* The rest of the styles are already defined in your global.css */
 </style>
 
 <script>
@@ -148,8 +124,8 @@ import carouselData from '../../data/carouselData.json';
       document.removeEventListener('mousemove', onDrag);
       document.removeEventListener('mouseup', stopDrag);
       marqueeContainer.removeEventListener('touchstart', startDrag);
-      document.removeEventListener('touchmove', onDrag);
       document.removeEventListener('touchend', stopDrag);
+      document.removeEventListener('touchmove', onDrag);
     };
   }
 

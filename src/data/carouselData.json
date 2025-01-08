@@ -1,24 +1,29 @@
 {
-    "images": [
-      {
-        "src": "/images/image1.jpg",
-        "alt": "Tiktok Ads"
-      },
-      {
-        "src": "/images/image2.jpg",
-        "alt": "Gaming Ads"
-      },
-      {
-        "src": "/images/image3.jpg",
-        "alt": "Native Ads"
-      },
-      {
-        "src": "/images/image4.jpg",
-        "alt": "Social Media Ads"
-      },
-      {
-        "src": "/images/image5.jpg",
-        "alt": "Landing Pages"
-      }
-    ]
-  }
+  "images": [
+    {
+      "src": "/images/placeholder1.png",
+      "alt": "Tiktok Ads",
+      "text": "Tiktok Ads"
+    },
+    {
+      "src": "/images/placeholder1.png",
+      "alt": "Gaming Ads",
+      "text": "Gaming Ads"
+    },
+    {
+      "src": "/images/placeholder1.png",
+      "alt": "Native Ads",
+      "text": "Native Ads"
+    },
+    {
+      "src": "/images/placeholder1.png",
+      "alt": "Social Media Ads",
+      "text": "Social Media Ads"
+    },
+    {
+      "src": "/images/placeholder1.png",
+      "alt": "Landing Pages",
+      "text": "Landing Pages"
+    }
+  ]
+}
