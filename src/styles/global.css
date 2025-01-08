@@ -252,3 +252,88 @@
 .accordion-toggle:checked ~ .accordion-button .accordion-chevron {
   transform: rotate(180deg); /* Rotate the chevron when open */
 }
+/* Table and Section Styling for UsVsThem Component */
+.bg-dark-green {
+  background-color: #001e1c;
+}
+
+.bg-light-green {
+  background-color: #d8ff85;
+}
+
+.text-white {
+  color: #ffffff;
+}
+
+.text-black {
+  color: #000000;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.font-display {
+  font-family: Basement, sans-serif; /* Using your custom font */
+  font-weight: 700;
+}
+
+.text-3xl {
+  font-size: 1.875rem;
+  line-height: 2.25rem;
+}
+
+.md\:text-5xl {
+  font-size: 3rem;
+  line-height: 3.5rem;
+}
+
+.table-auto {
+  width: auto;
+  border-collapse: collapse;
+}
+
+.w-full {
+  width: 100%;
+}
+
+.p-4 {
+  padding: 1rem;
+}
+
+.overflow-x-auto {
+  overflow-x: auto;
+}
+
+.mt-10 {
+  margin-top: 2.5rem;
+}
+
+.font-bold {
+  font-weight: 700;
+}
+
+table th,
+table td {
+  border: 1px solid rgba(255, 255, 255, 0.2); /* Light border */
+  padding: 15px;
+}
+
+th {
+  font-weight: bold;
+  background-color: #d8ff85;
+  color: #001e1c;
+  text-align: left;
+}
+
+td {
+  text-align: center;
+}
+
+tr:nth-child(odd) {
+  background-color: #002a27; /* Slightly darker green for rows */
+}
+
+tr:nth-child(even) {
+  background-color: #001e1c; /* Dark green for alternate rows */
+}
