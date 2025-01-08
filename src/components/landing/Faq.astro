@@ -1,6 +1,4 @@
-import { useState } from 'react';
-import { Plus, Minus } from 'lucide-react';
-
+---
 const faqData = [
   {
     id: 1,
@@ -23,50 +21,37 @@ const faqData = [
     answer: "Lorem Ipsum is simply dummy text used when you need to fill space without using meaningful content during the design phase."
   }
 ];
+---
 
-export default function FAQ() {
-  const [openItems, setOpenItems] = useState(new Set());
-
-  const toggleItem = (id) => {
-    setOpenItems(prev => {
-      const newSet = new Set(prev);
-      if (newSet.has(id)) {
-        newSet.delete(id);
-      } else {
-        newSet.add(id);
-      }
-      return newSet;
-    });
-  };
-
-  return (
-    <div className="max-w-4xl mx-auto">
-      <div className="grid md:grid-cols-2 gap-6">
-        {faqData.map(({ id, question, answer }) => (
-          <div 
-            key={id}
-            className="bg-gray-50 rounded-lg p-6"
+<section class="max-w-3xl mx-auto space-y-6">
+  {faqData.map(({ id, question, answer }) => (
+    <details id={`faq-${id}`} class="group bg-gray-50 p-6 rounded-lg [&_summary::-webkit-details-marker]:hidden">
+      <summary class="flex cursor-pointer justify-between items-center text-gray-900">
+        <h3 class="font-medium">{question}</h3>
+        <span class="relative size-5 shrink-0">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="absolute inset-0 size-5 opacity-100 group-open:opacity-0"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            stroke-width="2"
           >
-            <button
-              onClick={() => toggleItem(id)}
-              className="w-full flex justify-between items-center gap-4 text-left"
-            >
-              <h3 className="font-medium text-gray-900">{question}</h3>
-              {openItems.has(id) ? (
-                <Minus className="h-5 w-5 flex-shrink-0 text-gray-900" />
-              ) : (
-                <Plus className="h-5 w-5 flex-shrink-0 text-gray-900" />
-              )}
-            </button>
-            
-            {openItems.has(id) && (
-              <p className="mt-4 text-gray-700 leading-relaxed">
-                {answer}
-              </p>
-            )}
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-}
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="absolute inset-0 size-5 opacity-0 group-open:opacity-100"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15 12H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+        </span>
+      </summary>
+      <p class="mt-4 text-gray-700">{answer}</p>
+    </details>
+  ))}
+</section>
