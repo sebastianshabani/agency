@@ -28,7 +28,7 @@ import portfolioData from '../../data/portfolioData.json';
       </div>
 
       <!-- Marquee Container -->
-      <div class="marquee-container overflow-x-auto scrollbar-hide">
+      <div class="marquee-container overflow-x-auto scrollbar-hide" style="touch-action: pan-x;">
         <!-- .image-marquee-animation is the animated wrapper -->
         <div class="flex items-center image-marquee-animation gap-4 whitespace-nowrap">
           <!-- Original Images -->
@@ -93,16 +93,6 @@ import portfolioData from '../../data/portfolioData.json';
   /* Pause animation on hover */
   .marquee-container:hover .image-marquee-animation {
     animation-play-state: paused;
-  }
-
-  /* Snap Scrolling (optional) */
-  .marquee-container {
-    scroll-snap-type: x mandatory;
-    touch-action: pan-x;
-  }
-
-  .marquee-container > * {
-    scroll-snap-align: start;
   }
 </style>
 

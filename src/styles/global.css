@@ -34,7 +34,7 @@
     transform: translateX(0%);
   }
   100% {
-    transform: translateX(-100%);
+    transform: translateX(-50%);
   }
 }
 
@@ -65,23 +65,8 @@
     linear-gradient(90deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0));
 }
 
-@keyframes image-marquee-slow {
-  0% {
-    transform: translateX(0%);
-  }
-  100% {
-    transform: translateX(-50%); /* Translate by 50% of the container width */
-  }
-}
-
-.image-carousel .image-marquee-animation {
-  animation: image-marquee-slow 30s linear infinite;
-  display: flex;
-  width: max-content; /* Ensure the container is wide enough to hold all images */
-}
-
 /* Marquee Container */
-.image-carousel .marquee-container {
+.marquee-container {
   overflow-x: auto; /* Enable horizontal scrolling */
   scrollbar-width: none; /* Hide scrollbar for Firefox */
   -ms-overflow-style: none; /* Hide scrollbar for IE/Edge */
@@ -90,12 +75,12 @@
 }
 
 /* Hide scrollbar for WebKit browsers (Chrome, Safari) */
-.image-carousel .marquee-container::-webkit-scrollbar {
+.marquee-container::-webkit-scrollbar {
   display: none;
 }
 
 /* Snap images to the start of the container */
-.image-carousel .image-marquee-animation img {
+.image-marquee-animation img {
   scroll-snap-align: start; /* Snap images to the start of the container */
   width: 232px; /* Ensure images have a fixed width */
   height: 72px; /* Ensure images have a fixed height */
@@ -103,9 +88,19 @@
 }
 
 /* Pause animation on hover or touch */
-.image-carousel:hover .image-marquee-animation,
-.image-carousel:active .image-marquee-animation {
+.marquee-container:hover .image-marquee-animation,
+.marquee-container:active .image-marquee-animation {
   animation-play-state: paused;
+}
+
+/* Enable smooth scrolling for the marquee container */
+.marquee-container {
+  scroll-behavior: smooth;
+}
+
+/* Ensure the marquee container doesn't interfere with vertical scrolling */
+.marquee-container {
+  touch-action: pan-x; /* Allow only horizontal touch gestures */
 }
 
 /* Splide slide styling */
@@ -228,6 +223,7 @@
 .splide {
   padding-bottom: 1rem; /* Adjust this value to create space for the pagination */
 }
+
 .us-vs-them table {
   border-collapse: collapse;
   width: 100%;
