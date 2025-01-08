@@ -1,0 +1,22 @@
+[
+    {
+      "id": 1,
+      "question": "What is HYPER?",
+      "answer": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s."
+    },
+    {
+      "id": 2,
+      "question": "Where does it come from?",
+      "answer": "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC."
+    },
+    {
+      "id": 3,
+      "question": "Why do we use it?",
+      "answer": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout."
+    },
+    {
+      "id": 4,
+      "question": "When should we use Lorem Ipsum?",
+      "answer": "Lorem Ipsum is simply dummy text used when you need to fill space without using meaningful content during the design phase."
+    }
+  ]
