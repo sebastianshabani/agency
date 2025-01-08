@@ -43,40 +43,42 @@ import carouselData from '../../data/carouselData.json';
 <script>
   document.addEventListener('DOMContentLoaded', () => {
     const marqueeContainer = document.querySelector('.carousel-marquee-container');
-    const marqueeAnimation = document.querySelector('#carousel-loop');
+    const marqueeAnimation = document.querySelector('.carousel-image-marquee');
+
     if (!marqueeContainer || !marqueeAnimation) return;
 
-    // Enable smooth scrolling
-    marqueeContainer.style.overflowX = 'scroll';
-    marqueeContainer.style.scrollBehavior = 'smooth';
-
-    // Looping logic for infinite scrolling
     const scrollWidth = marqueeAnimation.scrollWidth / 2;
 
-    const checkScroll = () => {
+    // Infinite scrolling logic
+    const handleScroll = () => {
       if (marqueeContainer.scrollLeft >= scrollWidth) {
         marqueeContainer.scrollLeft = 0;
       } else if (marqueeContainer.scrollLeft === 0) {
         marqueeContainer.scrollLeft = scrollWidth;
       }
     };
+    marqueeContainer.addEventListener('scroll', handleScroll);
 
-    marqueeContainer.addEventListener('scroll', checkScroll);
+    // Smooth auto-scroll using requestAnimationFrame
+    let isScrolling = true;
 
-    // Auto-scroll functionality
-    let autoScrollInterval = setInterval(() => {
-      marqueeContainer.scrollBy({ left: 1, behavior: 'smooth' });
-    }, 20);
+    const autoScroll = () => {
+      if (isScrolling) {
+        marqueeContainer.scrollBy({ left: 1, behavior: 'smooth' });
+      }
+      requestAnimationFrame(autoScroll);
+    };
+
+    autoScroll(); // Start auto-scroll
 
     // Pause auto-scroll on hover or drag
-    marqueeContainer.addEventListener('mouseenter', () => clearInterval(autoScrollInterval));
-    marqueeContainer.addEventListener('mouseleave', () => {
-      autoScrollInterval = setInterval(() => {
-        marqueeContainer.scrollBy({ left: 1, behavior: 'smooth' });
-      }, 20);
-    });
+    const stopAutoScroll = () => (isScrolling = false);
+    const startAutoScroll = () => (isScrolling = true);
 
-    // Drag functionality
+    marqueeContainer.addEventListener('mouseenter', stopAutoScroll);
+    marqueeContainer.addEventListener('mouseleave', startAutoScroll);
+
+    // Drag-to-scroll functionality
     let isDragging = false;
     let startX = 0;
     let scrollLeft = 0;
@@ -85,7 +87,7 @@ import carouselData from '../../data/carouselData.json';
       isDragging = true;
       startX = e.pageX || (e.touches?.[0]?.pageX ?? 0);
       scrollLeft = marqueeContainer.scrollLeft;
-      clearInterval(autoScrollInterval); // Pause auto-scroll while dragging
+      stopAutoScroll(); // Pause auto-scroll while dragging
     };
 
     const onDrag = (e) => {
@@ -98,10 +100,7 @@ import carouselData from '../../data/carouselData.json';
     const stopDrag = () => {
       if (isDragging) {
         isDragging = false;
-        // Restart auto-scroll after dragging
-        autoScrollInterval = setInterval(() => {
-          marqueeContainer.scrollBy({ left: 1, behavior: 'smooth' });
-        }, 20);
+        startAutoScroll(); // Restart auto-scroll after dragging
       }
     };
 
