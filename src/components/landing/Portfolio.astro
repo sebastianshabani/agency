@@ -1,4 +1,6 @@
 ---
+// Import the JSON file
+import portfolioData from '../../data/portfolioData.json';
 ---
 
 <!-- Heading Section -->
@@ -6,10 +8,10 @@
   <div class="mx-auto max-w-7xl border-white/20 border-x px-8 py-8 gradient-grid overflow-hidden">
     <div class="mx-auto text-center">
       <h3 class="text-3xl font-display text-white uppercase">
-        THE BRANDS YOU LOVE - THE ADS THEY LOVE
+        {portfolioData.heading.title}
       </h3>
       <h3 class="text-xl font-display text-white uppercase mt-1">
-        PORTFOLIO
+        {portfolioData.heading.subtitle}
       </h3>
     </div>
   </div>
@@ -30,78 +32,24 @@
         <!-- .image-marquee-animation is the animated wrapper -->
         <div class="flex items-center image-marquee-animation gap-4 whitespace-nowrap">
           <!-- Original Images -->
-          <img
-            src="/work/1.png"
-            alt="work 1"
-            class="w-[255px] h-[392] rounded-3xl border-t border-black lg:border-r"
-          />
-          <img
-            src="/work/2.png"
-            alt="work 2"
-            class="w-[255px] h-[392] rounded-3xl border-t border-black lg:border-r"
-          />
-          <img
-            src="/work/3.png"
-            alt="work 3"
-            class="w-[255px] h-[392] rounded-3xl border-t border-black lg:border-r"
-          />
-          <img
-            src="/work/4.png"
-            alt="work 4"
-            class="w-[255px] h-[392] rounded-3xl border-t border-black lg:border-r"
-          />
-          <img
-            src="/work/5.png"
-            alt="work 5"
-            class="w-[255px] h-[392] rounded-3xl border-t border-black lg:border-r"
-          />
-          <img
-            src="/work/6.png"
-            alt="work 6"
-            class="w-[255px] h-[392] rounded-3xl border-t border-black lg:border-r"
-          />
-          <img
-            src="/work/7.png"
-            alt="work 7"
-            class="w-[255px] h-[392] rounded-3xl border-t border-black lg:border-r"
-          />
+          {portfolioData.images.map((image, index) => (
+            <img
+              key={index}
+              src={image}
+              alt={`work ${index + 1}`}
+              class="w-[255px] h-[392px] rounded-3xl border-t border-black lg:border-r"
+            />
+          ))}
 
           <!-- Duplicated Images for continuous scroll -->
-          <img
-            src="/work/1.png"
-            alt="work 1 duplicate"
-            class="w-[255px] h-[392] rounded-3xl border-t border-black lg:border-r"
-          />
-          <img
-            src="/work/2.png"
-            alt="work 2 duplicate"
-            class="w-[255px] h-[392] rounded-3xl border-t border-black lg:border-r"
-          />
-          <img
-            src="/work/3.png"
-            alt="work 3 duplicate"
-            class="w-[255px] h-[392] rounded-3xl border-t border-black lg:border-r"
-          />
-          <img
-            src="/work/4.png"
-            alt="work 4 duplicate"
-            class="w-[255px] h-[392] rounded-3xl border-t border-black lg:border-r"
-          />
-          <img
-            src="/work/5.png"
-            alt="work 5 duplicate"
-            class="w-[255px] h-[392] rounded-3xl border-t border-black lg:border-r"
-          />
-          <img
-            src="/work/6.png"
-            alt="work 6 duplicate"
-            class="w-[255px] h-[392] rounded-3xl border-t border-black lg:border-r"
-          />
-          <img
-            src="/work/7.png"
-            alt="work 7 duplicate"
-            class="w-[255px] h-[392] rounded-3xl border-t border-black lg:border-r"
-          />
+          {portfolioData.images.map((image, index) => (
+            <img
+              key={`duplicate-${index}`}
+              src={image}
+              alt={`work ${index + 1} duplicate`}
+              class="w-[255px] h-[392px] rounded-3xl border-t border-black lg:border-r"
+            />
+          ))}
         </div>
       </div>
     </div>
@@ -109,7 +57,7 @@
 
   <!-- "1000+ more" text -->
   <div class="mx-auto max-w-7xl border-white/20 border-x px-8 py-2 text-center">
-    <p class="text-white text-lg font-display">1000+ more</p>
+    <p class="text-white text-lg font-display">{portfolioData.footerText}</p>
   </div>
 </section>
 
