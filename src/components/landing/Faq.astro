@@ -22,12 +22,13 @@ const faqData = [
   }
 ];
 ---
+
 <!-- Use CSS Grid with absolute positioning for the second column -->
 <section class="max-w-5xl mx-auto grid gap-6 sm:grid-cols-1 md:grid-cols-2 relative">
   {faqData.map(({ id, question, answer }, index) => (
     <div
       class={`mb-6 ${index >= faqData.length / 2 ? 'md:absolute md:left-[calc(50%+12px)]' : ''}`}
-      style={`${index >= faqData.length / 2 ? `top: ${(index - faqData.length / 2) * 120}px` : ''}`}
+      style={index >= faqData.length / 2 ? `top: ${(index - faqData.length / 2) * 120}px` : ''}
     >
       <details 
         id={`faq-${id}`} 
