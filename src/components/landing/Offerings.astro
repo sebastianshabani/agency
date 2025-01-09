@@ -5,25 +5,28 @@ import offeringsData from '../../data/offeringsData.json';
 
 <section class="border-b border-white/20 bg-accent-500">
   <div class="mx-auto max-w-7xl border-white/20 border-x overflow-hidden p-8">
-    {/* Grid Container */}
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 overflow-x-auto sm:overflow-x-visible">
+    {/* Flex Container */}
+    <div class="flex overflow-x-auto sm:overflow-x-visible gap-6 snap-x snap-mandatory">
       {offeringsData.map((offering, index) => (
-        <div key={index} class="relative rounded-lg overflow-hidden shadow-md group min-w-[calc(50%-12px)] sm:min-w-0">
+        <div
+          key={index}
+          class="relative rounded-lg overflow-hidden shadow-md group min-w-[calc(50%-12px)] sm:min-w-[calc(33.333%-16px)] lg:min-w-[calc(28.571%-16px)] snap-start"
+        >
           {/* Image Section */}
-          <div class="relative w-full h-[300px] sm:h-[400px]">
+          <div class="relative w-full h-[300px] sm:h-[400px] overflow-hidden">
             <img
               src={offering.image}
               alt={offering.title}
-              class="w-full h-full object-cover"
+              class="w-full h-full object-cover transition-transform duration-500 ease-in-out group-hover:-translate-y-2.5"
             />
           </div>
 
           {/* Chips Section (Hidden by Default, Revealed on Hover) */}
-          <div class="absolute bottom-0 left-0 right-0 p-4 bg-black/70 backdrop-blur-sm opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+          <div class="absolute bottom-0 left-0 right-0 p-4 opacity-0 transition-opacity duration-500 ease-in-out group-hover:opacity-100">
             <div class="flex flex-wrap gap-2">
               {/* Map through chips from JSON */}
               {offering.chips.map((chip, chipIndex) => (
-                <span key={chipIndex} class="px-3 py-1 bg-white/10 text-white text-sm rounded-full">
+                <span key={chipIndex} class="px-3 py-1 bg-white text-[#1E1E1E] text-sm rounded-full shadow-sm">
                   {chip}
                 </span>
               ))}
