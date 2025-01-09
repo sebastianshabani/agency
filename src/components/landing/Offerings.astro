@@ -6,25 +6,26 @@ import offeringsData from '../../data/offeringsData.json';
 <section class="border-b border-white/20 bg-accent-500">
   <div class="mx-auto max-w-7xl border-white/20 border-x overflow-hidden p-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
     {offeringsData.map((offering, index) => (
-      <div key={index} class="bg-[#F4F3ED] rounded-lg overflow-hidden shadow-md">
+      <div key={index} class="bg-[#F4F3ED] rounded-lg overflow-hidden shadow-md flex flex-col">
         <!-- Image Section -->
         <div class="relative">
           <img
             src={offering.image}
             alt={offering.title}
-            class="w-full h-[300px] object-cover sm:h-[450px]"
+            class="w-full h-[392px] object-cover"
           />
           <!-- Overlay Text -->
-          <div class="absolute inset-0 flex items-center justify-center text-center text-white bg-black/50 p-4 opacity-0 hover:opacity-100 transition-opacity duration-300">
+          <div class="absolute inset-0 flex items-center justify-center text-center text-white p-4 bg-black/50 opacity-0 hover:opacity-100 transition-opacity duration-300">
             <p class="text-lg sm:text-xl font-bold">{offering.overlayText}</p>
           </div>
         </div>
 
-        <!-- Title Section -->
-        <div class="p-4">
-          <h3 class="text-center font-serif text-xl sm:text-2xl text-[#1E1E1E]">
-            {offering.title}
-          </h3>
+        <!-- Text Section -->
+        <div class="flex-grow p-6 flex flex-col justify-start">
+          <h3 class="font-serif text-xl sm:text-2xl text-[#1E1E1E]">{offering.title}</h3>
+          <p class="mt-3 text-gray-700 text-sm sm:text-base leading-6">
+            {offering.description}
+          </p>
         </div>
       </div>
     ))}
