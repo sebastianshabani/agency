@@ -197,27 +197,34 @@
   border-top-right-radius: 9999px;
   border-bottom-right-radius: 9999px;
 }
+/* Offerings Marquee Styles */
 .offerings-marquee-container {
-  /* Ensure this is scoped only to offerings */
-  overflow-x: auto;
-  scrollbar-width: none;
-  -ms-overflow-style: none;
-  scroll-behavior: smooth;
-  touch-action: pan-x;
+  overflow-x: auto; /* Enable horizontal scrolling */
+  scrollbar-width: none; /* Hide scrollbar for Firefox */
+  -ms-overflow-style: none; /* Hide scrollbar for IE/Edge */
+  scroll-behavior: smooth; /* Ensure smooth scrolling */
+  touch-action: pan-x; /* Enable touch scrolling */
 }
 
 .offerings-image-marquee {
   display: flex;
-  gap: 1.25rem;
-  width: max-content;
+  gap: 1.25rem; /* Space between items */
+  width: max-content; /* Ensure the marquee expands to fit all items */
 }
 
 .offering-item {
-  display: flex;
-  flex-direction: column;
-  width: 400px; /* Adjust based on aspect ratio */
-  height: 588px;
+  width: 267px; /* Smaller screen width */
+  height: 392px; /* Smaller screen height */
   border-radius: 12px;
   overflow: hidden;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  flex-shrink: 0; /* Prevent items from shrinking */
 }
+
+@media (min-width: 1024px) {
+  .offering-item {
+    width: 400px; /* Larger screen width */
+    height: 588px; /* Larger screen height */
+  }
+}
+
