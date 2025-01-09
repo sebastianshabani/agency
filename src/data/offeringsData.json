@@ -1,23 +1,22 @@
 [
-    {
-      "title": "Ad Design",
-      "description": "Produce and scale static and interactive ad creatives across multiple channels and platforms. From concept to rollout and everything in between, our experts handle it all.",
-      "image": "/images/offering/1.webp"
-    },
-    {
-      "title": "Landing Pages",
-      "description": "Get landing pages that sell. We design pages that grab attention, load fast, and turn visitors into customers.",
-      "image": "/images/offering/2.webp"
-    },
-    {
-      "title": "UGC Ads",
-      "description": "Real people. Real results. We use customer-made content to build ads that feel real and drive sales.",
-      "image": "/images/offering/3.webp"
-    },
-    {
-      "title": "AI Ads",
-      "description": "Smarter, more creative, and cost-effective ads. We use AI to design campaigns that work harder and deliver better results.",
-      "image": "/images/offering/4.webp"
-    }
-  ]
-  
+  {
+    "title": "Ad Design",
+    "image": "/images/offering/1.webp",
+    "chips": ["Static Ads", "Interactive Ads", "Multi-Channel", "Scalable"]
+  },
+  {
+    "title": "Landing Pages",
+    "image": "/images/offering/2.webp",
+    "chips": ["High-Converting", "Fast Loading", "Mobile-Friendly", "SEO-Optimized"]
+  },
+  {
+    "title": "UGC Ads",
+    "image": "/images/offering/3.webp",
+    "chips": ["Authentic Content", "Customer-Centric", "High Engagement", "Cost-Effective"]
+  },
+  {
+    "title": "AI Ads",
+    "image": "/images/offering/4.webp",
+    "chips": ["AI-Powered", "Data-Driven", "Creative Optimization", "Performance Tracking"]
+  }
+]
