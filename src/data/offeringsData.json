@@ -1,45 +1,23 @@
 [
     {
-      "image": "/images/offering/1.webp",
       "title": "Social Media Ads",
-      "overlayTitle": "Brand Identity",
-      "description": "Create and manage high-performing social media ad campaigns across platforms like Facebook, Instagram, and LinkedIn."
+      "description": "Create and manage high-performing social media ad campaigns across platforms.",
+      "image": "/images/offering/1.webp"
     },
     {
-      "image": "/images/offering/2.png",
       "title": "Landing Pages",
-      "overlayTitle": "Web Design",
-      "description": "Design and optimize landing pages to maximize conversions and improve user engagement."
+      "description": "Design and optimize landing pages to maximize conversions.",
+      "image": "/images/offering/landing-pages.png"
     },
     {
-      "image": "/images/offering/3.png",
-      "title": "Tiktok Ads",
-      "overlayTitle": "Video Marketing",
-      "description": "Leverage TikTok's platform to create engaging and viral ad campaigns for your brand."
+      "title": "TikTok Ads",
+      "description": "Leverage TikTok's platform to create engaging and viral ad campaigns.",
+      "image": "/images/offering/tiktok-ads.png"
     },
     {
-      "image": "/images/offering/4.png",
       "title": "Mobile Gaming Ads",
-      "overlayTitle": "Game Advertising",
-      "description": "Develop and scale interactive ad creatives for mobile gaming platforms to drive user acquisition."
-    },
-    {
-      "image": "/images/offering/5.png",
-      "title": "Native Ads",
-      "overlayTitle": "Native Advertising",
-      "description": "Create seamless native ad experiences that blend naturally with content to boost engagement."
-    },
-    {
-      "image": "/images/offering/6.png",
-      "title": "Mobile App",
-      "overlayTitle": "App Promotion",
-      "description": "Build and promote mobile apps with engaging ad creatives and user-friendly designs."
-    },
-    {
-      "image": "/images/offering/7.png",
-      "title": "Electronics",
-      "overlayTitle": "Product Campaigns",
-      "description": "Showcase cutting-edge electronics with visually stunning ad campaigns."
+      "description": "Develop and scale interactive ad creatives for mobile gaming platforms.",
+      "image": "/images/offering/mobile-gaming-ads.png"
     }
   ]
   

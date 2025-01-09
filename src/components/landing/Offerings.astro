@@ -4,72 +4,47 @@ import offeringsData from '../../data/offeringsData.json';
 ---
 
 <section class="border-b border-white/20 bg-accent-500">
-  <div class="mx-auto max-w-7xl border-white/20 border-x overflow-hidden" x-data="{ 
-    init() {
-      new Splide(this.$refs.splide, {
-        perPage: 3.5,
-        perMove: 1,
-        gap: '0rem',
-        focus: 'center',
-        breakpoints: {
-          640: {
-            perPage: 1,
-          },
-        },
-      }).mount();
-    }
-  }">
-    <section 
+  <div class="mx-auto max-w-7xl border-white/20 border-x overflow-hidden">
+    <div 
       class="splide" 
-      aria-label="Splide/Alpine.js" 
+      x-data="{ 
+        init() {
+          new Splide(this.$refs.splide, {
+            perPage: 3.5, // Show 3.5 offerings by default
+            gap: '1rem', // Space between slides
+            perMove: 1, // Move 1 slide at a time
+            breakpoints: {
+              640: {
+                perPage: 1.5 // Show 1.5 offerings on mobile
+              }
+            }
+          }).mount();
+        }
+      }" 
       x-ref="splide" 
-      id="splide01" 
       aria-roledescription="carousel"
     >
-      <div 
-        class="h-full splide__track overflow-hidden" 
-        id="splide01-track" 
-        aria-live="polite" 
-        aria-atomic="true"
-      >
-        <ul class="splide__list" id="splide01-list" role="presentation">
+      <div class="splide__track">
+        <ul class="splide__list">
           {offeringsData.map((offering, index) => (
             <li class="splide__slide" key={index}>
-              <div class="max-w-md overflow-hidden group flex flex-col h-[400px] relative">
-                <!-- Image -->
-                <div class="flex-1 transition-all duration-300 group-hover:flex-[0.7]">
-                  <img 
-                    src={offering.image} 
-                    alt={offering.title} 
-                    class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-90" 
+              <div class="group relative flex flex-col items-center rounded-lg overflow-hidden bg-gray-800 transition-all duration-500 hover:shadow-lg">
+                <div class="relative w-full h-[304px] lg:h-[588px] overflow-hidden">
+                  <img
+                    src={offering.image}
+                    alt={offering.title}
+                    class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                   />
                 </div>
-
-                <!-- Overlay Title -->
-                <div class="absolute inset-0 flex items-center justify-center">
-                  <div class="flex max-w-full flex-[0_0_auto] flex-col p-6 text-center">
-                    <h4 class="font-heading box-border tracking-[0.1px] text-bor-2xl 768:text-bor-4xl 1280:text-bor-7xl <1280:text-[24px] <1280:leading-[30px]">
-                      <span class="font-serif text-[calc(100%+4px)]">
-                        <em>{offering.overlayTitle}</em>
-                      </span>
-                    </h4>
-                  </div>
-                </div>
-
-                <!-- Description -->
-                <div class="bg-black/80">
-                  <h2 class="text-2xl font-display text-white p-4">{offering.title}</h2>
-                  <div class="max-h-0 group-hover:max-h-[160px] transition-all duration-300 overflow-hidden">
-                    <div class="px-4 pb-4 text-gray-300">
-                      <p>{offering.description}</p>
-                    </div>
-                  </div>
+                <div class="absolute bottom-0 w-full p-4 bg-black/70 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                  <h4 class="text-white text-lg lg:text-xl font-bold">{offering.title}</h4>
+                  <p class="text-gray-300 text-sm mt-2">{offering.description}</p>
                 </div>
               </div>
             </li>
           ))}
         </ul>
       </div>
-    </section>
+    </div>
   </div>
 </section>
