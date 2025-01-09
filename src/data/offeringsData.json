@@ -5,9 +5,9 @@
     "chips": ["Static Ads", "Interactive Ads", "Multi-Channel", "Scalable"]
   },
   {
-    "title": "Landing Pages",
-    "image": "/images/offering/2.webp",
-    "chips": ["High-Converting", "Fast Loading", "Mobile-Friendly", "SEO-Optimized"]
+    "title": "AI Ads",
+    "image": "/images/offering/4.webp",
+    "chips": ["AI-Powered", "Data-Driven", "Creative Optimization", "Performance Tracking"]
   },
   {
     "title": "UGC Ads",
@@ -15,8 +15,8 @@
     "chips": ["Authentic Content", "Customer-Centric", "High Engagement", "Cost-Effective"]
   },
   {
-    "title": "AI Ads",
-    "image": "/images/offering/4.webp",
-    "chips": ["AI-Powered", "Data-Driven", "Creative Optimization", "Performance Tracking"]
+    "title": "Landing Pages",
+    "image": "/images/offering/2.webp",
+    "chips": ["High-Converting", "Fast Loading", "Mobile-Friendly", "SEO-Optimized"]
   }
 ]
