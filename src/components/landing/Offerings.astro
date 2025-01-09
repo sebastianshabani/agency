@@ -68,70 +68,109 @@ import offeringsData from '../../data/offeringsData.json';
 </section>
 <script>
   document.addEventListener('DOMContentLoaded', () => {
-    const offeringsContainer = document.querySelector('.offerings-marquee-container');
-    const offeringsAnimation = document.querySelector('.offerings-image-marquee');
+  const offeringsContainer = document.querySelector('.offerings-marquee-container');
+  const offeringsAnimation = document.querySelector('.offerings-image-marquee');
 
-    if (!offeringsContainer || !offeringsAnimation) return;
+  if (!offeringsContainer || !offeringsAnimation) return;
 
-    const scrollWidth = offeringsAnimation.scrollWidth / 2;
+  const scrollWidth = offeringsAnimation.scrollWidth / 2;
+  let scrollTimeout;
 
-    const handleScroll = () => {
-      if (offeringsContainer.scrollLeft >= scrollWidth) {
+  const handleScroll = () => {
+    // Clear any existing timeouts to prevent multiple resets
+    clearTimeout(scrollTimeout);
+    
+    if (offeringsContainer.scrollLeft >= scrollWidth) {
+      // Add a small delay before resetting to prevent visible jumps
+      scrollTimeout = setTimeout(() => {
         offeringsContainer.scrollLeft = 0;
-      } else if (offeringsContainer.scrollLeft === 0) {
+      }, 50);
+    } else if (offeringsContainer.scrollLeft <= 0) {
+      scrollTimeout = setTimeout(() => {
         offeringsContainer.scrollLeft = scrollWidth;
-      }
-    };
-    offeringsContainer.addEventListener('scroll', handleScroll);
+      }, 50);
+    }
+  };
 
-    let isScrolling = true;
+  offeringsContainer.addEventListener('scroll', handleScroll);
 
-    const autoScroll = () => {
-      if (isScrolling) {
-        offeringsContainer.scrollBy({ left: 1, behavior: 'smooth' });
-      }
-      requestAnimationFrame(autoScroll);
-    };
+  let isScrolling = true;
+  let autoScrollRAF;
 
+  const autoScroll = () => {
+    if (isScrolling) {
+      offeringsContainer.scrollLeft += 0.5; // Reduced speed for smoother scrolling
+    }
+    autoScrollRAF = requestAnimationFrame(autoScroll);
+  };
+
+  autoScroll();
+
+  const stopAutoScroll = () => {
+    isScrolling = false;
+    cancelAnimationFrame(autoScrollRAF);
+  };
+
+  const startAutoScroll = () => {
+    isScrolling = true;
     autoScroll();
+  };
 
-    const stopAutoScroll = () => (isScrolling = false);
-    const startAutoScroll = () => (isScrolling = true);
+  let isDragging = false;
+  let startX;
+  let scrollLeft;
 
-    offeringsContainer.addEventListener('mouseenter', stopAutoScroll);
-    offeringsContainer.addEventListener('mouseleave', startAutoScroll);
+  const startDrag = (e) => {
+    isDragging = true;
+    offeringsContainer.style.cursor = 'grabbing';
+    startX = e.type.includes('mouse') ? e.pageX : e.touches[0].pageX;
+    scrollLeft = offeringsContainer.scrollLeft;
+    stopAutoScroll();
+    
+    // Prevent image dragging
+    e.preventDefault();
+  };
 
-    let isDragging = false;
-    let startX = 0;
-    let scrollLeft = 0;
+  const onDrag = (e) => {
+    if (!isDragging) return;
+    e.preventDefault();
+    
+    const x = e.type.includes('mouse') ? e.pageX : e.touches[0].pageX;
+    const distance = x - startX;
+    offeringsContainer.scrollLeft = scrollLeft - distance;
+  };
 
-    const startDrag = (e) => {
-      isDragging = true;
-      startX = e.pageX || (e.touches?.[0]?.pageX ?? 0);
-      scrollLeft = offeringsContainer.scrollLeft;
-      stopAutoScroll();
-    };
+  const stopDrag = () => {
+    isDragging = false;
+    offeringsContainer.style.cursor = '';
+    
+    // Add a small delay before restarting auto-scroll
+    setTimeout(startAutoScroll, 100);
+  };
 
-    const onDrag = (e) => {
-      if (!isDragging) return;
-      const currentX = e.pageX || (e.touches?.[0]?.pageX ?? 0);
-      const x = currentX - startX;
-      offeringsContainer.scrollLeft = scrollLeft - x;
-    };
-
-    const stopDrag = () => {
-      if (isDragging) {
-        isDragging = false;
-        startAutoScroll();
-      }
-    };
-
-    offeringsContainer.addEventListener('mousedown', startDrag);
-    document.addEventListener('mousemove', onDrag);
-    document.addEventListener('mouseup', stopDrag);
-
-    offeringsContainer.addEventListener('touchstart', startDrag);
-    document.addEventListener('touchmove', onDrag);
-    document.addEventListener('touchend', stopDrag);
+  // Prevent default drag behavior on images
+  offeringsContainer.querySelectorAll('img').forEach(img => {
+    img.addEventListener('dragstart', (e) => e.preventDefault());
   });
+
+  // Mouse events
+  offeringsContainer.addEventListener('mousedown', startDrag);
+  document.addEventListener('mousemove', onDrag);
+  document.addEventListener('mouseup', stopDrag);
+
+  // Touch events
+  offeringsContainer.addEventListener('touchstart', startDrag, { passive: false });
+  document.addEventListener('touchmove', onDrag, { passive: false });
+  document.addEventListener('touchend', stopDrag);
+
+  // Stop auto-scroll on hover
+  offeringsContainer.addEventListener('mouseenter', stopAutoScroll);
+  offeringsContainer.addEventListener('mouseleave', startAutoScroll);
+
+  // Clean up event listeners on page unload
+  window.addEventListener('unload', () => {
+    cancelAnimationFrame(autoScrollRAF);
+    clearTimeout(scrollTimeout);
+  });
+});
 </script>
