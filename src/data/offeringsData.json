@@ -1,23 +1,18 @@
 [
     {
-      "title": "Social Media Ads",
-      "description": "Create and manage high-performing social media ad campaigns across platforms.",
+      "title": "Ad Design",
+      "overlayText": "Create captivating designs for your brand.",
       "image": "/images/offering/1.webp"
     },
     {
-      "title": "Landing Pages",
-      "description": "Design and optimize landing pages to maximize conversions.",
-      "image": "/images/offering/landing-pages.png"
+      "title": "Video Production",
+      "overlayText": "Engage your audience with stunning videos.",
+      "image": "/images/offering/video-production.png"
     },
     {
-      "title": "TikTok Ads",
-      "description": "Leverage TikTok's platform to create engaging and viral ad campaigns.",
-      "image": "/images/offering/tiktok-ads.png"
-    },
-    {
-      "title": "Mobile Gaming Ads",
-      "description": "Develop and scale interactive ad creatives for mobile gaming platforms.",
-      "image": "/images/offering/mobile-gaming-ads.png"
+      "title": "Social Media Ads",
+      "overlayText": "High-performing campaigns across platforms.",
+      "image": "/images/offering/social-media-ads.png"
     }
   ]
   

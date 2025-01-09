@@ -4,55 +4,29 @@ import offeringsData from '../../data/offeringsData.json';
 ---
 
 <section class="border-b border-white/20 bg-accent-500">
-  <div class="mx-auto max-w-7xl border-white/20 border-x overflow-hidden">
-    <div 
-      class="splide" 
-      x-data="{ 
-        init() {
-          new Splide(this.$refs.splide, {
-            perPage: 3.5, // Show 3.5 offerings by default
-            gap: '1rem', // Space between slides
-            perMove: 1, // Move 1 slide at a time
-            pagination: false, // Disable pagination dots
-            breakpoints: {
-              640: {
-                perPage: 1.5 // Show 1.5 offerings on mobile
-              }
-            }
-          }).mount();
-        }
-      }" 
-      x-ref="splide" 
-      aria-roledescription="carousel"
-    >
-      <div class="splide__track">
-        <ul class="splide__list">
-          {offeringsData.map((offering, index) => (
-            <li class="splide__slide" key={index}>
-              <div class="group relative flex flex-col items-center rounded-lg overflow-hidden bg-gray-800">
-                <!-- Image -->
-                <div class="relative w-full h-[304px] lg:h-[588px] overflow-hidden">
-                  <img
-                    src={offering.image}
-                    alt={offering.title}
-                    class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                  />
-                </div>
+  <div class="mx-auto max-w-7xl border-white/20 border-x overflow-hidden p-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+    {offeringsData.map((offering, index) => (
+      <div key={index} class="bg-[#F4F3ED] rounded-lg overflow-hidden shadow-md">
+        <!-- Image Section -->
+        <div class="relative">
+          <img
+            src={offering.image}
+            alt={offering.title}
+            class="w-full h-[300px] object-cover sm:h-[450px]"
+          />
+          <!-- Overlay Text -->
+          <div class="absolute inset-0 flex items-center justify-center text-center text-white bg-black/50 p-4 opacity-0 hover:opacity-100 transition-opacity duration-300">
+            <p class="text-lg sm:text-xl font-bold">{offering.overlayText}</p>
+          </div>
+        </div>
 
-                <!-- Title (Always Visible) -->
-                <div class="w-full p-4 bg-black/70">
-                  <h4 class="text-white text-lg lg:text-xl font-bold">{offering.title}</h4>
-                </div>
-
-                <!-- Description (Visible on Hover) -->
-                <div class="absolute bottom-0 w-full p-4 bg-black/70 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                  <p class="text-gray-300 text-sm">{offering.description}</p>
-                </div>
-              </div>
-            </li>
-          ))}
-        </ul>
+        <!-- Title Section -->
+        <div class="p-4">
+          <h3 class="text-center font-serif text-xl sm:text-2xl text-[#1E1E1E]">
+            {offering.title}
+          </h3>
+        </div>
       </div>
-    </div>
+    ))}
   </div>
 </section>
