@@ -5,14 +5,19 @@
       "image": "/images/offering/1.webp"
     },
     {
-      "title": "Video Production",
-      "description": "High-quality video production for social media, websites, and other platforms, tailored to your brand's story.",
-      "image": "/images/offering/video-production.png"
+      "title": "Landing Pages",
+      "description": "Get landing pages that sell. We design pages that grab attention, load fast, and turn visitors into customers.",
+      "image": "/images/offering/2.webp"
     },
     {
-      "title": "Social Media Ads",
-      "description": "Strategize, design, and implement effective social media ad campaigns to drive engagement and results.",
-      "image": "/images/offering/social-media-ads.png"
+      "title": "UGC Ads",
+      "description": "Real people. Real results. We use customer-made content to build ads that feel real and drive sales.",
+      "image": "/images/offering/3.webp"
+    },
+    {
+      "title": "AI Ads",
+      "description": "Smarter, more creative, and cost-effective ads. We use AI to design campaigns that work harder and deliver better results.",
+      "image": "/images/offering/4.webp"
     }
   ]
   
