@@ -6,25 +6,26 @@ import offeringsData from '../../data/offeringsData.json';
 <section class="border-b border-white/20 bg-accent-500">
   <div class="mx-auto max-w-7xl border-white/20 border-x overflow-hidden p-8">
     {/* Carousel Container */}
-    <div class="carousel-marquee-container scrollbar-hide">
-      <div class="carousel-image-marquee gap-5" id="carousel-loop">
+    <div class="carousel-marquee-container relative w-full overflow-hidden">
+      <div class="carousel-image-marquee flex gap-5" id="carousel-loop">
+        {/* Offerings */}
         {offeringsData.map((offering, index) => (
-          <div key={index} class="carousel-item relative rounded-lg overflow-hidden shadow-md group">
+          <div key={index} class="carousel-item relative w-[255px] h-[392px] rounded-lg overflow-hidden shadow-md group">
             {/* Image Section */}
-            <div class="relative w-[255px] h-[392px] overflow-hidden">
-              <img
-                src={offering.image}
-                alt={offering.title}
-                class="w-full h-full object-cover transition-transform duration-500 ease-in-out group-hover:-translate-y-2.5"
-              />
-            </div>
+            <img
+              src={offering.image}
+              alt={offering.title}
+              class="w-full h-full object-cover transition-transform duration-500 ease-in-out group-hover:scale-105"
+            />
 
-            {/* Chips Section (Hidden by Default, Revealed on Hover) */}
-            <div class="absolute bottom-0 left-0 right-0 p-4 opacity-0 transition-opacity duration-500 ease-in-out group-hover:opacity-100">
+            {/* Chips Section */}
+            <div class="absolute bottom-0 left-0 right-0 bg-white/90 p-4 opacity-0 transition-opacity duration-500 ease-in-out group-hover:opacity-100">
               <div class="flex flex-wrap gap-2">
-                {/* Map through chips from JSON */}
                 {offering.chips.map((chip, chipIndex) => (
-                  <span key={chipIndex} class="px-3 py-1 bg-white text-[#1E1E1E] text-sm rounded-full shadow-sm">
+                  <span
+                    key={chipIndex}
+                    class="px-3 py-1 bg-accent-500 text-white text-sm font-medium rounded-full shadow-sm"
+                  >
                     {chip}
                   </span>
                 ))}
@@ -35,22 +36,20 @@ import offeringsData from '../../data/offeringsData.json';
 
         {/* Duplicate Items for Infinite Scroll */}
         {offeringsData.map((offering, index) => (
-          <div key={`duplicate-${index}`} class="carousel-item relative rounded-lg overflow-hidden shadow-md group">
-            {/* Image Section */}
-            <div class="relative w-[255px] h-[392px] overflow-hidden">
-              <img
-                src={offering.image}
-                alt={offering.title}
-                class="w-full h-full object-cover transition-transform duration-500 ease-in-out group-hover:-translate-y-2.5"
-              />
-            </div>
+          <div key={`duplicate-${index}`} class="carousel-item relative w-[255px] h-[392px] rounded-lg overflow-hidden shadow-md group">
+            <img
+              src={offering.image}
+              alt={offering.title}
+              class="w-full h-full object-cover transition-transform duration-500 ease-in-out group-hover:scale-105"
+            />
 
-            {/* Chips Section (Hidden by Default, Revealed on Hover) */}
-            <div class="absolute bottom-0 left-0 right-0 p-4 opacity-0 transition-opacity duration-500 ease-in-out group-hover:opacity-100">
+            <div class="absolute bottom-0 left-0 right-0 bg-white/90 p-4 opacity-0 transition-opacity duration-500 ease-in-out group-hover:opacity-100">
               <div class="flex flex-wrap gap-2">
-                {/* Map through chips from JSON */}
                 {offering.chips.map((chip, chipIndex) => (
-                  <span key={chipIndex} class="px-3 py-1 bg-white text-[#1E1E1E] text-sm rounded-full shadow-sm">
+                  <span
+                    key={chipIndex}
+                    class="px-3 py-1 bg-accent-500 text-white text-sm font-medium rounded-full shadow-sm"
+                  >
                     {chip}
                   </span>
                 ))}
