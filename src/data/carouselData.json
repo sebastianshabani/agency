@@ -2,28 +2,23 @@
   "images": [
     {
       "src": "/images/placeholder1.png",
-      "alt": "Tiktok Ads",
-      "text": "Tiktok Ads"
-    },
-    {
-      "src": "/images/placeholder1.png",
-      "alt": "Gaming Ads",
-      "text": "Gaming Ads"
-    },
-    {
-      "src": "/images/placeholder1.png",
-      "alt": "Native Ads",
-      "text": "Native Ads"
-    },
-    {
-      "src": "/images/placeholder1.png",
       "alt": "Social Media Ads",
       "text": "Social Media Ads"
     },
     {
       "src": "/images/placeholder1.png",
-      "alt": "Landing Pages",
-      "text": "Landing Pages"
+      "alt": "Landing Page Design",
+      "text": "Converting Landing Pages"
+    },
+    {
+      "src": "/images/placeholder1.png",
+      "alt": "UGC Ads",
+      "text": "UGC Ads"
+    },
+    {
+      "src": "/images/placeholder1.png",
+      "alt": "AI Ads",
+      "text": "AI Ads"
     }
   ]
 }
