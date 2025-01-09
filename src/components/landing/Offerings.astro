@@ -5,10 +5,8 @@ import offeringsData from '../../data/offeringsData.json';
 
 <section class="border-b border-white/20 bg-accent-500">
   <div class="mx-auto max-w-7xl border-white/20 border-x overflow-hidden p-8">
-    {/* Offerings Marquee Container */}
     <div class="offerings-marquee-container relative w-full overflow-hidden">
       <div class="offerings-image-marquee flex gap-5" id="offerings-loop">
-        {/* Offerings */}
         {offeringsData.map((offering, index) => (
           <div
             key={index}
@@ -37,7 +35,6 @@ import offeringsData from '../../data/offeringsData.json';
           </div>
         ))}
 
-        {/* Duplicate Items for Infinite Scroll */}
         {offeringsData.map((offering, index) => (
           <div
             key={`duplicate-${index}`}
@@ -77,7 +74,6 @@ import offeringsData from '../../data/offeringsData.json';
 
     const scrollWidth = offeringsAnimation.scrollWidth / 2;
 
-    // Infinite scrolling logic
     const handleScroll = () => {
       if (offeringsContainer.scrollLeft >= scrollWidth) {
         offeringsContainer.scrollLeft = 0;
@@ -87,7 +83,6 @@ import offeringsData from '../../data/offeringsData.json';
     };
     offeringsContainer.addEventListener('scroll', handleScroll);
 
-    // Smooth auto-scroll using requestAnimationFrame
     let isScrolling = true;
 
     const autoScroll = () => {
@@ -97,16 +92,14 @@ import offeringsData from '../../data/offeringsData.json';
       requestAnimationFrame(autoScroll);
     };
 
-    autoScroll(); // Start auto-scroll
+    autoScroll();
 
-    // Pause auto-scroll on hover or drag
     const stopAutoScroll = () => (isScrolling = false);
     const startAutoScroll = () => (isScrolling = true);
 
     offeringsContainer.addEventListener('mouseenter', stopAutoScroll);
     offeringsContainer.addEventListener('mouseleave', startAutoScroll);
 
-    // Drag-to-scroll functionality
     let isDragging = false;
     let startX = 0;
     let scrollLeft = 0;
@@ -115,7 +108,7 @@ import offeringsData from '../../data/offeringsData.json';
       isDragging = true;
       startX = e.pageX || (e.touches?.[0]?.pageX ?? 0);
       scrollLeft = offeringsContainer.scrollLeft;
-      stopAutoScroll(); // Pause auto-scroll while dragging
+      stopAutoScroll();
     };
 
     const onDrag = (e) => {
@@ -128,7 +121,7 @@ import offeringsData from '../../data/offeringsData.json';
     const stopDrag = () => {
       if (isDragging) {
         isDragging = false;
-        startAutoScroll(); // Restart auto-scroll after dragging
+        startAutoScroll();
       }
     };
 
