@@ -20,21 +20,25 @@ import offeringsData from '../../data/offeringsData.json';
             />
 
             {/* Chips Section */}
-            <div class="absolute bottom-0 left-0 right-0 p-4 opacity-0 transition-opacity duration-500 ease-in-out group-hover:opacity-100">
-              <div class="flex flex-wrap gap-2">
-                {offering.chips.map((chip, chipIndex) => (
-                  <span
-                    key={chipIndex}
-                    class="px-3 py-1 bg-accent-500 text-white text-sm font-medium rounded-full shadow-sm"
-                  >
+            <div
+              class="flex max-w-full flex-[0_0_auto] <1280:hidden 1650:p-6 mt-auto w-full flex-row flex-wrap gap-2 p-4 pr-10 opacity-0 transition-all duration-700 group-hover:opacity-100"
+              style="background: linear-gradient(180deg, rgba(0, 0, 0, 0.00) 0%, rgba(0, 0, 0, 0.25) 100%)"
+            >
+              {offering.chips.map((chip, chipIndex) => (
+                <div
+                  key={chipIndex}
+                  class="max-w-full flex-[0_0_auto] text-bor-foreground flex w-fit items-center justify-center gap-2 rounded-full font-semibold px-2 py-0.5 border-surface flex-row border-bor-foreground"
+                >
+                  <span class="text-bor-xs 768:text-bor-xs 1280:text-bor-sm !text-bor-xs">
                     {chip}
                   </span>
-                ))}
-              </div>
+                </div>
+              ))}
             </div>
           </div>
         ))}
 
+        {/* Duplicate Items for Infinite Scroll */}
         {offeringsData.map((offering, index) => (
           <div
             key={`duplicate-${index}`}
@@ -46,17 +50,20 @@ import offeringsData from '../../data/offeringsData.json';
               class="w-full h-full object-cover transition-transform duration-500 ease-in-out group-hover:scale-105"
             />
 
-            <div class="absolute bottom-0 left-0 right-0 p-4 opacity-0 transition-opacity duration-500 ease-in-out group-hover:opacity-100">
-              <div class="flex flex-wrap gap-2">
-                {offering.chips.map((chip, chipIndex) => (
-                  <span
-                    key={chipIndex}
-                    class="px-3 py-1 bg-accent-500 text-white text-sm font-medium rounded-full shadow-sm"
-                  >
+            <div
+              class="flex max-w-full flex-[0_0_auto] <1280:hidden 1650:p-6 mt-auto w-full flex-row flex-wrap gap-2 p-4 pr-10 opacity-0 transition-all duration-700 group-hover:opacity-100"
+              style="background: linear-gradient(180deg, rgba(0, 0, 0, 0.00) 0%, rgba(0, 0, 0, 0.25) 100%)"
+            >
+              {offering.chips.map((chip, chipIndex) => (
+                <div
+                  key={chipIndex}
+                  class="max-w-full flex-[0_0_auto] text-bor-foreground flex w-fit items-center justify-center gap-2 rounded-full font-semibold px-2 py-0.5 border-surface flex-row border-bor-foreground"
+                >
+                  <span class="text-bor-xs 768:text-bor-xs 1280:text-bor-sm !text-bor-xs">
                     {chip}
                   </span>
-                ))}
-              </div>
+                </div>
+              ))}
             </div>
           </div>
         ))}
