@@ -5,16 +5,20 @@ import offeringsData from '../../data/offeringsData.json';
 
 <section class="border-b border-white/20 bg-accent-500">
   <div class="mx-auto max-w-7xl border-white/20 border-x overflow-hidden p-8">
-    {/* Grid Container */}
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 overflow-x-auto sm:overflow-x-visible">
+    {/* Flex Container */}
+    <div class="flex overflow-x-auto sm:overflow-x-visible gap-6">
       {offeringsData.map((offering, index) => (
-        <div key={index} class="relative bg-[#F4F3ED] rounded-lg overflow-hidden shadow-md group min-w-[calc(50%-12px)] sm:min-w-0">
+        <div key={index} class="flex max-w-full flex-[0_0_auto] flex-col relative w-full grow sm:w-1/4 min-w-[calc(50%-12px)] sm:min-w-0">
           {/* Image Section */}
           <div class="relative w-full h-[300px] sm:h-[400px]">
             <img
-              src={offering.image}
               alt={offering.title}
-              class="w-full h-full object-cover"
+              loading="lazy"
+              class="absolute !h-full w-full object-cover object-center"
+              srcSet={`${offering.image}?auto=format&fit=max&q=100&w=360 360w, ${offering.image}?auto=format&fit=max&q=100&w=720 720w, ${offering.image}?auto=format&fit=max&q=100&w=1080 1080w, ${offering.image}?auto=format&fit=max&q=100&w=1440 1440w`}
+              src={`${offering.image}?auto=format&fit=max&q=100&w=720`}
+              width="720"
+              height="774"
             />
           </div>
 
