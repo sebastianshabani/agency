@@ -1,19 +1,16 @@
 [
     {
       "title": "Ad Design",
-      "overlayText": "Produce stunning ads with precision.",
       "description": "Produce and scale static and interactive ad creatives across multiple channels and platforms. From concept to rollout and everything in between, our experts handle it all.",
       "image": "/images/offering/1.webp"
     },
     {
       "title": "Video Production",
-      "overlayText": "Engage your audience with videos.",
       "description": "High-quality video production for social media, websites, and other platforms, tailored to your brand's story.",
       "image": "/images/offering/video-production.png"
     },
     {
       "title": "Social Media Ads",
-      "overlayText": "Create high-performing campaigns.",
       "description": "Strategize, design, and implement effective social media ad campaigns to drive engagement and results.",
       "image": "/images/offering/social-media-ads.png"
     }
