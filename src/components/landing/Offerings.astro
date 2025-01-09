@@ -5,12 +5,15 @@ import offeringsData from '../../data/offeringsData.json';
 
 <section class="border-b border-white/20 bg-accent-500">
   <div class="mx-auto max-w-7xl border-white/20 border-x overflow-hidden p-8">
-    {/* Carousel Container */}
-    <div class="carousel-marquee-container relative w-full overflow-hidden">
-      <div class="carousel-image-marquee flex gap-5" id="carousel-loop">
+    {/* Offerings Marquee Container */}
+    <div class="offerings-marquee-container relative w-full overflow-hidden">
+      <div class="offerings-image-marquee flex gap-5" id="offerings-loop">
         {/* Offerings */}
         {offeringsData.map((offering, index) => (
-          <div key={index} class="carousel-item relative w-[255px] h-[392px] rounded-lg overflow-hidden shadow-md group">
+          <div
+            key={index}
+            class="offering-item relative w-[267px] h-[392px] lg:w-[400px] lg:h-[588px] rounded-lg overflow-hidden shadow-md group"
+          >
             {/* Image Section */}
             <img
               src={offering.image}
@@ -36,7 +39,10 @@ import offeringsData from '../../data/offeringsData.json';
 
         {/* Duplicate Items for Infinite Scroll */}
         {offeringsData.map((offering, index) => (
-          <div key={`duplicate-${index}`} class="carousel-item relative w-[255px] h-[392px] rounded-lg overflow-hidden shadow-md group">
+          <div
+            key={`duplicate-${index}`}
+            class="offering-item relative w-[267px] h-[392px] lg:w-[400px] lg:h-[588px] rounded-lg overflow-hidden shadow-md group"
+          >
             <img
               src={offering.image}
               alt={offering.title}
@@ -64,29 +70,29 @@ import offeringsData from '../../data/offeringsData.json';
 
 <script>
   document.addEventListener('DOMContentLoaded', () => {
-    const marqueeContainer = document.querySelector('.carousel-marquee-container');
-    const marqueeAnimation = document.querySelector('.carousel-image-marquee');
+    const offeringsContainer = document.querySelector('.offerings-marquee-container');
+    const offeringsAnimation = document.querySelector('.offerings-image-marquee');
 
-    if (!marqueeContainer || !marqueeAnimation) return;
+    if (!offeringsContainer || !offeringsAnimation) return;
 
-    const scrollWidth = marqueeAnimation.scrollWidth / 2;
+    const scrollWidth = offeringsAnimation.scrollWidth / 2;
 
     // Infinite scrolling logic
     const handleScroll = () => {
-      if (marqueeContainer.scrollLeft >= scrollWidth) {
-        marqueeContainer.scrollLeft = 0;
-      } else if (marqueeContainer.scrollLeft === 0) {
-        marqueeContainer.scrollLeft = scrollWidth;
+      if (offeringsContainer.scrollLeft >= scrollWidth) {
+        offeringsContainer.scrollLeft = 0;
+      } else if (offeringsContainer.scrollLeft === 0) {
+        offeringsContainer.scrollLeft = scrollWidth;
       }
     };
-    marqueeContainer.addEventListener('scroll', handleScroll);
+    offeringsContainer.addEventListener('scroll', handleScroll);
 
     // Smooth auto-scroll using requestAnimationFrame
     let isScrolling = true;
 
     const autoScroll = () => {
       if (isScrolling) {
-        marqueeContainer.scrollBy({ left: 1, behavior: 'smooth' });
+        offeringsContainer.scrollBy({ left: 1, behavior: 'smooth' });
       }
       requestAnimationFrame(autoScroll);
     };
@@ -97,8 +103,8 @@ import offeringsData from '../../data/offeringsData.json';
     const stopAutoScroll = () => (isScrolling = false);
     const startAutoScroll = () => (isScrolling = true);
 
-    marqueeContainer.addEventListener('mouseenter', stopAutoScroll);
-    marqueeContainer.addEventListener('mouseleave', startAutoScroll);
+    offeringsContainer.addEventListener('mouseenter', stopAutoScroll);
+    offeringsContainer.addEventListener('mouseleave', startAutoScroll);
 
     // Drag-to-scroll functionality
     let isDragging = false;
@@ -108,7 +114,7 @@ import offeringsData from '../../data/offeringsData.json';
     const startDrag = (e) => {
       isDragging = true;
       startX = e.pageX || (e.touches?.[0]?.pageX ?? 0);
-      scrollLeft = marqueeContainer.scrollLeft;
+      scrollLeft = offeringsContainer.scrollLeft;
       stopAutoScroll(); // Pause auto-scroll while dragging
     };
 
@@ -116,7 +122,7 @@ import offeringsData from '../../data/offeringsData.json';
       if (!isDragging) return;
       const currentX = e.pageX || (e.touches?.[0]?.pageX ?? 0);
       const x = currentX - startX;
-      marqueeContainer.scrollLeft = scrollLeft - x;
+      offeringsContainer.scrollLeft = scrollLeft - x;
     };
 
     const stopDrag = () => {
@@ -126,11 +132,11 @@ import offeringsData from '../../data/offeringsData.json';
       }
     };
 
-    marqueeContainer.addEventListener('mousedown', startDrag);
+    offeringsContainer.addEventListener('mousedown', startDrag);
     document.addEventListener('mousemove', onDrag);
     document.addEventListener('mouseup', stopDrag);
 
-    marqueeContainer.addEventListener('touchstart', startDrag);
+    offeringsContainer.addEventListener('touchstart', startDrag);
     document.addEventListener('touchmove', onDrag);
     document.addEventListener('touchend', stopDrag);
   });

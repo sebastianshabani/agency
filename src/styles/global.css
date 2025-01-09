@@ -197,3 +197,27 @@
   border-top-right-radius: 9999px;
   border-bottom-right-radius: 9999px;
 }
+.offerings-marquee-container {
+  /* Ensure this is scoped only to offerings */
+  overflow-x: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  scroll-behavior: smooth;
+  touch-action: pan-x;
+}
+
+.offerings-image-marquee {
+  display: flex;
+  gap: 1.25rem;
+  width: max-content;
+}
+
+.offering-item {
+  display: flex;
+  flex-direction: column;
+  width: 400px; /* Adjust based on aspect ratio */
+  height: 588px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
