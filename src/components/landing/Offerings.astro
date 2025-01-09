@@ -1,5 +1,4 @@
 ---
-// Import the JSON file for Offerings
 import offeringsData from '../../data/offeringsData.json';
 ---
 
@@ -19,15 +18,15 @@ import offeringsData from '../../data/offeringsData.json';
               class="w-full h-full object-cover transition-transform duration-500 ease-in-out group-hover:scale-105"
             />
 
-            {/* Chips Section */}
+            {/* Chips Section - Modified for better visibility */}
             <div
-              class="flex max-w-full flex-[0_0_auto] mt-auto w-full flex-row flex-wrap gap-2 p-4 pr-10 opacity-0 transition-opacity duration-700 group-hover:opacity-100"
-              style="background: linear-gradient(180deg, rgba(0, 0, 0, 0.00) 0%, rgba(0, 0, 0, 0.25) 100%)"
+              class="absolute bottom-0 left-0 flex max-w-full flex-[0_0_auto] w-full flex-row flex-wrap gap-2 p-4 pr-10 opacity-0 transition-all duration-300 group-hover:opacity-100"
+              style="background: linear-gradient(180deg, rgba(0, 0, 0, 0.00) 0%, rgba(0, 0, 0, 0.75) 100%)"
             >
               {offering.chips.map((chip, chipIndex) => (
                 <div
                   key={chipIndex}
-                  class="max-w-full flex-[0_0_auto] text-bor-foreground flex w-fit items-center justify-center gap-2 rounded-full font-semibold px-2 py-0.5 border border-surface flex-row"
+                  class="max-w-full flex-[0_0_auto] text-white flex w-fit items-center justify-center gap-2 rounded-full font-semibold px-3 py-1 border border-white/30 backdrop-blur-sm bg-black/20 flex-row"
                 >
                   <span class="text-sm 1280:text-base">{chip}</span>
                 </div>
@@ -49,13 +48,13 @@ import offeringsData from '../../data/offeringsData.json';
             />
 
             <div
-              class="flex max-w-full flex-[0_0_auto] mt-auto w-full flex-row flex-wrap gap-2 p-4 pr-10 opacity-0 transition-opacity duration-700 group-hover:opacity-100"
-              style="background: linear-gradient(180deg, rgba(0, 0, 0, 0.00) 0%, rgba(0, 0, 0, 0.25) 100%)"
+              class="absolute bottom-0 left-0 flex max-w-full flex-[0_0_auto] w-full flex-row flex-wrap gap-2 p-4 pr-10 opacity-0 transition-all duration-300 group-hover:opacity-100"
+              style="background: linear-gradient(180deg, rgba(0, 0, 0, 0.00) 0%, rgba(0, 0, 0, 0.75) 100%)"
             >
               {offering.chips.map((chip, chipIndex) => (
                 <div
                   key={chipIndex}
-                  class="max-w-full flex-[0_0_auto] text-bor-foreground flex w-fit items-center justify-center gap-2 rounded-full font-semibold px-2 py-0.5 border border-surface flex-row"
+                  class="max-w-full flex-[0_0_auto] text-white flex w-fit items-center justify-center gap-2 rounded-full font-semibold px-3 py-1 border border-white/30 backdrop-blur-sm bg-black/20 flex-row"
                 >
                   <span class="text-sm 1280:text-base">{chip}</span>
                 </div>
@@ -67,7 +66,6 @@ import offeringsData from '../../data/offeringsData.json';
     </div>
   </div>
 </section>
-
 <script>
   document.addEventListener('DOMContentLoaded', () => {
     const offeringsContainer = document.querySelector('.offerings-marquee-container');
